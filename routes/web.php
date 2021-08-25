@@ -16,8 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\ColumnsController@index');
 
 Route::resource('columns', 'App\Http\Controllers\ColumnsController');
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

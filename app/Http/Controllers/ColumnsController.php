@@ -8,11 +8,7 @@ use App\Models\Column;    // 追加
 
 class ColumnsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // 一覧表示
     public function index()
     {
         $columns = Column::all();
@@ -22,47 +18,42 @@ class ColumnsController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // 新規作成
     public function create()
     {
-        //
+        $column = new Column;
+
+        return view('columns.create', ['column' => $column]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // 保存処理
     public function store(Request $request)
     {
-        //
+        $column = new Column;
+        // 送られてきたフォームの内容は　$request　に入っている。
+        $column->title = $request->title;
+        $column->content = $request->content;
+        $column->save();
+
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // 詳細ページ表示処理
     public function show($id)
     {
-        //
+        $column = Column::find($id);
+
+        return view('columns.show', ['column' => $column]);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // 編集処理
     public function edit($id)
     {
-        //
+        $column = Column::find($id);
+
+        return view('columns.edit', ['column' => $column]);
     }
 
     /**
@@ -74,17 +65,20 @@ class ColumnsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $column = Column::find($id);
+        $column->title = $request->title;
+        $column->content = $request->content;
+        $column->save();
+
+        return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // deleteでcolumn/id　にアクセスされた場合の「削除処理」
     public function destroy($id)
     {
-        //
+        $column = Column::find($id);
+        $column->delete();
+
+        return redirect('/');
     }
 }
