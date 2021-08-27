@@ -11,7 +11,9 @@ class ColumnsController extends Controller
     // 一覧表示
     public function index()
     {
-        $columns = Column::all();
+        $columns = Column::paginate(25);
+
+        // $columns = Column::all();
 
         return view('columns.index', [
             'columns' => $columns,
@@ -30,6 +32,11 @@ class ColumnsController extends Controller
     // 保存処理
     public function store(Request $request)
     {
+        
+        $this->validate($request, [
+            'title' => 'required|max:30',
+            'content' => 'required|max:255']);
+
         $column = new Column;
         // 送られてきたフォームの内容は　$request　に入っている。
         $column->title = $request->title;
@@ -65,6 +72,12 @@ class ColumnsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);   // 追加
+
+        $this->validate($request, [
+            'title' => 'required|max:30',
+            'content' => 'required|max:255']);
+
         $column = Column::find($id);
         $column->title = $request->title;
         $column->content = $request->content;
