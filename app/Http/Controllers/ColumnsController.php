@@ -41,6 +41,11 @@ class ColumnsController extends Controller
         // 送られてきたフォームの内容は　$request　に入っている。
         $column->title = $request->title;
         $column->content = $request->content;
+
+        $column->emotion_name =$request->emotion_name;
+        $column->emotion_strength = $request->emotion_strength;
+        $column->thoughts = $request->thoughts;
+
         $column->save();
 
         return redirect('/');
@@ -76,11 +81,21 @@ class ColumnsController extends Controller
 
         $this->validate($request, [
             'title' => 'required|max:30',
-            'content' => 'required|max:255']);
+            'content' => 'required|max:255',
+            'emotion_name' => 'required',
+            'emotion_strength' => 'required',
+            'thoughts' => 'required'                
+        
+        ]);
 
         $column = Column::find($id);
         $column->title = $request->title;
         $column->content = $request->content;
+
+        $column->emotion_name =$request->emotion_name;
+        $column->emotion_strength = $request->emotion_strength;
+        $column->thoughts = $request->thoughts;
+
         $column->save();
 
         return redirect('/');

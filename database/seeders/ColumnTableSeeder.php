@@ -29,7 +29,7 @@ class ColumnTableSeeder extends Seeder
         ]);
     */
 
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('columns')->insert([
                 'title' => 'test title ' . $i,
                 'content' => 'test content ' . $i

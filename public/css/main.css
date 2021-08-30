@@ -1,0 +1,30 @@
+
+habit-thinking {
+    display: block;
+    position: relative;
+    margin: 1em 0;
+    padding-left: 28px;
+    cursor: pointer;
+    user-select: none; /* テキストの選択を防ぐ */
+}
+th {
+    background-color: aqua;
+}
+
+div.columns {
+    column-count: 4;
+    column-gap: 30px;
+    
+    margin: 10;
+    padding: 0;
+  }
+
+.habit {
+    width: 140px;
+}
+body {
+    margin-bottom: 50px;
+}
+.wrap_thinking {
+    column-count: 3;
+}

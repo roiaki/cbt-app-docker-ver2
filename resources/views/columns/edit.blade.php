@@ -40,6 +40,34 @@
             @endif
         </div>
 
+        <div>
+            <div>
+                <label for="emotion-name">感情名</label>
+                <input type="text" name="emotion_name">
+            </div>
+            <div>
+                <label for="emotion-strength">強さ</label>
+                <input type="number" name="emotion_strength">
+            </div>
+        </div>
+
+        <div>
+            <label for=" thoughts">その時考えたこと</label><br>
+            <textarea name="thoughts" cols="50" rows="7"></textarea>
+        </div>
+
+        <label>考え方の癖</label>
+        <div class="wrap_thinking">
+            
+            <div><label class="habit-thinking"><input type="checkbox" name="habit[]">一般化のし過ぎ</label></div>
+            <div><label class="habit-thinking"><input type="checkbox" name="check">自分への関連付け</label></div>
+            <div><label class="habit-thinking"><input type="checkbox" name="check">根拠のない推論</label></div>
+            <div><label class="habit-thinking"><input type="checkbox" name="check">白か黒か思考</label></div>
+            <div><label class="habit-thinking"><input type="checkbox" name="check">すべき思考</label></div>
+            <div><label class="habit-thinking"><input type="checkbox" name="check">過大評価と過少評価</label></div>
+            <div><label class="habit-thinking"><input type="checkbox" name="check">感情による決めつけ</label></div>
+        </div>
+
         {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
 
         {!! Form::close() !!}
