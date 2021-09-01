@@ -17,10 +17,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // fillableに指定したカラムのみ、create()やfill()、update()で値が代入されます。
     protected $fillable = [
         'name',
         'email',
         'password',
+        'email_verified', 'email_verify_token', // 追加
     ];
 
     /**

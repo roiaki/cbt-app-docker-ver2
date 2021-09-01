@@ -35,6 +35,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // logoutアクション以外ではguestである必要がある
+        // guest とは、ログイン認証されていない閲覧者
         $this->middleware('guest')->except('logout');
     }
 }
