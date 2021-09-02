@@ -8,7 +8,8 @@ habit-thinking {
     user-select: none; /* テキストの選択を防ぐ */
 }
 th {
-    background-color: aqua;
+    background-color: rgba(199, 209, 202, 0.356);
+    width: 15%;
 }
 
 div.columns {
@@ -27,4 +28,11 @@ body {
 }
 .wrap_thinking {
     column-count: 3;
+}
+
+.button_wrapper{
+    text-align: right;
+}
+.button_wrappe_left {
+    text-align: left;
 }

@@ -47,17 +47,17 @@
         <div>
             <div>
                 <label for="emotion-name">感情名</label>
-                <input type="text" name="emotion_name">
+                <input type="text" name="emotion_name" value="{{ $column->emotion_name }}">
             </div>
             <div>
                 <label for="emotion-strength">強さ</label>
-                <input type="number" name="emotion_strength">
+                <input type="number" name="emotion_strength" value="{{ $column->emotion_strength }}" >
             </div>
         </div>
 
         <div>
             <label for=" thoughts">その時考えたこと</label><br>
-            <textarea name="thoughts" cols="50" rows="7"></textarea>
+            <textarea name="thoughts" cols="50" rows="7">{{ $column->thoughts }}</textarea>
         </div>
 
         <label>考え方の癖</label>

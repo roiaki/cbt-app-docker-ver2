@@ -13,7 +13,7 @@
 <body>
     <header class="mb-4">
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand fw-bold ml-5" href="/">CBT APP</a>
+            <a class="navbar-brand fw-bold ml-5" href="/columns">CBT APP</a>
 
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
                 <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                     @if(Auth::check())
-                    
+
                         <p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>
 
                         <li class="nav-item">{!! link_to_route('columns.create', '新規コラムの作成', [], ['class' => 'nav-link']) !!}</li>

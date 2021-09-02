@@ -68,7 +68,7 @@ class ColumnsController extends Controller
 
         $column->save();
 
-        return redirect('columns/');
+        return redirect('/columns');
     }
 
     // 詳細ページ表示処理
@@ -118,7 +118,7 @@ class ColumnsController extends Controller
 
         $column->save();
 
-        return redirect('/');
+        return redirect('/columns');
     }
 
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
@@ -127,6 +127,6 @@ class ColumnsController extends Controller
         $column = Column::find($id);
         $column->delete();
 
-        return redirect('/');
+        return redirect('/columns');
     }
 }
