@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Column extends Model
 {
-    use HasFactory;
+    // ホワイトリスト　
+    protected $fillable = ['title', 'content', 'emotion_name', 'emotion_strength', 'thoughts'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -13,11 +13,18 @@ class CreateColumns extends Migration
      */
     public function up()
     {
-        Schema::create('colunms', function (Blueprint $table) {
-            $table->id();
+        Schema::create('columns', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('title');
             $table->string('content');
+            $table->string('emotion_name');
+            $table->integer('emotion_strength');
+            $table->string('thoughts');
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
+
+            // 外部キー制約
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +35,6 @@ class CreateColumns extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colunms');
+        Schema::dropIfExists('columns');
     }
 }

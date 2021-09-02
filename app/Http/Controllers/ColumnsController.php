@@ -6,33 +6,50 @@ use Illuminate\Http\Request;
 
 use App\Models\Column;    // 追加
 
+
+
 class ColumnsController extends Controller
 {
     // 一覧表示
-    public function index()
-    {
+    public function index() {
+    /*
         $columns = Column::paginate(25);
 
         // $columns = Column::all();
 
+        // 第二引数：連想配列でテンプレートに渡すデータ  [キー　=> バリュー]
         return view('columns.index', [
             'columns' => $columns,
-        ]);
+        ]); 
+    */
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $columns = $user->columns()->orderBy('created_at', 'desc')->paginate(10);
+            
+            $data = [
+                'user' => $user,
+                'columns' => $columns,
+            ];
+        }
+
+        return view('columns.index', $data);
+
     }
 
-    // 新規作成
+    // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
         $column = new Column;
-
-        return view('columns.create', ['column' => $column]);
-
+        // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
+        return view('columns.create', [
+            'column' => $column
+        ]);
     }
 
     // 保存処理
     public function store(Request $request)
-    {
-        
+    {   
         $this->validate($request, [
             'title' => 'required|max:30',
             'content' => 'required|max:255']);
@@ -46,9 +63,12 @@ class ColumnsController extends Controller
         $column->emotion_strength = $request->emotion_strength;
         $column->thoughts = $request->thoughts;
 
+        // ログインしているユーザーIDを渡す
+        $column->user_id =\Auth::id();
+
         $column->save();
 
-        return redirect('/');
+        return redirect('columns/');
     }
 
     // 詳細ページ表示処理

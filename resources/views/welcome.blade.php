@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Auth::check())
-        {{ Auth::user()->name }}
-    @else
+
         <div class="center jumbotron">
             <div class="text-center">
-                <h1>Welcome to the Microposts</h1>
-                {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+                <h1>認知行動療法的なWebアプリ</h1>
+                <p>3コラム、7コラムで思考の癖を把握して、 認知のゆがみを取りましょう。
+                </p>
+                <p>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest<br>
+                testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</p>
+                {!! link_to_route('signup.get', '会員登録', [], ['class' => 'btn btn-lg btn-primary']) !!}
             </div>
         </div>
-    @endif
+   
 @endsection

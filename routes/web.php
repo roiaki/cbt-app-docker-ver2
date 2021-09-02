@@ -12,11 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/', 'App\Http\Controllers\ColumnsController@index');
+
+
+Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
+
+//Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
 
 Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
@@ -32,6 +37,9 @@ Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('
 
 
 // ユーザ機能
+/*
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('columns', 'ColumnsController', ['only' => ['index', 'show']]);
+    Route::resource('columns', 'ColumnsController', ['only' => ['index', 'show', 'store']]);
+    
 });
+*/

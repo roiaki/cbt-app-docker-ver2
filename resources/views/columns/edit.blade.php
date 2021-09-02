@@ -8,6 +8,10 @@
 
 <div class="row">
     <div class="col-6">
+        <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
+        配列の2つ目に $message->id を入れることで 
+        update の URL である /messages/{message} の {message} に id が入ります
+        -->
         {!! Form::model($column, ['route' => ['columns.update', $column->id], 'method' => 'put']) !!}
 
         <div class="form-group">

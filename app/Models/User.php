@@ -42,5 +42,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
     ];
+
+    // user->columns()->get() が書けるようになる
+    public function columns() {
+        
+        return $this->hasMany(Column::class);
+    }
 }

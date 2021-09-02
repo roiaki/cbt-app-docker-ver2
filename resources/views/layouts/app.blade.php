@@ -23,6 +23,9 @@
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                     @if(Auth::check())
+                    
+                        <p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>
+
                         <li class="nav-item">{!! link_to_route('columns.create', '新規コラムの作成', [], ['class' => 'nav-link']) !!}</li>
                         <li class="nav-item">{!! link_to_route('columns.index', 'TOPページ', [], ['class' => 'nav-link']) !!}</li>
                         <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>

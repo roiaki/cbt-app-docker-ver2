@@ -20,6 +20,10 @@
         <td>{{ $column->id }}</td>
     </tr>
     <tr>
+        <th class="habit">ユーザーID</th>
+        <td>{{ $column->user_id }}</td>
+    </tr>
+    <tr>
         <th>タイトル</th>
         <td>{{ $column->title }}</td>
         
