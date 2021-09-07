@@ -25,7 +25,7 @@ class ColumnsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $columns = $user->columns()->orderBy('created_at', 'desc')->paginate(10);
+            $columns = $user->columns()->orderBy('created_at', 'desc')->paginate(13);
             
             $data = [
                 'user' => $user,
@@ -41,6 +41,7 @@ class ColumnsController extends Controller
     public function create()
     {
         $column = new Column;
+        
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
         return view('columns.create', [
             'column' => $column
@@ -52,7 +53,12 @@ class ColumnsController extends Controller
     {   
         $this->validate($request, [
             'title' => 'required|max:30',
-            'content' => 'required|max:255']);
+            'content' => 'required|max:255',
+            'emotion_name' => 'required',
+            'emotion_strength' => 'required',
+            'thoughts' => 'required']
+
+        );
 
         $column = new Column;
         // 送られてきたフォームの内容は　$request　に入っている。

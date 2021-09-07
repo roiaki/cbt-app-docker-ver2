@@ -59,7 +59,7 @@
             <label for=" thoughts">その時考えたこと</label><br>
             <textarea name="thoughts" cols="50" rows="7">{{ $column->thoughts }}</textarea>
         </div>
-
+<!--
         <label>考え方の癖</label>
         <div class="wrap_thinking">
             
@@ -71,7 +71,7 @@
             <div><label class="habit-thinking"><input type="checkbox" name="check">過大評価と過少評価</label></div>
             <div><label class="habit-thinking"><input type="checkbox" name="check">感情による決めつけ</label></div>
         </div>
-
+-->
         {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
 
         {!! Form::close() !!}

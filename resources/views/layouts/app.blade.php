@@ -24,15 +24,27 @@
                 <ul class="navbar-nav">
                     @if(Auth::check())
 
-                        <p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>
+                    <p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>
 
-                        <li class="nav-item">{!! link_to_route('columns.create', '新規コラムの作成', [], ['class' => 'nav-link']) !!}</li>
-                        <li class="nav-item">{!! link_to_route('columns.index', 'TOPページ', [], ['class' => 'nav-link']) !!}</li>
-                        <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('columns.create', '新規コラムの作成', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('columns.index', 'コラム一覧', [], ['class' => 'nav-link']) !!}</li>
+
+                    <div class="dropdown mr-5">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            アカウント
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
+                            <li>{!! link_to_route('users.delete_confirm', '退会', ['user' => 'Auth::user()'], ['class' => 'nav-link']) !!}</li>   
+                        </ul>
+                    </div>
+
                     @else
-                        
-                        <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
-                        <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
+
+                    <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
+
                     @endif
                 </ul>
             </div>

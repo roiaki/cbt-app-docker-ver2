@@ -35,11 +35,14 @@ Route::post('login', 'App\Http\Controllers\Auth\LoginController@login')->name('l
 // ログアウト
 Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout.get');
 
+// ユーザー退会確認画面遷移
+Route::get('users/delete_confirm', 'App\Http\Controllers\UserController@delete_confirm')->name('users.delete_confirm');
 
-// ユーザ機能
-/*
+// ユーザー退会処理
+Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')->name('users.delete');
+
+// ログイン認証
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('columns', 'ColumnsController', ['only' => ['index', 'show', 'store']]);
+    Route::resource('columns', 'App\Http\Controllers\ColumnsController', ['only' => ['index', 'create', 'edit', 'show', 'store']]);
     
 });
-*/
