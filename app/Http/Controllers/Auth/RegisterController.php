@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/columns'; // 変更 会員登録したら/columnsへリダイレクト
 
     /**
      * Create a new controller instance.

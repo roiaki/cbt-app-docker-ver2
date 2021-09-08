@@ -38,11 +38,14 @@ Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('
 // ユーザー退会確認画面遷移
 Route::get('users/delete_confirm', 'App\Http\Controllers\UserController@delete_confirm')->name('users.delete_confirm');
 
-// ユーザー退会処理
-Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')->name('users.delete');
+// ユーザー退会処理 問題あり
+Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')->name('user.delete');
+   
 
 // ログイン認証
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('columns', 'App\Http\Controllers\ColumnsController', ['only' => ['index', 'create', 'edit', 'show', 'store']]);
-    
+    Route::resource('columns', 'App\Http\Controllers\ColumnsController', 
+    ['only' => ['index', 'create', 'edit', 'show', 'store', 'delete']]);
+    Route::resource('users',  'App\Http\Controllers\UsersController', 
+    ['only' =>['delete']]);
 });

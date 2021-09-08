@@ -36,7 +36,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
-                            <li>{!! link_to_route('users.delete_confirm', '退会', ['user' => 'Auth::user()'], ['class' => 'nav-link']) !!}</li>   
+                            <li>{!! link_to_route('users.delete_confirm', '退会', [], ['class' => 'nav-link']) !!}</li>   
                         </ul>
                     </div>
 
