@@ -12,6 +12,7 @@
         </div>
 <p>ユーザーID {{ $user->id }} 番　{{ $user->name }} さん</p>
 
+<h3>3コラム一覧</h3>
 @if (count($columns) > 0)
 <table class="table table-striped table-bordered">
     <thead>
