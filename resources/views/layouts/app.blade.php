@@ -15,22 +15,22 @@
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <a class="navbar-brand fw-bold ml-5" href="/columns">CBT APP</a>
 
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             <div class="collapse navbar-collapse" id="nav-bar">
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                     @if(Auth::check())
 
-                    <p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>
-
-                    <li class="nav-item">{!! link_to_route('columns.create', '新規コラムの作成', [], ['class' => 'nav-link']) !!}</li>
-                    <li class="nav-item">{!! link_to_route('columns.index', 'コラム一覧', [], ['class' => 'nav-link']) !!}</li>
-
+                    <!--<p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>-->
+                    <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('columns.create', '３コラムの新規作成', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('columns.index', '３コラム一覧', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('columns.index', '７コラム一覧', [], ['class' => 'nav-link']) !!}</li>
+                    
                     <div class="dropdown mr-5">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" 
+                        data-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
                             アカウント
                             <span class="caret"></span>
                         </button>
@@ -46,6 +46,7 @@
                     <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
 
                     @endif
+
                 </ul>
             </div>
         </nav>

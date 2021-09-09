@@ -135,4 +135,8 @@ class ColumnsController extends Controller
 
         return redirect('/columns');
     }
+
+    public function info() {
+        return view('/users/info');
+    }
 }

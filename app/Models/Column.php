@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Column extends Model
 {
     // ホワイトリスト　
-    protected $fillable = ['title', 'content', 'emotion_name', 'emotion_strength', 'thoughts'];
+    protected $fillable = [
+        'title', 
+        'content', 
+        'emotion_name', 
+        'emotion_strength', 
+        'thoughts'
+    ];
 
     public function user()
     {

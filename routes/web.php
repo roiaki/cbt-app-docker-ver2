@@ -25,6 +25,11 @@ Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
 
 Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
+// seven columns
+Route::resource('seven_columns', 'App\Http\Controllers\SevenColumnsController');
+
+Route::get('users/info', 'App\Http\Controllers\ColumnsController@info')->name('users.info');
+
 // ユーザ登録
 Route::get('signup', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'App\Http\Controllers\Auth\RegisterController@register')->name('signup.post');

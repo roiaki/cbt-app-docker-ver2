@@ -45,9 +45,19 @@ class User extends Authenticatable
 
     ];
 
-    // user->columns()->get() が書けるようになる
+    // user->columns()->get() が書けるようになる　
+    // Columnモデルとの紐づけ
     public function columns() {
         
         return $this->hasMany(Column::class);
+
+    }
+
+    // user->seven_columns()->get()　が書けるようになる　
+    // SevenColumnモデルとの紐づけ
+    public function seven_columns() {
+
+        return $this->hasMany(SevenColumn::class);
+        
     }
 }

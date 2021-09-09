@@ -29,7 +29,9 @@ body {
 .wrap_thinking {
     column-count: 3;
 }
-
+p {
+    line-height: 2.0;
+  }
 .button_wrapper{
     text-align: right;
 }
@@ -39,3 +41,5 @@ body {
 .page {
     text-align: center;
 }
+
+

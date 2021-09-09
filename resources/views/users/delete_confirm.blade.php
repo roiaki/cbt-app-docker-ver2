@@ -17,7 +17,7 @@
 
   <div class="btn-group">
     {!! Form::open(['route' => ['user.delete'], 'method' => 'delete']) !!}
-        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+        {!! Form::submit('退会する', ['class' => 'btn btn-danger btn-m']) !!}
     {!! Form::close() !!}
 
     <div class="ml-3">

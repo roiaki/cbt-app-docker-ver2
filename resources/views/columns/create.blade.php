@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <!-- タイトル -->
-            <label for="title">タイトル</label>
+            <label for="title">出来事 の タイトル</label>
             <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <!-- 内容 -->
-            <label for="content">内容</label>
+            <label for="content">出来事 の 内容</label>
             <textarea class="form-control" id="content" name="content" cols="90" rows="7"></textarea>
 
             <!-- 内容必須バリデーション表示-->
