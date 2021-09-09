@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SevenColumn extends Model
 {
     // ブラックリスト
     protected $guarded = [
-        'id'
-    ];
+        'id'];
 
     // Userモデルとの紐づけ
     public function user() {

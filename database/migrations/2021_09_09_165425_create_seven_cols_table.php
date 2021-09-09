@@ -23,7 +23,7 @@ class CreateSevenColsTable extends Migration
             $table->integer('emotion_strength');
             $table->string('thinking');
             $table->string('basis_thinking');
-            $table->string('oppsite_fact');
+            $table->string('opposite_fact');
             $table->string('new_thinking');
             $table->string('new_emotion');
             

@@ -34,8 +34,7 @@
                       id="content" 
                       name="content" 
                       cols="90" 
-                      rows="5">
-            </textarea>
+                      rows="5"></textarea>
 
             <!-- 内容必須バリデーション表示-->
             @if($errors->has('content'))
@@ -79,16 +78,16 @@
 
 
         <div class="form-group">
-            <label for="thoughts">③　その時考えたこと</label><br>
+            <label for="thinking">③　その時考えたこと</label><br>
             <textarea class="form-control" 
-                      id="thoughts" 
-                      name="thoughts" 
+                      id="thinking" 
+                      name="thinking" 
                       cols="90" 
                       rows="5"></textarea>
             
             <!-- 感情名必須バリデーション表示-->
-            @if($errors->has('thoughts'))
-            @foreach($errors->get('thoughts') as $message)
+            @if($errors->has('thinking'))
+            @foreach($errors->get('thinking') as $message)
             <ul>
                 <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>
@@ -102,8 +101,8 @@
                       id="basis_thinking" 
                       name="basis_thinking" 
                       cols="90" 
-                      rows=5">
-            </textarea>
+                      rows="5"></textarea>
+
             @if($errors->has('basis_thinking'))
             @foreach($errors->get('basis_thinking') as $message)
             <ul>
@@ -119,8 +118,8 @@
                       id="opposite_fact" 
                       name="opposite_fact" 
                       cols="90" 
-                      rows="5">
-            </textarea>
+                      rows="5"></textarea>
+
             @if($errors->has('opposite_fact'))
             @foreach($errors->get('opposite_fact') as $message)
             <ul>
@@ -136,8 +135,8 @@
                       id="new_thinking" 
                       name="new_thinking" 
                       cols="90" 
-                      rows="5">
-            </textarea>
+                      rows="5"></textarea>
+
             @if($errors->has('new_thinking'))
             @foreach($errors->get('new_thinking') as $message)
             <ul>
@@ -153,8 +152,8 @@
                       id="new_emotion" 
                       name="new_emotion" 
                       cols="90" 
-                      rows="5">
-            </textarea>
+                      rows="5"></textarea>
+
             @if($errors->has('new_emotion'))
             @foreach($errors->get('new_emotion') as $message)
             <ul>
@@ -175,7 +174,7 @@
             <div><label class="habit-thinking"><input type="checkbox" name="check">感情による決めつけ</label></div>
         </div>   
 -->
-        {!! Form::submit('作成', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('7コラム新規作成', ['class' => 'btn btn-primary']) !!}
 
         {!! Form::close() !!}
     </div>

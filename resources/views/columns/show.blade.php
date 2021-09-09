@@ -4,7 +4,7 @@
 
 <!-- ここにページ毎のコンテンツを書く -->
 
-<h1>id = {{ $column->id }}  詳細ページ</h1>
+<h1>３コラム詳細ページ　id = {{ $column->id }}  </h1>
 
 <table class="table table-bordered">
     <tr>

@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
 
-//Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
+Route::get('seven_columns/index', 'App\Http\Controllers\SevenColumnsController@index');
 
 Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
@@ -45,12 +45,44 @@ Route::get('users/delete_confirm', 'App\Http\Controllers\UserController@delete_c
 
 // ユーザー退会処理 問題あり
 Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')->name('user.delete');
-   
 
-// ログイン認証
+
+// ログイン認証付きのルーティング
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('columns', 'App\Http\Controllers\ColumnsController', 
-    ['only' => ['index', 'create', 'edit', 'show', 'store', 'delete']]);
-    Route::resource('users',  'App\Http\Controllers\UsersController', 
-    ['only' =>['delete']]);
+
+    Route::resource(
+        'columns',
+        'App\Http\Controllers\ColumnsController',
+        ['only' => [
+            'index',
+            'create',
+            'edit',
+            'show',
+            'store',
+            'update',
+            'destroy'
+        ]]
+    );
+
+    Route::resource(
+        'users',
+        'App\Http\Controllers\UsersController',
+        ['only' => [
+            'delete'
+        ]]
+    );
+
+    Route::resource(
+        'seven_columns',
+        'App\Http\Controllers\SevenColumnsController',
+        ['only' => [
+            'index',
+            'create',
+            'edit',
+            'show',
+            'store',
+            'update',
+            'destroy'
+        ]]
+    );
 });

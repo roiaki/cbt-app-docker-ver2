@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SevenColumn;
 use Illuminate\Http\Request;
 
+
 class SevenColumnsController extends Controller
 {
     // 一覧表示
@@ -36,44 +37,49 @@ class SevenColumnsController extends Controller
     // 保存処理
     public function store(Request $request)
     {
+        try {
+            $this->validate(
+                $request,
+                [
+                    'title' => 'required|max:30',
+                    'content' => 'required|max:255',
+                    'emotion_name' => 'required',
+                    'emotion_strength' => 'required',
+                    'thinking' => 'required',
+                    'basis_thinking' => 'required',
+                    'opposite_fact' => 'required',
+                    'new_thinking' => 'required',
+                    'new_emotion' => 'required',
+                ]
 
-        $this->validate(
-            $request,
-            [
-                'title' => 'required|max:30',
-                'content' => 'required|max:255',
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
-                'thinking' => 'required',
-                'basis_thinking' => 'required',
-                'oppsite_thinking' => 'required',
-                'new_thinking' => 'required',
-                'new_emotion' => 'required',
-            ]
+            );
 
-        );
+            $seven_column = new SevenColumn();
+            // 送られてきたフォームの内容は　$request　に入っている。
+            $seven_column->title = $request->title;
+            $seven_column->content = $request->content;
 
-        $seven_column = new SevenColumn();
-        // 送られてきたフォームの内容は　$request　に入っている。
-        $seven_column->title = $request->title;
-        $seven_column->content = $request->content;
+            $seven_column->emotion_name = $request->emotion_name;
+            $seven_column->emotion_strength = $request->emotion_strength;
+            $seven_column->thinking = $request->thinking;
+            $seven_column->basis_thinking = $request->basis_thinking;
+            $seven_column->opposite_fact = $request->opposite_fact;
+            $seven_column->new_thinking = $request->new_thinking;
+            $seven_column->new_emotion = $request->new_emotion;
 
-        $seven_column->emotion_name = $request->emotion_name;
-        $seven_column->emotion_strength = $request->emotion_strength;
-        $seven_column->thinking = $request->thinking;
-        $seven_column->basis_thinking = $request->basis_thinking;
-        $seven_column->oppsite_fact = $request->oppsite_fact;
-        $seven_column->new_thinking = $request->new_thinking;
-        $seven_column->new_emotion = $request->new_emotion;
+            // ログインしているユーザーIDを渡す
+            $seven_column->user_id = \Auth::id();
 
-        // ログインしているユーザーIDを渡す
-        $seven_column->user_id = \Auth::id();
+            // どうするか
+            //$seven_column->three_col_id = 1;
 
-        // どうするか
-        $seven_column->three_col_id;
-
-        $seven_column->save();
-
+            $seven_column->save();
+            //dd($seven_column);
+        } catch (\Exception $e) {
+            report($e);
+            session()->flash('flash_message', '保存が失敗しました。');
+        }
+        session()->flash('flash_message', '保存完了');
         return redirect('/seven_columns');
     }
 
@@ -81,16 +87,15 @@ class SevenColumnsController extends Controller
     public function show($id)
     {
         $seven_column = SevenColumn::find($id);
-        return view('seven_column.show', [
-            'seven_column' => $seven_column]);
 
+        return view('seven_columns.show', ['seven_column' => $seven_column]);
     }
 
     // 編集処理
-    public function edit($id) 
+    public function edit($id)
     {
         $seven_column = SevenColumn::find($id);
-        return view('seven_column.edit', [
+        return view('seven_columns.edit', [
             'seven_column' => $seven_column
         ]);
     }
@@ -98,30 +103,36 @@ class SevenColumnsController extends Controller
     // update処理
     public function update(Request $request, $id)
     {
-        $this->validate($request, 
-        [
-            'title' => 'required|max:30',
-            'content' => 'required|max:255',
-            'emotion_name' => 'required',
-            'emotion_strength' => 'required',
-            'thinking' => 'required'
+        $this->validate(
+            $request,
+            [
+                'title' => 'required|max:30',
+                'content' => 'required|max:255',
+                'emotion_name' => 'required',
+                'emotion_strength' => 'required',
+                'thinking' => 'required'
 
-        ]);
+            ]
+        );
 
-        $seven_column = SevenColumn::find($id);
-        $seven_column->title = $request->title;
-        $seven_column->content = $request->content;
+        try {
+            $seven_column = SevenColumn::find($id);
+            $seven_column->title = $request->title;
+            $seven_column->content = $request->content;
 
-        $seven_column->emotion_name = $request->emotion_name;
-        $seven_column->emotion_strength = $request->emotion_strength;
-        $seven_column->thoughts = $request->thoughts;
+            $seven_column->emotion_name = $request->emotion_name;
+            $seven_column->emotion_strength = $request->emotion_strength;
+            $seven_column->thoughts = $request->thoughts;
 
-        $seven_column->save();
-
+            $seven_column->save();
+        } catch (\Exception $e) {
+            report($e);
+            session()->flash('flash_message', 'kousinn が失敗しました。');
+        }
         return redirect('/seven_columns');
     }
 
-    // 
+    // 削除処理
     public function destroy($id)
     {
         $seven_column = SevenColumn::find($id);

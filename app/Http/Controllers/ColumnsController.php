@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Column;    // 追加
 
 
-
 class ColumnsController extends Controller
 {
     // 一覧表示

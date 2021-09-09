@@ -2,8 +2,6 @@
 
 @section('content')
 
-<!-- ここにページ毎のコンテンツを書く -->
-
 <p>ユーザーID {{ $user->id }} 番　{{ $user->name }} さん</p>
 
 <h3>7コラム一覧</h3>
@@ -22,7 +20,7 @@
         @foreach ($seven_columns as $seven_column)
         <tr>
             
-            <td><a href="{{ route('seven_columns.show', $column->id) }}">{{ $seven_column->id }}</a></td>
+            <td><a href="{{ route('seven_columns.show', $seven_column->id) }}">{{ $seven_column->id }}</a></td>
             <td>{{ $seven_column->title }}</td>
             <td>{{ $seven_column->content }}</td>
         </tr>
