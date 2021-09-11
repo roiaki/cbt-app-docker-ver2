@@ -71,15 +71,13 @@
             @endif
         </div>
         
-
-
         <div class="form-group">
-            <label for="thoughts">その時考えたこと</label><br>
-            <textarea class="form-control" id="thoughts" name="thoughts" cols="90" rows="7"></textarea>
+            <label for="thinking">その時考えたこと</label><br>
+            <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="7"></textarea>
             
             <!-- 感情名必須バリデーション表示-->
-            @if($errors->has('thoughts'))
-            @foreach($errors->get('thoughts') as $message)
+            @if($errors->has('thinking'))
+            @foreach($errors->get('thinking') as $message)
             <ul>
                 <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>

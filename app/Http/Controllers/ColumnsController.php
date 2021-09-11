@@ -37,16 +37,16 @@ class ColumnsController extends Controller
     }
 
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create($id)
+    public function create()
     {
-        /*
+        
         $column = new Column;
 
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
         return view('columns.create', [
             'column' => $column
         ]);
-        */
+        /*
         $seven_column = new SevenColumn;
         $column = Column::find($id);
 
@@ -56,6 +56,7 @@ class ColumnsController extends Controller
             'seven_column' => $seven_column,
             'column' => $column
         ]);
+        */
     }
 
     // 保存処理
@@ -68,9 +69,8 @@ class ColumnsController extends Controller
                 'content' => 'required|max:255',
                 'emotion_name' => 'required',
                 'emotion_strength' => 'required',
-                'thoughts' => 'required'
+                'thinking' => 'required',  
             ]
-
         );
 
         $column = new Column;
@@ -80,7 +80,12 @@ class ColumnsController extends Controller
 
         $column->emotion_name = $request->emotion_name;
         $column->emotion_strength = $request->emotion_strength;
-        $column->thoughts = $request->thoughts;
+        $column->thinking = $request->thinking;
+
+        $column->basis_thinking = $request->basis_thinking;
+        $column->opposite_fact = $request->opposite_fact;
+        $column->new_thinking = $request->new_thinking;
+        $column->new_emotion = $request->new_emotion;
 
         // ログインしているユーザーIDを渡す
         $column->user_id = \Auth::id();
@@ -122,7 +127,7 @@ class ColumnsController extends Controller
             'content' => 'required|max:255',
             'emotion_name' => 'required',
             'emotion_strength' => 'required',
-            'thoughts' => 'required'
+            'thinking' => 'required'
 
         ]);
 
@@ -132,7 +137,7 @@ class ColumnsController extends Controller
 
         $column->emotion_name = $request->emotion_name;
         $column->emotion_strength = $request->emotion_strength;
-        $column->thoughts = $request->thoughts;
+        $column->thinking = $request->thinking;
 
         $column->save();
 
@@ -153,8 +158,68 @@ class ColumnsController extends Controller
         return view('/users/info');
     }
 
-    public function test()
+    public function fix($id)
     {
-        
+        $column = Column::find($id);
+
+        return view('seven_columns.create', [
+            'column' => $column]
+        );
+    }
+
+    public function seven_index() 
+    {
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $columns = $user->columns()->orderBy('created_at')->paginate(10);
+
+            $data = [
+                'user' => $user,
+                'columns' => $columns
+            ];
+        }
+        return view('columns.seven_index', $data);
+    }
+
+    // 7コラム作成処理
+    public function fix_save(Request $request, $id)
+    {
+        $this->validate(
+            $request,
+            [
+                'title' => 'required|max:30',
+                'content' => 'required|max:255',
+                'emotion_name' => 'required',
+                'emotion_strength' => 'required',
+                'thinking' => 'required',
+                
+                'basis_thinking' => 'required',
+                'opposite_fact' => 'required',
+                'new_thinking' => 'required',
+                'new_emotion' => 'required',
+            ]
+        );
+
+        $column = Column::find($id);
+        // 送られてきたフォームの内容は　$request　に入っている。
+        $column->title = $request->title;
+        $column->content = $request->content;
+
+        $column->emotion_name = $request->emotion_name;
+        $column->emotion_strength = $request->emotion_strength;
+        $column->thinking = $request->thinking;
+
+        $column->basis_thinking = $request->basis_thinking;
+        $column->opposite_fact = $request->opposite_fact;
+        $column->new_thinking = $request->new_thinking;
+        $column->new_emotion = $request->new_emotion;
+    
+        // ログインしているユーザーIDを渡す
+        $column->user_id = \Auth::id();
+
+        $column->save();
+
+        return redirect('/columns');
     }
 }

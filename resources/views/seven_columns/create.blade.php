@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-7">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-        <form metod="POST" action="{{ route('seven_columns.store') }}">
+        {!! Form::model($column, ['route' => ['columns.fix_save', $column->id], 'method' => 'put']) !!}
 
         <div class="form-group">
             <!-- タイトル -->
@@ -15,7 +15,7 @@
             <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
-            <input type="text" class="form-control" id="title" name="title" value="1">
+            <input type="text" class="form-control" id="title" name="title" value="{{ $column->title }}">
             
             <!-- タイトル必須バリデーション表示-->
             @if($errors->has('title'))
@@ -34,7 +34,7 @@
                       id="content" 
                       name="content" 
                       cols="90" 
-                      rows="5"></textarea>
+                      rows="5">{{ $column->content }}</textarea>
 
             <!-- 内容必須バリデーション表示-->
             @if($errors->has('content'))
@@ -49,7 +49,7 @@
 
         <div class="form-group">
             <label for="emotion_name">②-1　感情名</label>
-            <input type="text" class="form-control" id="emotion_name" name="emotion_name">
+            <input type="text" class="form-control" id="emotion_name" name="emotion_name" value="{{ $column->emotion_name }}">
             
             <!-- 感情名必須バリデーション表示-->
             @if($errors->has('emotion_name'))
@@ -63,7 +63,7 @@
         
         <div class="form-group">
             <label for="emotion_strength">②-2　感情の強さ</label>
-            <input type="number" class="form-control" id="emotion_strength" name="emotion_strength">
+            <input type="number" class="form-control" id="emotion_strength" name="emotion_strength" value="{{ $column->emotion_strength }}">
             
             <!-- 感情名必須バリデーション表示-->
             @if($errors->has('emotion_strength'))
@@ -174,9 +174,9 @@
             <div><label class="habit-thinking"><input type="checkbox" name="check">感情による決めつけ</label></div>
         </div>   
 -->
-        {!! Form::submit('7コラム新規作成', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('3コラムから7コラムへ', ['class' => 'btn btn-primary']) !!}
 
-        </form>
+        {!! Form::close() !!}
     </div>
 </div>
 @endsection

@@ -5,8 +5,8 @@
 <!-- ここにページ毎のコンテンツを書く -->
 
 <h1>３コラム詳細ページ　id = {{ $column->id }} </h1>
-<!--<form metod="POST" action="{{ route('seven_columns.create') }}">-->
-{!! Form::model($column, ['route' => ['seven_columns.create', $column->id] , 'method' => 'GET']) !!}
+
+
 <table class="table table-bordered">
     <tr>
         <th>作成日時</th>
@@ -66,16 +66,15 @@
         </td>
     </tr>
 </table>
-    <button class=""type="submit">
-        この思考を修正する
-    </button>
-{!! Form::close() !!}
+
 <p><a href="{{ route('columns.edit', $column->id) }}">{{ $column->id }}を編集する</a></p>
-<p><a href="{{ route('seven_columns.edit', $column->id) }}">{{ $column->id }}を7編集する</a></p>
 
 <div style="margin:20px;">
-    {!! Form::model($column, ['route' => ['columns.create', $column->id], 'method' => 'get']) !!}
-    {!! Form::submit('テス', ['class' => 'btn btn-primary']) !!}
+
+<!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
+
+    {!! Form::model($column, ['route' => ['columns.fix', $column->id], 'method' => 'get']) !!}
+    {!! Form::submit('修正', ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
 </div>
 <div style="margin:20px;">

@@ -25,10 +25,11 @@ Route::get('seven_columns/index', 'App\Http\Controllers\SevenColumnsController@i
 
 Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
-// seven columns
-Route::resource('seven_columns', 'App\Http\Controllers\SevenColumnsController');
+Route::get('columns/{column}/fix', 'App\Http\Controllers\ColumnsController@fix')->name('columns.fix');
 
-//Route::get('seven_columns/{seven_columns}/create','App\Http\Controllers\SevenColumnsController@create')->name('seven_column.create');//
+Route::get('columns/seven_index', 'App\Http\Controllers\ColumnsController@seven_index')->name('columns.seven_index');
+
+Route::put('columns/{column}/fix_save', 'App\Http\Controllers\ColumnsController@fix_save')->name('columns.fix_save');
 
 Route::get('users/info', 'App\Http\Controllers\ColumnsController@info')->name('users.info');
 
@@ -74,17 +75,4 @@ Route::group(['middleware' => ['auth']], function () {
         ]]
     );
 
-    Route::resource(
-        'seven_columns',
-        'App\Http\Controllers\SevenColumnsController',
-        ['only' => [
-            'index',
-            'create',
-            'edit',
-            'show',
-            'store',
-            'update',
-            'destroy'
-        ]]
-    );
 });

@@ -16,7 +16,7 @@ class CreateSevenColsTable extends Migration
         Schema::create('seven_columns', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('three_col_id')->unsigned();
+            
             $table->string('title');
             $table->string('content');
             $table->string('emotion_name');
@@ -31,7 +31,6 @@ class CreateSevenColsTable extends Migration
 
             // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('three_col_id')->references('id')->on('columns')->onDelete('cascade');
         });
     }
 

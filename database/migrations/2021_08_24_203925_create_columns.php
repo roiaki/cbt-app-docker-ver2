@@ -20,11 +20,11 @@ class CreateColumns extends Migration
             $table->string('content');
             $table->string('emotion_name');
             $table->integer('emotion_strength');
-            $table->string('thinking');
-            $table->string('basis_thinking');
-            $table->string('opposite_fact');
-            $table->string('new_thinking');
-            $table->string('new_emotion');
+            $table->string('thinking')->nullable();
+            $table->string('basis_thinking')->nullable();
+            $table->string('opposite_fact')->nullable();
+            $table->string('new_thinking')->nullable();
+            $table->string('new_emotion')->nullable();
             $table->timestamps();
             
 
