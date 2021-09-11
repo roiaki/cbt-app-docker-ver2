@@ -30,7 +30,7 @@
 
 
 @endif
-{!! link_to_route('seven_columns.create', '新規作成', [], ['class' => 'btn btn-primary mb-5']) !!}
+
 <div class="d-flex justify-content-center">
     {{ $seven_columns->links('pagination::bootstrap-4') }}
 </div>

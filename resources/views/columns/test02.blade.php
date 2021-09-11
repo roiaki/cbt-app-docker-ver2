@@ -4,7 +4,7 @@
 
 <!-- ここにページ毎のコンテンツを書く -->
 
-<h1>３コラム詳細ページ　id = {{ $column->id }} </h1>
+<h1>test02詳細ページ　id = {{ $column->id }} </h1>
 <!--<form metod="POST" action="{{ route('seven_columns.create') }}">-->
 {!! Form::model($column, ['route' => ['seven_columns.create', $column->id] , 'method' => 'GET']) !!}
 <table class="table table-bordered">
@@ -50,21 +50,6 @@
         <td>{{ $column->thoughts }}</td>
     </tr>
 
-
-    <tr>
-        <th>考え方の癖</th>
-        <td>
-            <div class="columns">
-                <label class="habit-thinking"><input type="checkbox" name="check">一般化のし過ぎ</label>
-                <label class="habit-thinking"><input type="checkbox" name="check">自分への関連付け</label>
-                <label class="habit-thinking"><input type="checkbox" name="check">根拠のない推論</label>
-                <label class="habit-thinking"><input type="checkbox" name="check">白か黒か思考</label>
-                <label class="habit-thinking"><input type="checkbox" name="check">すべき思考</label>
-                <label class="habit-thinking"><input type="checkbox" name="check">過大評価と過少評価</label>
-                <label class="habit-thinking"><input type="checkbox" name="check">感情による決めつけ</label>
-            </div>
-        </td>
-    </tr>
 </table>
     <button class=""type="submit">
         この思考を修正する

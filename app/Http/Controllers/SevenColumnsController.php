@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Column;
 use App\Models\SevenColumn;
 use Illuminate\Http\Request;
 
 
 class SevenColumnsController extends Controller
 {
-    // 一覧表示
+    // 一覧画面表示
     public function index()
     {
         $data = [];
@@ -24,15 +25,22 @@ class SevenColumnsController extends Controller
         return view('seven_columns.index', $data);
     }
 
-    // 新規作成
-    public function create()
+    // 7コラム新規作成画面へ遷移
+    public function create($id)
     {
         $seven_column = new SevenColumn;
+        $column = Column::find($id);
 
+        //dd($request);
+        //dd($column);
         return view('seven_columns.create', [
-            'seven_column' => $seven_column
+            'seven_column' => $seven_column,
+            'column' => $column
         ]);
     }
+
+    // 3コラム詳細から引き継いで7コラム作成
+    
 
     // 保存処理
     public function store(Request $request)
@@ -51,7 +59,6 @@ class SevenColumnsController extends Controller
                     'new_thinking' => 'required',
                     'new_emotion' => 'required',
                 ]
-
             );
 
             $seven_column = new SevenColumn();
@@ -91,7 +98,7 @@ class SevenColumnsController extends Controller
         return view('seven_columns.show', ['seven_column' => $seven_column]);
     }
 
-    // 編集処理
+    // 編集画面表示処理
     public function edit($id)
     {
         $seven_column = SevenColumn::find($id);

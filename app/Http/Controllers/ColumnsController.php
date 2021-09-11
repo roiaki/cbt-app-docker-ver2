@@ -37,12 +37,23 @@ class ColumnsController extends Controller
     }
 
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create()
+    public function create($id)
     {
+        /*
         $column = new Column;
 
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
         return view('columns.create', [
+            'column' => $column
+        ]);
+        */
+        $seven_column = new SevenColumn;
+        $column = Column::find($id);
+
+        //dd($request);
+        //dd($column);
+        return view('seven_columns.create', [
+            'seven_column' => $seven_column,
             'column' => $column
         ]);
     }
@@ -140,5 +151,10 @@ class ColumnsController extends Controller
     public function info()
     {
         return view('/users/info');
+    }
+
+    public function test()
+    {
+        
     }
 }

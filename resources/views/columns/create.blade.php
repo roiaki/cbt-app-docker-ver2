@@ -2,13 +2,13 @@
 
 @section('content')
 
-<h3>新規作成</h3>
+<h3>３コラム新規作成</h3>
 
 <div class="row">
     <div class="col-7">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
         {!! Form::model($column, ['route' => 'columns.store']) !!}
-
+        
         <div class="form-group">
             <!-- タイトル -->
             <label for="title">出来事 の タイトル</label>
@@ -99,7 +99,7 @@
         </div>   
 -->
         {!! Form::submit('作成', ['class' => 'btn btn-primary']) !!}
-
+        
         {!! Form::close() !!}
     </div>
 </div>

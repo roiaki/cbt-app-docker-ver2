@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-7">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-        {!! Form::model($seven_column, ['route' => 'seven_columns.store']) !!}
+        <form metod="POST" action="{{ route('seven_columns.store') }}">
 
         <div class="form-group">
             <!-- タイトル -->
@@ -15,7 +15,7 @@
             <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" value="1">
             
             <!-- タイトル必須バリデーション表示-->
             @if($errors->has('title'))
@@ -176,7 +176,7 @@
 -->
         {!! Form::submit('7コラム新規作成', ['class' => 'btn btn-primary']) !!}
 
-        {!! Form::close() !!}
+        </form>
     </div>
 </div>
 @endsection

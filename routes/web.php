@@ -28,6 +28,8 @@ Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 // seven columns
 Route::resource('seven_columns', 'App\Http\Controllers\SevenColumnsController');
 
+//Route::get('seven_columns/{seven_columns}/create','App\Http\Controllers\SevenColumnsController@create')->name('seven_column.create');//
+
 Route::get('users/info', 'App\Http\Controllers\ColumnsController@info')->name('users.info');
 
 // ユーザ登録
