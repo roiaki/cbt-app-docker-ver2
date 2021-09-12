@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Column extends Model
 {
+    /*
+     * テーブルの主キー
+     * 
+     * @var string
+     */
+    protected $primaryKey = 'column_id';
+
     // ホワイトリスト　
     protected $fillable = [
         'title', 

@@ -47,7 +47,7 @@
 
     <tr>
         <th>その時考えた事</th>
-        <td>{{ $column->thoughts }}</td>
+        <td>{{ $column->thinking }}</td>
     </tr>
 
 
