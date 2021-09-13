@@ -21,6 +21,13 @@ Route::get('/', function () {
 Route::get('events', 'App\Http\controllers\EventsController@index');
 Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
 Route::post('events', 'App\Http\controllers\EventsController@store')->name('events.store');
+Route::get('events/{event}', 'App\Http\controllers\EventsController@show')->name('events.show');
+Route::get('events/{evebt}/edit', 'App\Http\controllers\EventsController@edit')->name('events.edit');
+Route::delete(
+    'events/{event}',
+    'App\Http\controllers\EventsController@destroy'
+)->name('events.destroy');
+Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->name('events.update');
 
 Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
 
@@ -77,5 +84,4 @@ Route::group(['middleware' => ['auth']], function () {
             'delete'
         ]]
     );
-
 });
