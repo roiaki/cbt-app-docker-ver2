@@ -53,13 +53,16 @@ class User extends Authenticatable
     ];
 
     /*
-     * ユーザーに関連しているEventの取得
-     * 
+     * 1対多（逆）所属
+     * 子（Event）を所有している親（user）を取得 
      */
     public function events()
     {
-        // 1対多のリレーション
-        return $this->hasMany(Event::class, 'user_id');
+        // 1対多のリレーション （主->従）
+        // 第1引数：リレーション先のモデル
+        // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルの外部キー」
+        // 第3引数：親を判別する値が格納された「親がもつ」カラム（userテーブルの主キーを指定）
+        return $this->hasMany(Event::class, 'user_id', 'user_id');
     }
 
     // user->columns()->get() が書けるようになる　
