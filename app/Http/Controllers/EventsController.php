@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Event;
+
 class EventsController extends Controller
 {
     // event一覧表示
     public function index()
     {
         /*
-        $columns = Column::paginate(25);
+        $columns = event::paginate(25);
 
-        // $columns = Column::all();
+        // $columns = event::all();
 
         // 第二引数：連想配列でテンプレートに渡すデータ  [キー　=> バリュー]
         return view('columns.index', [
@@ -36,23 +38,36 @@ class EventsController extends Controller
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        
+
         $event = new Event;
 
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
-        return view('event.create', [
+        return view('events.create', [
             'event' => $event
         ]);
-        /*
-        $seven_column = new SevenColumn;
-        $column = Column::find($id);
+    }
 
-        //dd($request);
-        //dd($column);
-        return view('seven_columns.create', [
-            'seven_column' => $seven_column,
-            'column' => $column
-        ]);
-        */
+    // postで/eventsへアクセス　保存処理
+    public function store(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'title' => 'required|max:30',
+                'content' => 'required|max:255',
+            ]
+        );
+
+        $event = new Event;
+        // 送られてきたフォームの内容は　$request　に入っている。
+        $event->title = $request->title;
+        $event->content = $request->content;
+
+        // ログインしているユーザーIDを渡す
+        $event->user_id = \Auth::id();
+
+        $event->save();
+
+        return redirect('/events');
     }
 }

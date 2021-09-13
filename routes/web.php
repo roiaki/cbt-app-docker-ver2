@@ -20,7 +20,7 @@ Route::get('/', function () {
 // ここから
 Route::get('events', 'App\Http\controllers\EventsController@index');
 Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
-
+Route::post('events', 'App\Http\controllers\EventsController@store')->name('events.store');
 
 Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
 

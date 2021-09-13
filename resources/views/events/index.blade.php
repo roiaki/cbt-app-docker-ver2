@@ -19,7 +19,7 @@
         @foreach ($events as $event)
         <tr>
             
-            
+            <td>{{ $event->event_id }}</td>
             <td>{{ $event->title }}</td>
             <td>{{ $event->content }}</td>
         </tr>
