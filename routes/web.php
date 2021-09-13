@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ここから
+Route::get('events', 'App\Http\controllers\EventsController@index');
+Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
 
 
 Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');

@@ -52,6 +52,16 @@ class User extends Authenticatable
 
     ];
 
+    /*
+     * ユーザーに関連しているEventの取得
+     * 
+     */
+    public function events()
+    {
+        // 1対多のリレーション
+        return $this->hasMany(Event::class, 'user_id');
+    }
+
     // user->columns()->get() が書けるようになる　
     // Columnモデルとの紐づけ
     public function columns() {

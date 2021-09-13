@@ -27,7 +27,7 @@ class LoginController extends Controller
      * @var string
      */
     // ユーザ登録後のリダイレクト先
-    protected $redirectTo = '/columns'; // 変更
+    protected $redirectTo = '/events'; // 変更
 
     /**
      * Create a new controller instance.

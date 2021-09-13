@@ -13,18 +13,27 @@
 <body>
     <header class="mb-4">
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand fw-bold ml-5" href="/columns">CBT APP</a>
+            <a class="navbar-brand fw-bold ml-5" href="/events">CBT APP</a>
 
             <div class="collapse navbar-collapse" id="nav-bar">
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                     @if(Auth::check())
 
-                    <p>ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん</p>
+                    <?php $hour = date("H");
+                        if (0 <= $hour && $hour <= 12) {
+                            $msg = "おはようございます";
+                        } elseif ($hour < 12 && $hour < 6) {
+                            $msg = "こんにちは";
+                        } else {
+                            $msg = "こんばんは";
+                        }
+                    ?>
+                    
+                    <div class="d-flex align-items-center">ID {!! $id = Auth::user()->user_id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
+                    </div>
                     <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>
-                    <li class="nav-item">{!! link_to_route('columns.create', '３コラムの新規作成', [], ['class' => 'nav-link']) !!}</li>
-                    <li class="nav-item">{!! link_to_route('columns.index', '３コラム一覧', [], ['class' => 'nav-link']) !!}</li>
-                    <li class="nav-item">{!! link_to_route('columns.seven_index', '７コラム一覧', [], ['class' => 'nav-link']) !!}</li>
+
 
                     <div class="dropdown mr-5">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
