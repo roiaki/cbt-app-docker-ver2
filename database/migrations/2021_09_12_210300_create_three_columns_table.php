@@ -17,6 +17,8 @@ class CreateThreeColumnsTable extends Migration
             $table->increments('threecol_id'); // id -> threecol_idへ変更
             $table->integer('user_id')->unsigned()->index();
             $table->integer('event_id')->unsigned()->index();
+            
+            $table->
 
             $table->timestamps();
 
@@ -32,7 +34,7 @@ class CreateThreeColumnsTable extends Migration
                 ->references('event_id')
                 ->on('events')
                 ->onDelete('cascade');
-                
+               
 
         });
     }

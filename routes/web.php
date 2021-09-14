@@ -29,17 +29,24 @@ Route::delete(
 )->name('events.destroy');
 Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->name('events.update');
 
-Route::get('columns/index', 'App\Http\Controllers\ColumnsController@index');
+//Route::resource('columns', 'App\Http\Controllers\ColumnsController');
+
+
+Route::get('three_columns/create', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
+Route::get('three_columns', 'App\Http\controllers\ThreeColumnController@store')->name('three_columns.store');
+
+Route::get('three_columns/index', 'App\Http\Controllers\ThreeColumnsController@index');
 
 Route::get('seven_columns/index', 'App\Http\Controllers\SevenColumnsController@index');
 
-Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
+/*
 Route::get('columns/{column}/fix', 'App\Http\Controllers\ColumnsController@fix')->name('columns.fix');
 
 Route::get('columns/seven_index', 'App\Http\Controllers\ColumnsController@seven_index')->name('columns.seven_index');
 
 Route::put('columns/{column}/fix_save', 'App\Http\Controllers\ColumnsController@fix_save')->name('columns.fix_save');
+*/
 
 Route::get('users/info', 'App\Http\Controllers\ColumnsController@info')->name('users.info');
 
@@ -62,7 +69,7 @@ Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')-
 
 // ログイン認証付きのルーティング
 Route::group(['middleware' => ['auth']], function () {
-
+/*
     Route::resource(
         'columns',
         'App\Http\Controllers\ColumnsController',
@@ -76,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
             'destroy'
         ]]
     );
-
+*/
     Route::resource(
         'users',
         'App\Http\Controllers\UsersController',

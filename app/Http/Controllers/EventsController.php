@@ -68,7 +68,8 @@ class EventsController extends Controller
 
         $event->save();
 
-        return redirect('/events');
+        return view('events.show', ['event' => $event]);
+        //return redirect('/events');
     }
 
     

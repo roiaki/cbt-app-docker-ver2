@@ -67,9 +67,13 @@ class User extends Authenticatable
 
     // user->columns()->get() が書けるようになる　
     // Columnモデルとの紐づけ
-    public function columns() {
-        
-        return $this->hasMany(Column::class);
+    public function three_columns() 
+    {
+        // 1対多のリレーション （主->従）
+        // 第1引数：リレーション先のモデル
+        // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルの外部キー」
+        // 第3引数：親を判別する値が格納された「親がもつ」カラム（userテーブルの主キーを指定）
+        return $this->hasMany(ThreeColumn::class, 'user_id', 'user_id');
 
     }
 

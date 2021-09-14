@@ -43,7 +43,9 @@
 
 <!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
 
- 
+    {!! Form::open(['route' => ['three_columns.create', $event->event_id], 'method'=> 'get']) !!}
+    {!! Form::submit('3コラム作成', ['class' => 'btn btn-primary']) !!}
+    {!! Form::close() !!}
 </div>
 <div style="margin:20px;">
     {!! Form::model($event, ['route' => ['events.edit', $event->event_id], 'method' => 'get']) !!}

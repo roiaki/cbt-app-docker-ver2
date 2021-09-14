@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-7">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-        {!! Form::model($event, ['route' => 'events.store']) !!}
+        {!! Form::open(['route' => 'events.store']) !!}
         
         <div class="form-group">
             <!-- タイトル -->

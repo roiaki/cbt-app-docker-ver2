@@ -4,10 +4,11 @@
 
 <h3>３コラム新規作成</h3>
 
+
 <div class="row">
     <div class="col-7">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-        {!! Form::model($column, ['route' => 'columns.store']) !!}
+        {!! Form::open(['route' => 'three_columns.store']) !!}
         
         <div class="form-group">
             <!-- タイトル -->
@@ -15,7 +16,7 @@
             <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" value="<?php echo $data['event']['title']; ?>">
             
             <!-- タイトル必須バリデーション表示-->
             @if($errors->has('title'))
@@ -30,7 +31,7 @@
         <div class="form-group">
             <!-- 内容 -->
             <label for="content">出来事 の 内容</label>
-            <textarea class="form-control" id="content" name="content" cols="90" rows="7"></textarea>
+            <textarea class="form-control" id="content" name="content" cols="90" rows="7"><?php echo $data['event']['content']; ?></textarea>
 
             <!-- 内容必須バリデーション表示-->
             @if($errors->has('content'))
