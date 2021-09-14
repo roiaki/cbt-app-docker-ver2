@@ -6,7 +6,7 @@
 
 <h1>イベント詳細ページ　id = {{ $event->event_id }} </h1>
 
-
+{!! Form::open(['route' => ['three_columns.create', $event->event_id], 'method'=> 'get']) !!}
 <table class="table table-bordered">
     <tr>
         <th>作成日時</th>
@@ -36,12 +36,14 @@
     </tr>
 
 </table>
+{!! Form::submit('3コラム作成', ['class' => 'btn btn-primary']) !!}
+{!! Form::close() !!}
 
 <p><a href="{{ route('events.edit', $event->event_id) }}">{{ $event->event_id }}を編集する</a></p>
 
 <div style="margin:20px;">
 
-<!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
+    <!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
 
     {!! Form::open(['route' => ['three_columns.create', $event->event_id], 'method'=> 'get']) !!}
     {!! Form::submit('3コラム作成', ['class' => 'btn btn-primary']) !!}

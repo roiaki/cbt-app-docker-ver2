@@ -33,7 +33,7 @@ Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->na
 
 
 Route::get('three_columns/create', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
-Route::get('three_columns', 'App\Http\controllers\ThreeColumnController@store')->name('three_columns.store');
+Route::post('three_columns', 'App\Http\controllers\ThreeColumnsController@store')->name('three_columns.store');
 
 Route::get('three_columns/index', 'App\Http\Controllers\ThreeColumnsController@index');
 

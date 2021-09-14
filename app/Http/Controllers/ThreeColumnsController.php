@@ -37,9 +37,9 @@ class ThreeColumnsController extends Controller
     }
 
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create()
+    public function create(Request $request)
     {
-        
+        dd($request);
         $event = Event::find(1);
         $threecolumn = new ThreeColumn;
         
@@ -68,6 +68,8 @@ class ThreeColumnsController extends Controller
     // 保存処理
     public function store(Request $request)
     {
+        //dd($request);
+        /*
         $this->validate(
             $request,
             [
@@ -78,8 +80,9 @@ class ThreeColumnsController extends Controller
                 'thinking' => 'required',  
             ]
         );
+        */
 
-        $three_column = new three_column;
+        $three_column = new ThreeColumn;
         // 送られてきたフォームの内容は　$request　に入っている。
         $three_column->title = $request->title;
         $three_column->content = $request->content;
@@ -88,10 +91,9 @@ class ThreeColumnsController extends Controller
         $three_column->emotion_strength = $request->emotion_strength;
         $three_column->thinking = $request->thinking;
 
-        $three_column->basis_thinking = $request->basis_thinking;
-        $three_column->opposite_fact = $request->opposite_fact;
-        $three_column->new_thinking = $request->new_thinking;
-        $three_column->new_emotion = $request->new_emotion;
+        dd($request['habit']['0']);
+
+        //$three_column->
 
         // ログインしているユーザーIDを渡す
         $three_column->user_id = \Auth::id();

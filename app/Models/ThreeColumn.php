@@ -38,5 +38,27 @@ class ThreeColumn extends Model
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
         return $this->belongsTo(Event::class, 'event_id', 'event_id'); 
     }
+
+    public function emotion()
+    {
+        // belongsToMany()
+        // 第一引数：得られるModelクラス
+        // 第二引数：中間テーブル
+        // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
+        // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
+        return $this->belongsToMany(Emotion::class, 'includes', 'threecol_id', 'emotion_id');
+        
+    }
+
+    public function habit()
+    {
+        // belongsToMany()
+        // 第一引数：得られるModelクラス
+        // 第二引数：中間テーブル
+        // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
+        // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
+        return $this->belongsToMany(Habit::class, 'thinks', 'threecol_id', 'habit_id');
+        
+    }
 }
 
