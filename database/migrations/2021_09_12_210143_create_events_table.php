@@ -14,7 +14,8 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->increments('event_id'); // id -> event_idへ変更
+            //$table->increments('event_id'); // id -> event_idへ変更
+            $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('title');
             $table->string('content');
@@ -22,7 +23,7 @@ class CreateEventsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
-                ->references('user_id')
+                ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
         });

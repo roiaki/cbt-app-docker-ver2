@@ -14,7 +14,7 @@ class Event extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'event_id';
+    //protected $primaryKey = 'event_id';
     
     // fillableに指定したカラムのみ、create()やfill()、update()で値が代入されます。
     protected $fillable = [
@@ -32,7 +32,8 @@ class Event extends Model
         // 第1引数：リレーション先の親モデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        return $this->belongsTo(User::class, 'user_id', 'user_id');
+        //return $this->belongsTo(User::class, 'user_id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     // 親から子へ
@@ -41,6 +42,7 @@ class Event extends Model
         // 第1引数：リレーション先の親モデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        return $this->hasOne(ThreeColumn::class, 'event_id', 'event_id');
+        //return $this->hasOne(ThreeColumn::class, 'event_id', 'event_id');
+        return $this->hasOne(ThreeColumn::class);
     }
 }

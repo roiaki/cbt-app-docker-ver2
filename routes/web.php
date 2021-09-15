@@ -31,11 +31,19 @@ Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->na
 
 //Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
-
+Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index')->name('three_columns');
 Route::get('three_columns/create', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
 Route::post('three_columns', 'App\Http\controllers\ThreeColumnsController@store')->name('three_columns.store');
 
-Route::get('three_columns/index', 'App\Http\Controllers\ThreeColumnsController@index');
+Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index');
+Route::get('three_columns/{param}', 'App\Http\Controllers\ThreeColumnsController@show')->name('three_columns.show');
+Route::get('three_columns/{param}/edit', 'App\Http\controllers\ThreeColumnsController@edit')->name('three_columns.edit');
+Route::delete(
+    'three_columns/{param}',
+    'App\Http\controllers\ThreeColumnsController@destroy'
+)->name('three_columns.destroy');
+
+Route::put('three_columns/{param}', 'App\Http\controllers\ThreeColumnsController@update')->name('three_columns.update');
 
 Route::get('seven_columns/index', 'App\Http\Controllers\SevenColumnsController@index');
 
@@ -48,7 +56,7 @@ Route::get('columns/seven_index', 'App\Http\Controllers\ColumnsController@seven_
 Route::put('columns/{column}/fix_save', 'App\Http\Controllers\ColumnsController@fix_save')->name('columns.fix_save');
 */
 
-Route::get('users/info', 'App\Http\Controllers\ColumnsController@info')->name('users.info');
+Route::get('users/info', 'App\Http\Controllers\ThreeColumnsController@info')->name('users.info');
 
 // ユーザ登録
 Route::get('signup', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('signup.get');

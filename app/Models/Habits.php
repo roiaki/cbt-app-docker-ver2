@@ -14,7 +14,7 @@ class Habits extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'habit_id';
+    //protected $primaryKey = 'habit_id';
 
     public function three_columns()
     {
@@ -23,6 +23,7 @@ class Habits extends Model
         // 第二引数：中間テーブル
         // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
         // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
-        return $this->belongsToMany(ThreeColumn::class, 'thinks', 'habit_id', 'threecol_id');
+        //return $this->belongsToMany(ThreeColumn::class, 'thinks', 'habit_id', 'threecol_id');
+        return $this->belongsToMany(ThreeColumn::class, 'thinks', 'id', 'id');
     }
 }

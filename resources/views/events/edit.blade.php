@@ -4,7 +4,7 @@
 
 <!-- ここにページ毎のコンテンツを書く -->
 
-<h3>id: {{ $event->event_id }}　出来事　編集ページ</h3>
+<h3>id: {{ $event->id }}　出来事　編集ページ</h3>
 
 <div class="row">
     <div class="col-6">
@@ -12,8 +12,8 @@
         配列の2つ目に $message->event_id を入れることで 
         update の URL である /messages/{message} の {message} に event_id が入ります
         -->
-        <!--{!! Form::model($event, ['route' => ['events.update', $event->event_id], 'method' => 'put']) !!}-->
-        {!! Form::model($event, ['route' => ['events.update', $event->event_id], 'method' => 'put']) !!}
+        
+        {!! Form::model($event, ['route' => ['events.update', $event->id], 'method' => 'put']) !!}
         <div class="form-group">
             <!-- タイトル -->
             {!! Form::label('title', 'タイトル') !!}

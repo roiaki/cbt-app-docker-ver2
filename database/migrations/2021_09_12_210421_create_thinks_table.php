@@ -14,8 +14,8 @@ class CreateThinksTable extends Migration
     public function up()
     {
         Schema::create('thinks', function (Blueprint $table) {
-            $table->increments('think_id'); // id -> think_idへ変更
-
+            //$table->increments('think_id'); // id -> think_idへ変更
+            $table->increments('id');
             $table->integer('threecol_id')->unsigned()->index();
             $table->integer('habit_id')->unsigned()->index();
 
@@ -23,12 +23,12 @@ class CreateThinksTable extends Migration
 
             // 外部キー設定
             $table->foreign('threecol_id')
-                ->references('threecol_id')
+                ->references('id')
                 ->on('three_columns')
                 ->onDelete('cascade');
 
             $table->foreign('habit_id')
-                ->references('habit_id')
+                ->references('id')
                 ->on('habits')
                 ->onDelete('cascade');
 

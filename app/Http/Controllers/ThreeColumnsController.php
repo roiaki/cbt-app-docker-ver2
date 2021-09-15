@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\ThreeColumn;    // 追加
 use App\Models\Event;    // 追加
+use App\Models\Habits;    // 追加
 
 class ThreeColumnsController extends Controller
 {
@@ -37,10 +38,10 @@ class ThreeColumnsController extends Controller
     }
 
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create(Request $request)
+    public function create()
     {
-        dd($request);
-        $event = Event::find(1);
+        //dd($_REQUEST['event_id']);
+        $event = Event::find($_REQUEST['event_id']);
         $threecolumn = new ThreeColumn;
         
         $data = [
@@ -49,54 +50,63 @@ class ThreeColumnsController extends Controller
         ];
 
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
-        return view('three_columns.create', [
-            'data' => $data
-        ]);
-        /*
-        $seven_column = new SevenColumn;
-        $three_column = three_column::find($id);
-
-        //dd($request);
-        //dd($three_column);
-        return view('seven_columns.create', [
-            'seven_column' => $seven_column,
-            'three_column' => $three_column
-        ]);
-        */
+        return view('three_columns.create', $data);
+    
     }
 
     // 保存処理
     public function store(Request $request)
     {
         //dd($request);
-        /*
+        
         $this->validate(
             $request,
             [
-                'title' => 'required|max:30',
-                'content' => 'required|max:255',
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
-                'thinking' => 'required',  
+                //'emotion_name' => 'required',
+                //'emotion_strength' => 'required',
+                //'thinking' => 'required',  
             ]
         );
-        */
+        
 
         $three_column = new ThreeColumn;
         // 送られてきたフォームの内容は　$request　に入っている。
-        $three_column->title = $request->title;
-        $three_column->content = $request->content;
+        //$three_column->title = $request->title;
+        //$three_column->content = $request->content;
 
-        $three_column->emotion_name = $request->emotion_name;
-        $three_column->emotion_strength = $request->emotion_strength;
-        $three_column->thinking = $request->thinking;
-
-        dd($request['habit']['0']);
-
-        //$three_column->
-
+        //$three_column->emotion_name = $request->emotion_name;
+        //$three_column->emotion_strength = $request->emotion_strength;
+       
+       
         // ログインしているユーザーIDを渡す
+        //$three_column->id = $request->eventid;
         $three_column->user_id = \Auth::id();
+        $three_column->thinking = $request->thinking;
+        //$three_column->event_id = $request->eventid;
+//dd($request);
+        // 中間テーブルの保存はthree_column保存の後でないとidがない
+        $three_column->save();
+       
+        //$test = $request->habit[5];
+        //dd($request);
+       
+        if ($request->habit[0] == "on") {
+            $three_column->habit()->attach(1);
+        } else if ($request->habit[1] == "on") {
+            $three_column->habit()->attach(2);
+        } else if ($request->habit[2] == "on") {
+            $three_column->habit()->attach(3);
+        } else if ($request->habit[3] == "on") {
+            $three_column->habit()->attach(4);
+        } else if ($request->habit[4] == "on") {
+            $three_column->habit()->attach(5);
+        } else if ($request->habit[5] == "on") {
+            $three_column->habit()->attach(6);
+        } else if ($request->habit[6] == "on") {
+            $three_column->habit()->attach(7);
+        }
+
+        
 
         $three_column->save();
 
@@ -106,9 +116,19 @@ class ThreeColumnsController extends Controller
     // 詳細ページ表示処理
     public function show($id)
     {
-        $three_column = three_column::find($id);
+        $event = Event::find($id);
+        $three_column = ThreeColumn::find($id);
+        $user = \Auth::user();
+        $data = [
+            'user' => $user,
+            'event' => $event,
+            'three_column' => $three_column
+        ];
+        //dd($data);
 
-        return view('three_columns.show', ['three_column' => $three_column]);
+        // $data 配列そのまま渡すか、連想配列として渡すかでbladeでのアクセス方法が変わる
+        // return view('three_columns, ['data' => $data]);
+        return view('three_columns.show', $data);
     }
 
     // 編集処理

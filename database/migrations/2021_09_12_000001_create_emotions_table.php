@@ -14,7 +14,8 @@ class CreateEmotionsTable extends Migration
     public function up()
     {
         Schema::create('emotions', function (Blueprint $table) {
-            $table->increments('emotion_id');
+            //$table->increments('emotion_id');
+            $table->increments('id');
             $table->string('emotion_name');
             $table->integer('emotion_strength');
             

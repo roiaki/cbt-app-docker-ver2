@@ -14,9 +14,9 @@ class CreateHabitsTable extends Migration
     public function up()
     {
         Schema::create('habits', function (Blueprint $table) {
-            $table->increments('habit_id'); // id -> habit_idへ変更
-
-            $table->integer('habit_name');
+            //$table->increments('habit_id'); // id -> habit_idへ変更
+            $table->increments('id'); 
+            $table->integer('habit_name'); // string へ変更しよう
 
         });
     }

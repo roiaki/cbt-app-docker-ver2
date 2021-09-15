@@ -5,7 +5,7 @@
 <h3>出来事　新規作成</h3>
 
 <div class="row">
-    <div class="col-7">
+    <div class="col-5">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
         {!! Form::open(['route' => 'events.store']) !!}
         

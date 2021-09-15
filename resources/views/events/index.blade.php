@@ -2,9 +2,10 @@
 
 @section('content')
 
-<p>ユーザーID {{ $user->user_id }} 番　{{ $user->name }} さん</p>
+<p>ユーザーID {{ $user->id }} 番　{{ $user->name }} さん</p>
 
 <h3>イベント一覧</h3>
+{{ $user }}
 @if (count($events) > 0)
 <table class="table table-striped table-bordered">
     <thead>
@@ -19,7 +20,7 @@
         @foreach ($events as $event)
         <tr>
             
-            <td><a href="{{ route('events.show', $event->event_id) }}">{{ $event->event_id }}</a></td>
+            <td><a href="{{ route('events.show', $event->id) }}">{{ $event->id }}</a></td>
             <td>{{ $event->title }}</td>
             <td>{{ $event->content }}</td>
         </tr>

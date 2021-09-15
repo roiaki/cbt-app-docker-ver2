@@ -4,11 +4,14 @@
 
 <h3>３コラム新規作成</h3>
 
+<p>id {{ $event->id }} の出来事を元に3コラムを作成します。</p>
 
 <div class="row">
-    <div class="col-7">
+    <div class="col-6">
         <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-        {!! Form::open(['route' => 'three_columns.store']) !!}
+        {!! Form::open(['route' => ['three_columns.store', 'method' => 'get']] ) !!}
+        
+        <input type="hidden" name="eventid" value="{{ $event->id }}">
 
         <div class="form-group">
             <!-- タイトル -->
@@ -16,7 +19,7 @@
             <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
-            <input type="text" class="form-control" id="title" name="title" value="<?php echo $data['event']['title']; ?>" readonly>
+            <input type="text" class="form-control" id="title" name="title" value="{{ $event->title }}" readonly>
 
             <!-- タイトル必須バリデーション表示-->
             @if($errors->has('title'))
@@ -31,7 +34,7 @@
         <div class="form-group">
             <!-- 内容 -->
             <label for="content">出来事 の 内容</label>
-            <textarea class="form-control" id="content" name="content" cols="90" rows="7" readonly><?php echo $data['event']['content']; ?></textarea>
+            <textarea class="form-control" id="content" name="content" cols="90" rows="7" readonly>{{ $event->content }}</textarea>
 
             <!-- 内容必須バリデーション表示-->
             @if($errors->has('content'))
@@ -88,48 +91,48 @@
 
         <div class="form-group">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="1">
+                <input class="form-check-input" type="checkbox" name="habit[0]" id="1">
                 <label class="form-check-label" for="1">
                     一般化のし過ぎ
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="2">
+                <input class="form-check-input" type="checkbox" name="habit[1]" id="2">
                 <label class="form-check-label" for="2">
                     自分への関連付け
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="3">
+                <input class="form-check-input" type="checkbox" name="habit[2]" id="3">
                 <label class="form-check-label" for="3">
                     根拠のない推論
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="4">
+                <input class="form-check-input" type="checkbox" name="habit[3]" id="4">
                 <label class="form-check-label" for="4">
                    白か黒か思考
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="5">
+                <input class="form-check-input" type="checkbox" name="habit[4]" id="5">
                 <label class="form-check-label" for="5">
                    すべき思考
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="6">
+                <input class="form-check-input" type="checkbox" name="habit[5]" id="6">
                 <label class="form-check-label" for="6">
                    過大評価と過少評価
                 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[]" id="7">
+                <input class="form-check-input" type="checkbox" name="habit[6]" id="7">
                 <label class="form-check-label" for="7">
                    感情による決めつけ
                 </label>

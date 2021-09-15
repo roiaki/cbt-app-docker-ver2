@@ -14,7 +14,7 @@ class CreateIncludesTable extends Migration
     public function up()
     {
         Schema::create('includes', function (Blueprint $table) {
-            $table->increments('include_id'); // id -> include_idへ変更
+            $table->increments('id'); // id -> include_idへ変更
 
             $table->integer('threecol_id')->unsigned()->index();
             $table->integer('emotion_id')->unsigned()->index();
@@ -23,12 +23,12 @@ class CreateIncludesTable extends Migration
 
             // 外部キー設定
             $table->foreign('threecol_id')
-                ->references('threecol_id')
+                ->references('id')
                 ->on('three_columns')
                 ->onDelete('cascade');
 
             $table->foreign('emotion_id')
-                ->references('emotion_id')
+                ->references('id')
                 ->on('emotions')
                 ->onDelete('cascade');
 

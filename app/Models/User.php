@@ -17,7 +17,7 @@ class User extends Authenticatable
      * 
      * @var string
      */
-    protected $primaryKey = 'user_id';
+    //protected $primaryKey = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -62,7 +62,8 @@ class User extends Authenticatable
         // 第1引数：リレーション先のモデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルの外部キー」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム（userテーブルの主キーを指定）
-        return $this->hasMany(Event::class, 'user_id', 'user_id');
+        //return $this->hasMany(Event::class, 'user_id', 'user_id');
+        return $this->hasMany(Event::class);
     }
 
     // user->columns()->get() が書けるようになる　
@@ -73,8 +74,8 @@ class User extends Authenticatable
         // 第1引数：リレーション先のモデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルの外部キー」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム（userテーブルの主キーを指定）
-        return $this->hasMany(ThreeColumn::class, 'user_id', 'user_id');
-
+        //return $this->hasMany(ThreeColumn::class, 'user_id', 'user_id');
+        return $this->hasMany(ThreeColumn::class);
     }
 
     // user->seven_columns()->get()　が書けるようになる　

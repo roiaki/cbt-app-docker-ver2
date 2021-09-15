@@ -30,7 +30,7 @@
                         }
                     ?>
                     
-                    <div class="d-flex align-items-center">ID {!! $id = Auth::user()->user_id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
+                    <div class="d-flex align-items-center">ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
                     </div>
                     <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>
 
