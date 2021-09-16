@@ -80,33 +80,37 @@ class ThreeColumnsController extends Controller
        
         // ログインしているユーザーIDを渡す
         //$three_column->id = $request->eventid;
+        //$three_column->id = $request->event_id;
         $three_column->user_id = \Auth::id();
         $three_column->thinking = $request->thinking;
         
         //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
         $three_column->event_id = $request->eventid;
-//dd($request);
+//dd($three_column);
         // 中間テーブルの保存はthree_column保存の後でないとidがない
         $three_column->save();
        
         //$test = $request->habit[5];
         //dd($request);
-       
-        if ($request->habit[0] == "on") {
-            $three_column->habit()->attach(1);
-        } else if ($request->habit[1] == "on") {
-            $three_column->habit()->attach(2);
-        } else if ($request->habit[2] == "on") {
-            $three_column->habit()->attach(3);
-        } else if ($request->habit[3] == "on") {
-            $three_column->habit()->attach(4);
-        } else if ($request->habit[4] == "on") {
-            $three_column->habit()->attach(5);
-        } else if ($request->habit[5] == "on") {
-            $three_column->habit()->attach(6);
-        } else if ($request->habit[6] == "on") {
-            $three_column->habit()->attach(7);
+        if ( isset($request->habit[0]) ){
+            if ($request->habit[0] == "on") {
+                $three_column->habit()->attach(1);
+            }
         }
+
+        if ( isset($request->habit[1]) ){
+            if ($request->habit[1] == "on") {
+                $three_column->habit()->attach(2);
+            }
+        }
+
+        if ( isset($request->habit[2]) ){
+            if ($request->habit[2] == "on") {
+                $three_column->habit()->attach(3);
+            }
+        }
+       
+       
 
         
 

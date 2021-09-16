@@ -15,6 +15,12 @@ class ThreeColumn extends Model
      * @var string
      */
     //protected $primaryKey = 'threecol_id';
+    /**
+     * モデルと関連しているテーブル
+     *
+     * @var string
+     */
+    protected $table = 'threecolumns';
 
     // ホワイトリスト　
     protected $fillable = [
@@ -60,7 +66,7 @@ class ThreeColumn extends Model
         // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
         // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
         //return $this->belongsToMany(Habits::class, 'thinks', 'threecol_id', 'habit_id');
-        return $this->belongsToMany(Habits::class, 'habit_threecolumn', 'id', 'id');
+        return $this->belongsToMany(Habits::class, 'habit_threecolumn', 'threecol_id', 'habit_id');
     }
 }
 
