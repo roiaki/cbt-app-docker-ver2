@@ -82,7 +82,9 @@ class ThreeColumnsController extends Controller
         //$three_column->id = $request->eventid;
         $three_column->user_id = \Auth::id();
         $three_column->thinking = $request->thinking;
-        //$three_column->event_id = $request->eventid;
+        
+        //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
+        $three_column->event_id = $request->eventid;
 //dd($request);
         // 中間テーブルの保存はthree_column保存の後でないとidがない
         $three_column->save();

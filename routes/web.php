@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // ここから
-Route::get('events', 'App\Http\controllers\EventsController@index');
+Route::get('events', 'App\Http\controllers\EventsController@index')->name('events');
 Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
 Route::post('events', 'App\Http\controllers\EventsController@store')->name('events.store');
 Route::get('events/{event}', 'App\Http\controllers\EventsController@show')->name('events.show');

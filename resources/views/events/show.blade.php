@@ -17,7 +17,7 @@
         <td>{{ $event->updated_at }}</td>
     </tr>
     <tr>
-        <th class="habit">id</th>
+        <th class="habit">出来事id</th>
         <td><input type="text" name="event_id" value="{{ $event->id }}" readonly></td>
     </tr>
     <tr>

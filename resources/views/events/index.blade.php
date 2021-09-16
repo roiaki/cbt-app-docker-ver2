@@ -5,7 +5,7 @@
 <p>ユーザーID {{ $user->id }} 番　{{ $user->name }} さん</p>
 
 <h3>イベント一覧</h3>
-{{ $user }}
+
 @if (count($events) > 0)
 <table class="table table-striped table-bordered">
     <thead>

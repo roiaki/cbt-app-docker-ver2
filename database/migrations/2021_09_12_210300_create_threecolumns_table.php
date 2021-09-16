@@ -13,10 +13,10 @@ class CreateThreeColumnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('three_columns', function (Blueprint $table) {
+        Schema::create('threecolumns', function (Blueprint $table) {
             $table->increments('id')->unsigned()->index(); // id -> threecol_idへ変更
             $table->integer('user_id')->unsigned()->index();
-            //$table->integer('event_id')->unsigned()->index();
+            $table->integer('event_id')->unsigned()->index();
             
             $table->string('thinking');
 
@@ -29,12 +29,12 @@ class CreateThreeColumnsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            /*
-            $table->foreign('id')
+            
+            $table->foreign('event_id')
                 ->references('id')
                 ->on('events')
                 ->onDelete('cascade');
-             */  
+              
 
         });
     }
@@ -46,6 +46,6 @@ class CreateThreeColumnsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('three_columns');
+        Schema::dropIfExists('threecolumns');
     }
 }
