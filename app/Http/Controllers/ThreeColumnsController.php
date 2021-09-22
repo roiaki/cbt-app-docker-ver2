@@ -136,9 +136,9 @@ class ThreeColumnsController extends Controller
     {
         $event = Event::find($id);
         $three_column = ThreeColumn::find($id);
-        
+
         // 考え方の癖 id 取得
-        foreach ($three_column->habit as $habit) {           
+        foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
 
@@ -161,9 +161,16 @@ class ThreeColumnsController extends Controller
     // 編集処理
     public function edit($id)
     {
-        $three_column = three_column::find($id);
+        
+        $three_column = ThreeColumn::find($id);
+        $event = Event::find($id);
+        $data = [
+            'three_column' => $three_column,
+            'event' => $event
+        ];
 
-        return view('three_columns.edit', ['three_column' => $three_column]);
+        //dd($three_column);
+        return view('three_columns.edit', $data );
     }
 
     /**
@@ -186,15 +193,25 @@ class ThreeColumnsController extends Controller
 
         ]);
 
-        $three_column = three_column::find($id);
-        $three_column->title = $request->title;
-        $three_column->content = $request->content;
+        $three_column = ThreeColumn::find($id);
+        //$three_column->title = $request->title;
+        //$three_column->content = $request->content;
 
         $three_column->emotion_name = $request->emotion_name;
         $three_column->emotion_strength = $request->emotion_strength;
         $three_column->thinking = $request->thinking;
 
         $three_column->save();
+
+        // チェックリストhabitを中間テーブルに保存
+        if (isset($request->habit[0])) {
+            if ($request->habit[0] == "on") {
+                $three_column->habit()->sync(1);
+            } else {
+                $three_column->habit()->detach(1);
+            }
+        }
+
 
         return redirect('/three_columns');
     }

@@ -31,9 +31,9 @@
 <table class="table table-bordered">
     <tr>
         <th>タイトル</th>
-        <td>{{ $three_column->title }}</td>
+        <td>{{ $event->title }}</td>
         <th>内容</th>
-        <td>{{ $three_column->content }}</td>
+        <td>{{ $event->content }}</td>
     </tr>
 </table>
 
@@ -49,7 +49,7 @@
         <td>{{ $three_column->thinking }}</td>
     </tr>
 
-{{var_dump($habit_id);}}
+{{var_dump($event);}}
     <tr>
         <th>考え方の癖</th>
         <td>
@@ -113,8 +113,16 @@
 <a class="navbar-brand fw-bold ml-5" href="/three_columns">戻る</a>
     <!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
 
+<div style="margin:20px;">
+    {!! Form::model($three_column, ['route' => ['three_columns.edit', $three_column->id], 'method' => 'get']) !!}
+    {!! Form::submit('編集', ['class' => 'btn btn-secondary']) !!}
+    {!! Form::close() !!}
 </div>
-  
+
+<div style="margin:20px;">
+    {!! Form::model($three_column, ['route' => ['three_columns.destroy', $three_column->id], 'method' => 'delete']) !!}
+    {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!}
 </div>
 
 @endsection

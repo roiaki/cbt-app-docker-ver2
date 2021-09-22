@@ -35,7 +35,7 @@ Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index')
 Route::get('three_columns/create', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
 Route::post('three_columns', 'App\Http\controllers\ThreeColumnsController@store')->name('three_columns.store');
 
-Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index');
+//Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index');
 Route::get('three_columns/{param}', 'App\Http\Controllers\ThreeColumnsController@show')->name('three_columns.show');
 Route::get('three_columns/{param}/edit', 'App\Http\controllers\ThreeColumnsController@edit')->name('three_columns.edit');
 Route::delete(
