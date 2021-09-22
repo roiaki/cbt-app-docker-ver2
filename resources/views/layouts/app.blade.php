@@ -23,10 +23,10 @@
 					<?php $hour = date("H");
 					if (0 <= $hour && $hour <= 12) {
 						$msg = "おはようございます";
-					} elseif ($hour < 12 && $hour < 6) {
-						$msg = "こんにちは";
-					} else {
+					} elseif (17 < $hour && $hour < 6) {
 						$msg = "こんばんは";
+					} else {
+						$msg = "こんにちは";
 					}
 					?>
 

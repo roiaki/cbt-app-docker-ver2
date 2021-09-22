@@ -18,6 +18,8 @@ class CreateHabitThreecolumnTable extends Migration
             $table->integer('threecol_id')->unsigned()->index();
             $table->integer('habit_id')->unsigned()->index();
 
+            $table->timestamps();
+
             $table->unique(['threecol_id', 'habit_id']);
 
             // 外部キー制約

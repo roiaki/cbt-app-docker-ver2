@@ -18,6 +18,8 @@ class CreateEmotionThreecolumnTable extends Migration
             $table->integer('threecol_id')->unsigned()->index();
             $table->integer('emotion_id')->unsigned()->index();
 
+            $table->timestamps();
+
             $table->unique(['threecol_id', 'emotion_id']);
 
             // 外部キー制約
