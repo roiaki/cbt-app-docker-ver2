@@ -157,7 +157,7 @@ return [
         'content' => '内容',
         'emotion_name' => '感情名',
         'emotion_strength' => '感情の強さ',
-        'thoughts' => '考えたこと'
+        'thinking' => '考えたこと'
     ],
 
 ];

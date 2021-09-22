@@ -43,7 +43,7 @@ class ThreeColumnsController extends Controller
         //dd($_REQUEST['event_id']);
         $event = Event::find($_REQUEST['event_id']);
         $threecolumn = new ThreeColumn;
-        
+
         $data = [
             'event' => $event,
             'three_column' => $threecolumn
@@ -51,68 +51,80 @@ class ThreeColumnsController extends Controller
 
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
         return view('three_columns.create', $data);
-    
     }
 
     // 保存処理
     public function store(Request $request)
     {
         //dd($request);
-        
+
         $this->validate(
             $request,
             [
-                //'emotion_name' => 'required',
-                //'emotion_strength' => 'required',
-                //'thinking' => 'required',  
+                'emotion_name' => 'required',
+                'emotion_strength' => 'required',
+                'thinking' => 'required',
             ]
         );
-        
+
 
         $three_column = new ThreeColumn;
-        // 送られてきたフォームの内容は　$request　に入っている。
-        //$three_column->title = $request->title;
-        //$three_column->content = $request->content;
 
-        //$three_column->emotion_name = $request->emotion_name;
-        //$three_column->emotion_strength = $request->emotion_strength;
-       
-       
         // ログインしているユーザーIDを渡す
-        //$three_column->id = $request->eventid;
-        //$three_column->id = $request->event_id;
         $three_column->user_id = \Auth::id();
         $three_column->thinking = $request->thinking;
-        
+
         //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
         $three_column->event_id = $request->eventid;
-//dd($three_column);
+        //dd($three_column);
         // 中間テーブルの保存はthree_column保存の後でないとidがない
         $three_column->save();
-       
+
         //$test = $request->habit[5];
         //dd($request);
-        if ( isset($request->habit[0]) ){
+
+        // チェックリストhabitを中間テーブルに保存
+        if (isset($request->habit[0])) {
             if ($request->habit[0] == "on") {
                 $three_column->habit()->attach(1);
             }
         }
 
-        if ( isset($request->habit[1]) ){
+        if (isset($request->habit[1])) {
             if ($request->habit[1] == "on") {
                 $three_column->habit()->attach(2);
             }
         }
 
-        if ( isset($request->habit[2]) ){
+        if (isset($request->habit[2])) {
             if ($request->habit[2] == "on") {
                 $three_column->habit()->attach(3);
             }
         }
-       
-       
 
-        
+        if (isset($request->habit[3])) {
+            if ($request->habit[3] == "on") {
+                $three_column->habit()->attach(4);
+            }
+        }
+
+        if (isset($request->habit[4])) {
+            if ($request->habit[4] == "on") {
+                $three_column->habit()->attach(5);
+            }
+        }
+
+        if (isset($request->habit[5])) {
+            if ($request->habit[5] == "on") {
+                $three_column->habit()->attach(6);
+            }
+        }
+
+        if (isset($request->habit[6])) {
+            if ($request->habit[6] == "on") {
+                $three_column->habit()->attach(7);
+            }
+        }
 
         $three_column->save();
 
@@ -124,10 +136,19 @@ class ThreeColumnsController extends Controller
     {
         $event = Event::find($id);
         $three_column = ThreeColumn::find($id);
+        
+        // 考え方の癖 id 取得
+        foreach ($three_column->habit as $habit) {           
+            $habit_id[] = $habit->id;
+        }
+
+
+        //dd($habit_id);
         $user = \Auth::user();
         $data = [
             'user' => $user,
             'event' => $event,
+            'habit_id' => $habit_id,
             'three_column' => $three_column
         ];
         //dd($data);
@@ -196,12 +217,15 @@ class ThreeColumnsController extends Controller
     {
         $three_column = three_column::find($id);
 
-        return view('seven_columns.create', [
-            'three_column' => $three_column]
+        return view(
+            'seven_columns.create',
+            [
+                'three_column' => $three_column
+            ]
         );
     }
 
-    public function seven_index() 
+    public function seven_index()
     {
         $data = [];
         if (\Auth::check()) {
@@ -227,7 +251,7 @@ class ThreeColumnsController extends Controller
                 'emotion_name' => 'required',
                 'emotion_strength' => 'required',
                 'thinking' => 'required',
-                
+
                 'basis_thinking' => 'required',
                 'opposite_fact' => 'required',
                 'new_thinking' => 'required',
@@ -248,7 +272,7 @@ class ThreeColumnsController extends Controller
         $three_column->opposite_fact = $request->opposite_fact;
         $three_column->new_thinking = $request->new_thinking;
         $three_column->new_emotion = $request->new_emotion;
-    
+
         // ログインしているユーザーIDを渡す
         $three_column->user_id = \Auth::id();
 
