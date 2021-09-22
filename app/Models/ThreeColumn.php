@@ -44,7 +44,7 @@ class ThreeColumn extends Model
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
         //return $this->belongsTo(Event::class, 'event_id', 'event_id'); 
-        return $this->belongsTo(Event::class); 
+        return $this->belongsTo(Event::class, 'event_id', 'id'); 
     }
 
     public function emotion()

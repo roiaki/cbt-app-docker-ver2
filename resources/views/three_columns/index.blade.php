@@ -17,7 +17,8 @@
     </thead>
     <tbody>
         @foreach ($three_columns as $three_column)
-        <tr>                      
+        <tr>     
+                           
             <td><a href="{{ route('three_columns.show', $three_column->id) }}">{{ $three_column->id }}</a></td>
             <td>{{ $three_column->emotion_name }}</td>
             <td>{{ $three_column->thinking }}</td>                
@@ -28,9 +29,6 @@
 
 
 @endif
-{!! link_to_route('three_columns.create', '新規作成', [], ['class' => 'btn btn-primary mb-5']) !!}
-<div class="d-flex justify-content-center">
-   
-</div>
+
 
 @endsection

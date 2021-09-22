@@ -12,14 +12,14 @@
 <table class="table table-bordered">
     <tr>
         <th>作成日時</th>
-        <td>{{ $event->created_at }}</td>
+        <td>{{ $three_column->created_at }}</td>
         <th>最終変更日時</th>
-        <td>{{ $event->updated_at }}</td>
+        <td>{{ $three_column->updated_at }}</td>
     </tr>
 
     <tr>
         <th>イベントID</th>
-        <td>{{ $event->id }}</td>
+        <td>{{ $three_column->id }}</td>
         <th>3コラムID</th>
         <td>{{ $three_column->id }}</td>
         <th>ユーザーID</th>
@@ -31,9 +31,9 @@
 <table class="table table-bordered">
     <tr>
         <th>タイトル</th>
-        <td>{{ $event->title }}</td>
+        <td>{{ $three_column->title }}</td>
         <th>内容</th>
-        <td>{{ $event->content }}</td>
+        <td>{{ $three_column->content }}</td>
     </tr>
 </table>
 
