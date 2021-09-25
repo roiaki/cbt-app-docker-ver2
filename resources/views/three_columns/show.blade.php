@@ -6,7 +6,7 @@
 
 <h1>３コラム詳細ページ　id = {{ $three_column->id }} </h1>
 <p>ユーザーID:{{ $user->id }}<br>
-イベントID：{{ $three_column->id }}<br>
+イベントID：{{ $event->id }}<br>
 3コラムID：{{ $three_column->id}}</p>
 
 <table class="table table-bordered">
@@ -19,7 +19,7 @@
 
     <tr>
         <th>イベントID</th>
-        <td>{{ $three_column->id }}</td>
+        <td>{{ $event->id }}</td>
         <th>3コラムID</th>
         <td>{{ $three_column->id }}</td>
         <th>ユーザーID</th>
@@ -41,7 +41,7 @@
     <tr>
         <th class="three">感情と強さ</th>
         <td>{{ $three_column->emotion_name }}</td>
-        <td>{{ $three_column->id }}</td>
+        <td>{{ $three_column->emotion_strength }}</td>
     </tr>
 
     <tr>
@@ -49,7 +49,6 @@
         <td>{{ $three_column->thinking }}</td>
     </tr>
 
-{{var_dump($event);}}
     <tr>
         <th>考え方の癖</th>
         <td>

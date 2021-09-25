@@ -97,48 +97,55 @@
 
         <div class="form-group">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[0]" id="1">
+                <input class="form-check-input" type="checkbox" name="habit[0]" id="1"
+                <?php if (in_array(1, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="1">
                     一般化のし過ぎ
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[1]" id="2">
+                <input class="form-check-input" type="checkbox" name="habit[1]" id="2"
+                <?php if (in_array(2, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="2">
                     自分への関連付け
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[2]" id="3">
+                <input class="form-check-input" type="checkbox" name="habit[2]" id="3"
+                <?php if (in_array(3, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="3">
                     根拠のない推論
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[3]" id="4">
+                <input class="form-check-input" type="checkbox" name="habit[3]" id="4"
+                <?php if (in_array(4, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="4">
                     白か黒か思考
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[4]" id="5">
+                <input class="form-check-input" type="checkbox" name="habit[4]" id="5"
+                <?php if (in_array(5, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="5">
                     すべき思考
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[5]" id="6">
+                <input class="form-check-input" type="checkbox" name="habit[5]" id="6"
+                <?php if (in_array(6, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="6">
                     過大評価と過少評価
                 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habit[6]" id="7">
+                <input class="form-check-input" type="checkbox" name="habit[6]" id="7"
+                <?php if (in_array(7, $habit_id) ) { echo 'checked'; } ?> >
                 <label class="form-check-label" for="7">
                     感情による決めつけ
                 </label>

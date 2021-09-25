@@ -21,9 +21,9 @@
 					@if(Auth::check())
 
 					<?php $hour = date("H");
-					if (0 <= $hour && $hour <= 12) {
+					if (5 <= $hour && $hour <= 12) {
 						$msg = "おはようございます";
-					} elseif (17 < $hour && $hour < 6) {
+					} else if (17 < $hour) {
 						$msg = "こんばんは";
 					} else {
 						$msg = "こんにちは";

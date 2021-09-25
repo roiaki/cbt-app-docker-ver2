@@ -17,7 +17,8 @@ class CreateThreeColumnsTable extends Migration
             $table->increments('id')->unsigned()->index(); // id -> threecol_idへ変更
             $table->integer('user_id')->unsigned()->index();
             $table->integer('event_id')->unsigned()->index();
-            
+            $table->string('emotion_name');
+            $table->integer('emotion_strength');
             $table->string('thinking');
 
             $table->timestamps();

@@ -76,6 +76,9 @@ class ThreeColumnsController extends Controller
 
         //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
         $three_column->event_id = $request->eventid;
+        $three_column->emotion_name = $request->emotion_name;
+        $three_column->emotion_strength = $request->emotion_strength;
+
         //dd($three_column);
         // 中間テーブルの保存はthree_column保存の後でないとidがない
         $three_column->save();
@@ -134,14 +137,16 @@ class ThreeColumnsController extends Controller
     // 詳細ページ表示処理
     public function show($id)
     {
-        $event = Event::find($id);
+        //$event = Event::find($id);
         $three_column = ThreeColumn::find($id);
-
+        
+        $event_id = $three_column->event_id;
+        $event = Event::find($event_id);
+        
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
-
 
         //dd($habit_id);
         $user = \Auth::user();
@@ -161,16 +166,24 @@ class ThreeColumnsController extends Controller
     // 編集処理
     public function edit($id)
     {
-        
         $three_column = ThreeColumn::find($id);
-        $event = Event::find($id);
+        
+        $event_id = $three_column->event_id;
+        $event = Event::find($event_id);
+        
+        // 考え方の癖 id 取得
+        foreach ($three_column->habit as $habit) {
+            $habit_id[] = $habit->id;
+        }
+
         $data = [
             'three_column' => $three_column,
+            'habit_id' => $habit_id,
             'event' => $event
         ];
 
         //dd($three_column);
-        return view('three_columns.edit', $data );
+        return view('three_columns.edit', $data);
     }
 
     /**
@@ -190,12 +203,9 @@ class ThreeColumnsController extends Controller
             'emotion_name' => 'required',
             'emotion_strength' => 'required',
             'thinking' => 'required'
-
         ]);
 
         $three_column = ThreeColumn::find($id);
-        //$three_column->title = $request->title;
-        //$three_column->content = $request->content;
 
         $three_column->emotion_name = $request->emotion_name;
         $three_column->emotion_strength = $request->emotion_strength;
@@ -203,14 +213,63 @@ class ThreeColumnsController extends Controller
 
         $three_column->save();
 
-        // チェックリストhabitを中間テーブルに保存
+        // チェックリストhabitを中間テーブルを更新
         if (isset($request->habit[0])) {
             if ($request->habit[0] == "on") {
-                $three_column->habit()->sync(1);
-            } else {
-                $three_column->habit()->detach(1);
+                $three_column->habit()->syncWithoutDetaching(1);
             }
+        } else {
+            $three_column->habit()->detach(1);
         }
+
+        if (isset($request->habit[1])) {
+            if ($request->habit[1] == "on") {
+                $three_column->habit()->syncWithoutDetaching(2);
+            }
+        } else {
+            $three_column->habit()->detach(2);
+        }
+
+        if (isset($request->habit[2])) {
+            if ($request->habit[2] == "on") {
+                $three_column->habit()->syncWithoutDetaching(3);
+            }
+        } else {
+            $three_column->habit()->detach(3);
+        }
+
+        if (isset($request->habit[3])) {
+            if ($request->habit[3] == "on") {
+                $three_column->habit()->syncWithoutDetaching(4);
+            }
+        } else {
+            $three_column->habit()->detach(4);
+        }
+
+        if (isset($request->habit[4])) {
+            if ($request->habit[4] == "on") {
+                $three_column->habit()->syncWithoutDetaching(5);
+            }
+        } else {
+            $three_column->habit()->detach(5);
+        }
+
+        if (isset($request->habit[5])) {
+            if ($request->habit[5] == "on") {
+                $three_column->habit()->syncWithoutDetaching(6);
+            }
+        } else {
+            $three_column->habit()->detach(6);
+        }
+
+        if (isset($request->habit[6])) {
+            if ($request->habit[6] == "on") {
+                $three_column->habit()->syncWithoutDetaching(7);
+            }
+        } else {
+            $three_column->habit()->detach(7);
+        }
+//dd($three_column->habit());
 
 
         return redirect('/three_columns');
@@ -219,7 +278,7 @@ class ThreeColumnsController extends Controller
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
     public function destroy($id)
     {
-        $three_column = three_column::find($id);
+        $three_column = ThreeColumn::find($id);
         $three_column->delete();
 
         return redirect('/three_columns');
@@ -232,7 +291,7 @@ class ThreeColumnsController extends Controller
 
     public function fix($id)
     {
-        $three_column = three_column::find($id);
+        $three_column = ThreeColumn::find($id);
 
         return view(
             'seven_columns.create',

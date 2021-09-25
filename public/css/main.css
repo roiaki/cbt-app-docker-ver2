@@ -25,6 +25,7 @@ div.columns {
 }
 body {
     margin-bottom: 50px;
+    word-break: break-word;
 }
 .wrap_thinking {
     column-count: 3;

@@ -36,25 +36,19 @@
     </tr>
 
 </table>
-{!! Form::submit('3コラム作成', ['class' => 'btn btn-primary']) !!}
+{!! Form::submit('3コラム作成', ['class' => 'btn btn-primary float-right']) !!}
 {!! Form::close() !!}
 
-<p><a href="{{ route('events.edit', $event->id) }}">{{ $event->id }}を編集する</a></p>
+
+<a class="navbar-brand fw-bold" href="/events">イベント一覧へ戻る</a>
+
+<!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
 
 <div style="margin:20px;">
-
-    <!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
-
-    {!! Form::open(['route' => ['three_columns.create', $event->id], 'method'=> 'get']) !!}
-    {!! Form::submit('3コラム作成', ['class' => 'btn btn-primary']) !!}
-    {!! Form::close() !!}
-</div>
-<div style="margin:20px;">
-    {!! Form::model($event, ['route' => ['events.edit', $event->id], 'method' => 'get']) !!}
+    {!! Form::model($event, ['route' => ['events.edit',$event->id], 'method' => 'get']) !!}
     {!! Form::submit('編集', ['class' => 'btn btn-secondary']) !!}
     {!! Form::close() !!}
 </div>
-
 <div style="margin:20px;">
     {!! Form::model($event, ['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
     {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
