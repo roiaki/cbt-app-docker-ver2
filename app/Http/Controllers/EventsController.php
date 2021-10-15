@@ -11,20 +11,10 @@ class EventsController extends Controller
     // event一覧表示
     public function index()
     {
-        /*
-        $events = event::paginate(25);
-
-        // $events = event::all();
-
-        // 第二引数：連想配列でテンプレートに渡すデータ  [キー　=> バリュー]
-        return view('events.index', [
-            'events' => $events,
-        ]); 
-    */
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $events = $user->events()->orderBy('created_at', 'desc')->paginate(5);
+            $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
 
             $data = [
                 'user' => $user,

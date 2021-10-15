@@ -46,12 +46,12 @@
 
 <div style="margin:20px;">
     {!! Form::model($event, ['route' => ['events.edit',$event->id], 'method' => 'get']) !!}
-    {!! Form::submit('編集', ['class' => 'btn btn-secondary']) !!}
+        {!! Form::submit('編集', ['class' => 'btn btn-secondary']) !!}
     {!! Form::close() !!}
 </div>
 <div style="margin:20px;">
     {!! Form::model($event, ['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-    {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 </div>
 

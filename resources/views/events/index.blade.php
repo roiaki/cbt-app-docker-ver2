@@ -14,6 +14,7 @@
             <th>id</th>
             <th>タイトル</th>
             <th>内容</th>
+            <th>更新日</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
             <td><a href="{{ route('events.show', $event->id) }}">{{ $event->id }}</a></td>
             <td>{{ $event->title }}</td>
             <td>{{ $event->content }}</td>
+            <td>{{ $event->updated_at }}</td>
         </tr>
         @endforeach
     </tbody>

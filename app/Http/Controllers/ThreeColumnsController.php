@@ -26,7 +26,7 @@ class ThreeColumnsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $three_columns = $user->three_columns()->orderBy('created_at', 'desc')->paginate(13);
+            $three_columns = $user->three_columns()->orderBy('updated_at', 'desc')->paginate(13);
 
             $data = [
                 'user' => $user,
@@ -67,17 +67,18 @@ class ThreeColumnsController extends Controller
             ]
         );
 
-
         $three_column = new ThreeColumn;
 
         // ログインしているユーザーIDを渡す
         $three_column->user_id = \Auth::id();
-        $three_column->thinking = $request->thinking;
-
+        
         //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
         $three_column->event_id = $request->eventid;
+        $three_column->title = $request->title;
+        $three_column->content = $request->content;
         $three_column->emotion_name = $request->emotion_name;
         $three_column->emotion_strength = $request->emotion_strength;
+        $three_column->thinking = $request->thinking;
 
         //dd($three_column);
         // 中間テーブルの保存はthree_column保存の後でないとidがない
@@ -92,7 +93,7 @@ class ThreeColumnsController extends Controller
                 $three_column->habit()->attach(1);
             }
         }
-
+        
         if (isset($request->habit[1])) {
             if ($request->habit[1] == "on") {
                 $three_column->habit()->attach(2);
@@ -150,6 +151,12 @@ class ThreeColumnsController extends Controller
 
         //dd($habit_id);
         $user = \Auth::user();
+        
+        // ない時はからを格納
+        if ( !isset($habit_id) ) {
+            $habit_id = [];
+        }
+
         $data = [
             'user' => $user,
             'event' => $event,
@@ -174,6 +181,9 @@ class ThreeColumnsController extends Controller
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
+        }
+        if ( !isset($habit_id) ) {
+            $habit_id = [];
         }
 
         $data = [
