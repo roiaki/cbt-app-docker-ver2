@@ -31,15 +31,15 @@ class ThreeColumnsController extends Controller
     public function create($id)
     {
         //dd($e->event_id);
-        //$user = \Auth::user();
-        //$user_id = $user->id;
-        //dd($e->id);
-        $event = Event::find($id);
+        $user = \Auth::user();
+        $user_id = $user->id;
+        //dd($user_id);
+        $event = Event::where('id', $id)->where('user_id', $user_id)->first();
         $threecolumn = new ThreeColumn;
 
         $data = [
             'event' => $event,
-            //'user' => $user,
+            'user' => $user,
             'three_column' => $threecolumn
         ];
 

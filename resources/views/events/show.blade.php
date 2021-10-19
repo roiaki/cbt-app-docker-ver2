@@ -2,8 +2,6 @@
 
 @section('content')
 
-<!-- ここにページ毎のコンテンツを書く -->
-
 <h3>出来事詳細ページ　id = {{ $event->id }} </h3>
 
 <table class="table table-bordered">
@@ -28,18 +26,19 @@
 <!--
 <a href="{{ route('three_columns.create', $event->id) }}" 
       class="btn btn-success btn-lg" 
-      role="button" 
+      role="button"
+      onclick="confirmDelete();return false;" 
       aria-pressed="true">この出来事を元に3コラムを作成
 </a>
 -->
 {!! Form::model($event, ['route' => ['three_columns.create',$event->id], 'method' => 'post']) !!}
-    <input type="hidden" name="event_id" value="{{ $event->id }}" >
-    {!! Form::submit('この出来事を元に3コラムを作成', ['class' => 'btn-success btn-lg']) !!}
+    <!--<input type="hidden" name="event_id" value="{{ $event->id }}" >-->
+    <input type="submit" value="この出来事を元に3コラム作成" class="btn btn-success btn-lg">
 {!! Form::close() !!}
 
-
-<!--配列の2つ目に $message->id を入れることで update の URL である /messages/{message} の {message} に id が入ります。-->
-
+<!--配列の2つ目に $message->id を入れることで 
+update の URL である /messages/{message} の {message} 
+に id が入ります。-->
 
 {!! Form::model($event, ['route' => ['events.edit',$event->id], 'method' => 'get']) !!}
     {!! Form::submit('編集', ['class' => 'btn btn-secondary  btn-lg']) !!}
@@ -47,8 +46,11 @@
 
 
 {!! Form::model($event, ['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-    {!! Form::submit('削除', ['class' => 'btn btn-danger  btn-lg']) !!}
+    {!! Form::submit('削除', ['class' => 'btn btn-danger  btn-lg', 
+                              'onclick' => 'confirmDelete();return false;']) 
+    !!}
 {!! Form::close() !!}
 
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
+
 @endsection
