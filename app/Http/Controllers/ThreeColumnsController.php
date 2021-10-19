@@ -5,28 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\ThreeColumn;    // 追加
-use App\Models\Event;    // 追加
-use App\Models\Habits;    // 追加
+use App\Models\Event;          // 追加
+
 
 class ThreeColumnsController extends Controller
 {
     // 一覧表示
     public function index()
     {
-        /*
-        $three_columns = three_column::paginate(25);
-
-        // $three_columns = three_column::all();
-
-        // 第二引数：連想配列でテンプレートに渡すデータ  [キー　=> バリュー]
-        return view('three_columns.index', [
-            'three_columns' => $three_columns,
-        ]); 
-    */
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $three_columns = $user->three_columns()->orderBy('updated_at', 'desc')->paginate(13);
+            $three_columns = $user->three_columns()->orderBy('updated_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
@@ -38,14 +28,18 @@ class ThreeColumnsController extends Controller
     }
 
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create()
+    public function create($id)
     {
-        //dd($_REQUEST['event_id']);
-        $event = Event::find($_REQUEST['event_id']);
+        //dd($e->event_id);
+        //$user = \Auth::user();
+        //$user_id = $user->id;
+        //dd($e->id);
+        $event = Event::find($id);
         $threecolumn = new ThreeColumn;
 
         $data = [
             'event' => $event,
+            //'user' => $user,
             'three_column' => $threecolumn
         ];
 
@@ -139,6 +133,8 @@ class ThreeColumnsController extends Controller
     public function show($id)
     {
         //$event = Event::find($id);
+
+        //dd($id);
         $three_column = ThreeColumn::find($id);
         
         $event_id = $three_column->event_id;
@@ -173,6 +169,7 @@ class ThreeColumnsController extends Controller
     // 編集処理
     public function edit($id)
     {
+        //dd($id);
         $three_column = ThreeColumn::find($id);
         
         $event_id = $three_column->event_id;
@@ -205,8 +202,6 @@ class ThreeColumnsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);   // 追加
-
         $this->validate($request, [
             'title' => 'required|max:30',
             'content' => 'required|max:255',

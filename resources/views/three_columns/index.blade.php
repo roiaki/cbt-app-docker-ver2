@@ -23,7 +23,9 @@
             <td><a href="{{ route('three_columns.show', $three_column->id) }}">{{ $three_column->id }}</a></td>
             <td>{{ $three_column->emotion_name }}</td>
             <td>{{ $three_column->thinking }}</td>
-            <td>{{ $three_column->updated_at }}</td>              
+            <td>{{ $three_column->updated_at }}
+                <p><a href="{{ route('three_columns.show', $three_column->id) }}">詳細</a></p>
+            </td>              
         </tr>
         @endforeach
     </tbody>

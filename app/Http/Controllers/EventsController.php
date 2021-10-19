@@ -28,7 +28,6 @@ class EventsController extends Controller
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-
         $event = new Event;
 
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]

@@ -22,7 +22,7 @@ Route::get('events', 'App\Http\controllers\EventsController@index')->name('event
 Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
 Route::post('events', 'App\Http\controllers\EventsController@store')->name('events.store');
 Route::get('events/{event}', 'App\Http\controllers\EventsController@show')->name('events.show');
-Route::get('events/{evebt}/edit', 'App\Http\controllers\EventsController@edit')->name('events.edit');
+Route::get('events/{event}/edit', 'App\Http\controllers\EventsController@edit')->name('events.edit');
 Route::delete(
     'events/{event}',
     'App\Http\controllers\EventsController@destroy'
@@ -32,7 +32,7 @@ Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->na
 //Route::resource('columns', 'App\Http\Controllers\ColumnsController');
 
 Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index')->name('three_columns');
-Route::get('three_columns/create', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
+Route::post('three_columns/create/{id}', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
 Route::post('three_columns', 'App\Http\controllers\ThreeColumnsController@store')->name('three_columns.store');
 
 //Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index');
