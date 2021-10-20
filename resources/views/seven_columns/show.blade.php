@@ -77,19 +77,17 @@
     <td>{{ $seven_column->new_emotion }}</td>
   </tr>
 </table>
-<p><a href="{{ route('seven_columns.edit', $seven_column->id) }}">{{ $seven_column->id }}を編集する</a></p>
+
+<form action="{{ route('seven_columns.edit', ['param' => $seven_column->id] ) }}", method="get">
+  @CSRF
+  <button type="submit" class="btn btn-secondary btn-lg">編集</button>
+</form>
+
+<form action="{{ route('seven_columns.destroy', ['param' => $seven_column->id] ) }}", method="post">
+  @CSRF
+  <button type="submit" class="btn btn-danger btn-lg">削除</button>
+</form>
+
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
-
-<div style="margin:20px;">
-  {!! Form::model($seven_column, ['route' => ['seven_columns.edit', $seven_column->id], 'method' => 'get']) !!}
-  {!! Form::submit('編集', ['class' => 'btn btn-secondary']) !!}
-  {!! Form::close() !!}
-</div>
-
-
-  {!! Form::model($seven_column, ['route' => ['seven_columns.destroy', $seven_column->id], 'method' => 'delete']) !!}
-  {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
-  {!! Form::close() !!}
-</div>
 
 @endsection

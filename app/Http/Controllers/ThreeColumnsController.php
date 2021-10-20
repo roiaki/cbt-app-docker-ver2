@@ -286,7 +286,7 @@ class ThreeColumnsController extends Controller
         $three_column = ThreeColumn::find($id);
         $three_column->delete();
 
-        return redirect('/threecolumns');
+        return redirect('/three_columns');
     }
 
     public function info()
