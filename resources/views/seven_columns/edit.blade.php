@@ -7,7 +7,7 @@
 <h3>id: {{ $seven_column->id }} の7コラム編集ページ</h3>
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-5">
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
         配列の2つ目に $message->id を入れることで 
         update の URL である /messages/{message} の {message} に id が入ります
@@ -84,7 +84,7 @@
 
     <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
 
-    {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('更新', ['class' => 'btn btn-primary btn-lg']) !!}
 
     {!! Form::close() !!}
   </div>

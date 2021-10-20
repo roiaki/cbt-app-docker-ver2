@@ -31,6 +31,7 @@
           ?>
 
           <div class="d-flex align-items-center">
+            <?php echo date("Y年m月d日 h時m分s秒"); ?>
             ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
           </div>
           <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>

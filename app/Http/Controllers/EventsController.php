@@ -91,7 +91,9 @@ class EventsController extends Controller
         $event = event::find($id);
         $event->title = $request->title;
         $event->content = $request->content;
- 
+        
+        $event->updated_at = date("Y-m-d h:m:s");
+
         $event->save();
 
         return redirect('/events');

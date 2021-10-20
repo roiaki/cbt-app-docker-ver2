@@ -151,7 +151,7 @@
 
 <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}", method="post">
   @CSRF
-  <button type="submit" class="btn btn-danger btn-lg">削除</button>
+  <button type="submit" class="btn btn-danger btn-lg" onclick="confirmDelete();return false;">削除</button>
 </form>
 
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>

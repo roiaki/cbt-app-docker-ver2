@@ -13,8 +13,8 @@
       //var_dump($threecolumn);
       //exit;
       ?>
-      <input type="text" name="threecol_id" value="{{ $threecolumn->id }}">
-      <input type="text" name="event_id" value="{{ $threecolumn->event_id }}">
+      <input type="hidden" name="threecol_id" value="{{ $threecolumn->id }}">
+      <input type="hidden" name="event_id" value="{{ $threecolumn->event_id }}">
       <div class="form-group">
         <!-- タイトル -->
         <label for="title">①-1　出来事 の タイトル</label>
@@ -142,18 +142,7 @@
         @endforeach
         @endif
       </div>
-      <!--
-        <label>考え方の癖</label>
-        <div class="wrap_thinking">
-            <div><label class="habit-thinking"><input type="checkbox" name="habit[]">一般化のし過ぎ</label></div>
-            <div><label class="habit-thinking"><input type="checkbox" name="check">自分への関連付け</label></div>
-            <div><label class="habit-thinking"><input type="checkbox" name="check">根拠のない推論</label></div>
-            <div><label class="habit-thinking"><input type="checkbox" name="check">白か黒か思考</label></div>
-            <div><label class="habit-thinking"><input type="checkbox" name="check">すべき思考</label></div>
-            <div><label class="habit-thinking"><input type="checkbox" name="check">過大評価と過少評価</label></div>
-            <div><label class="habit-thinking"><input type="checkbox" name="check">感情による決めつけ</label></div>
-        </div>   
--->
+  
       {!! Form::submit('3コラムから7コラムへ', ['class' => 'btn btn-primary']) !!}
 
     </form>

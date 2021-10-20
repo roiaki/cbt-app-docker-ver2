@@ -216,6 +216,8 @@ class ThreeColumnsController extends Controller
         $three_column->emotion_strength = $request->emotion_strength;
         $three_column->thinking = $request->thinking;
 
+        $three_column->updated_at = date("Y-m-d h:m:s");
+
         $three_column->save();
 
         // チェックリストhabitを中間テーブルを更新
@@ -275,7 +277,6 @@ class ThreeColumnsController extends Controller
             $three_column->habit()->detach(7);
         }
 //dd($three_column->habit());
-
 
         return redirect('/three_columns');
     }
