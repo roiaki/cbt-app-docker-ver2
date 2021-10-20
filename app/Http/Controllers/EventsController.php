@@ -98,11 +98,14 @@ class EventsController extends Controller
     }
 
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
-    public function delete($id)
+    public function destroy($id)
     {
         $event = event::find($id);
-        $event->delete();
-dd($event);
+        if ( $event ) {
+            $event->delete();
+        }
+        
+//dd($event);
         //return redirect()->route('/events');
         return redirect('/events');
     }

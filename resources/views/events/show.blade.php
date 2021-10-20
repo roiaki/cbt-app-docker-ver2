@@ -37,18 +37,16 @@
   <button type="submit" class="btn btn-success btn-lg">3コラム作成</button>
 </form>
 
-<!--配列の2つ目に $message->id を入れることで 
-update の URL である /messages/{message} の {message} 
-に id が入ります。-->
+<form action="{{ route('events.edit', ['event' => $event->id] ) }}", method="get">
+  @CSRF
+  <button type="submit" class="btn btn-secondary btn-lg">編集</button>
+</form>
 
-{!! Form::model($event, ['route' => ['events.edit',$event->id], 'method' => 'get']) !!}
-    {!! Form::submit('編集', ['class' => 'btn btn-secondary  btn-lg']) !!}
-{!! Form::close() !!}
-<div style="margin:20px;">
-{!! Form::model($event, ['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-    {!! Form::submit('削除', ['class' => 'btn btn-danger  btn-lg', 'onclick' => 'confirmDelete();return false;']) !!}
-{!! Form::close() !!}
-</div>
+<form action="{{ route('events.destroy', ['event' => $event->id] ) }}", method="post">
+  @CSRF
+  <button type="submit" class="btn btn-danger btn-lg">削除</button>
+</form>
+
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
 
 @endsection
