@@ -18,7 +18,7 @@ class UserController extends Controller
     
             \Auth::logout();
     
-            return redirect('/columns');
+            return redirect('/events');
         }
 
     }

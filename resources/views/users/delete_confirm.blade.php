@@ -21,7 +21,7 @@
     {!! Form::close() !!}
 
     <div class="ml-3">
-      <a href="/columns" class="btn btn-primary">キャンセルする</a>
+      <a href="/events" class="btn btn-primary">キャンセルする</a>
     </div>
   </div>
   @endif
