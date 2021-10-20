@@ -36,7 +36,7 @@
           <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('events', '出来事一覧', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('three_columns', '3コラム一覧', [], ['class' => 'nav-link']) !!}</li>
-
+          <li class="nav-item">{!! link_to_route('seven_columns', '7コラム一覧', [], ['class' => 'nav-link']) !!}</li>
           <div class="dropdown mr-5">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               アカウント

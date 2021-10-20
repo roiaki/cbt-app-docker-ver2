@@ -31,10 +31,11 @@
       aria-pressed="true">この出来事を元に3コラムを作成
 </a>
 -->
-{!! Form::model($event, ['route' => ['three_columns.create',$event->id], 'method' => 'post']) !!}
-    <!--<input type="hidden" name="event_id" value="{{ $event->id }}" >-->
-    <input type="submit" value="この出来事を元に3コラム作成" class="btn btn-success btn-lg">
-{!! Form::close() !!}
+
+<form action="{{ route('three_columns.create', ['id' => $event->id]) }}" method="get">
+  @CSRF
+  <button type="submit" class="btn btn-success btn-lg">3コラム作成</button>
+</form>
 
 <!--配列の2つ目に $message->id を入れることで 
 update の URL である /messages/{message} の {message} 
@@ -43,14 +44,11 @@ update の URL である /messages/{message} の {message}
 {!! Form::model($event, ['route' => ['events.edit',$event->id], 'method' => 'get']) !!}
     {!! Form::submit('編集', ['class' => 'btn btn-secondary  btn-lg']) !!}
 {!! Form::close() !!}
-
-
+<div style="margin:20px;">
 {!! Form::model($event, ['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-    {!! Form::submit('削除', ['class' => 'btn btn-danger  btn-lg', 
-                              'onclick' => 'confirmDelete();return false;']) 
-    !!}
+    {!! Form::submit('削除', ['class' => 'btn btn-danger  btn-lg', 'onclick' => 'confirmDelete();return false;']) !!}
 {!! Form::close() !!}
-
+</div>
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
 
 @endsection

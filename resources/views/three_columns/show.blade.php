@@ -138,6 +138,13 @@
 
   </tr>
 </table>
+
+<form action="{{ route('seven_columns.create', ['id' => $three_column->id]) }}" method="get">
+  @CSRF
+  <button type="submit" class="btn btn-success btn-lg">7コラム作成</button>
+</form>
+
+
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
 
 {!! Form::model($three_column, ['route' => ['three_columns.edit', $three_column->id], 'method' => 'get']) !!}

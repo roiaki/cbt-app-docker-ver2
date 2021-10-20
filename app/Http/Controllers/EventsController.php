@@ -98,11 +98,12 @@ class EventsController extends Controller
     }
 
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
-    public function destroy($id)
+    public function delete($id)
     {
         $event = event::find($id);
         $event->delete();
-
+dd($event);
+        //return redirect()->route('/events');
         return redirect('/events');
     }
 
@@ -111,27 +112,4 @@ class EventsController extends Controller
         return view('/users/info');
     }
 
-    public function fix($id)
-    {
-        $event = event::find($id);
-
-        return view('seven_columns.create', [
-            'event' => $event]
-        );
-    }
-
-    public function seven_index() 
-    {
-        $data = [];
-        if (\Auth::check()) {
-            $user = \Auth::user();
-            $events = $user->events()->orderBy('created_at')->paginate(10);
-
-            $data = [
-                'user' => $user,
-                'events' => $events
-            ];
-        }
-        return view('events.seven_index', $data);
-    }
 }

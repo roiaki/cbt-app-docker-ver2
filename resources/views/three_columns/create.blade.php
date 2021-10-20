@@ -32,7 +32,7 @@
     <div class="form-group">
       <!-- 内容 -->
       <label for="content">出来事 の 内容</label>
-      <textarea class="form-control" id="content" name="content" cols="90" rows="7" readonly>{{ $event->content }}</textarea>
+      <textarea class="form-control" id="content" name="content" cols="90" rows="5" readonly>{{ $event->content }}</textarea>
 
       <!-- 内容必須バリデーション表示-->
       @if($errors->has('content'))
@@ -75,7 +75,7 @@
 
     <div class="form-group">
       <label for="thinking">その時考えたこと</label><br>
-      <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="7"></textarea>
+      <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="5"></textarea>
 
       <!-- 感情名必須バリデーション表示-->
       @if($errors->has('thinking'))
@@ -138,7 +138,7 @@
     </div>
 
 
-    {!! Form::submit('作成', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('作成', ['class' => 'btn btn-primary btn-lg']) !!}
 
     {!! Form::close() !!}
   </div>

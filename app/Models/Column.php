@@ -12,7 +12,7 @@ class Column extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'column_id';
+    //protected $primaryKey = 'column_id';
 
     // ホワイトリスト　
     protected $fillable = [

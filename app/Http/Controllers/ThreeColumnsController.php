@@ -286,7 +286,7 @@ class ThreeColumnsController extends Controller
         $three_column = ThreeColumn::find($id);
         $three_column->delete();
 
-        return redirect('/three_columns');
+        return redirect('/threecolumns');
     }
 
     public function info()
@@ -294,71 +294,4 @@ class ThreeColumnsController extends Controller
         return view('/users/info');
     }
 
-    public function fix($id)
-    {
-        $three_column = ThreeColumn::find($id);
-
-        return view(
-            'seven_columns.create',
-            [
-                'three_column' => $three_column
-            ]
-        );
-    }
-
-    public function seven_index()
-    {
-        $data = [];
-        if (\Auth::check()) {
-            $user = \Auth::user();
-            $three_columns = $user->three_columns()->orderBy('created_at')->paginate(10);
-
-            $data = [
-                'user' => $user,
-                'three_columns' => $three_columns
-            ];
-        }
-        return view('three_columns.seven_index', $data);
-    }
-
-    // 7コラム作成処理
-    public function fix_save(Request $request, $id)
-    {
-        $this->validate(
-            $request,
-            [
-                'title' => 'required|max:30',
-                'content' => 'required|max:255',
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
-                'thinking' => 'required',
-
-                'basis_thinking' => 'required',
-                'opposite_fact' => 'required',
-                'new_thinking' => 'required',
-                'new_emotion' => 'required',
-            ]
-        );
-
-        $three_column = three_column::find($id);
-        // 送られてきたフォームの内容は　$request　に入っている。
-        $three_column->title = $request->title;
-        $three_column->content = $request->content;
-
-        $three_column->emotion_name = $request->emotion_name;
-        $three_column->emotion_strength = $request->emotion_strength;
-        $three_column->thinking = $request->thinking;
-
-        $three_column->basis_thinking = $request->basis_thinking;
-        $three_column->opposite_fact = $request->opposite_fact;
-        $three_column->new_thinking = $request->new_thinking;
-        $three_column->new_emotion = $request->new_emotion;
-
-        // ログインしているユーザーIDを渡す
-        $three_column->user_id = \Auth::id();
-
-        $three_column->save();
-
-        return redirect('/three_columns');
-    }
 }
