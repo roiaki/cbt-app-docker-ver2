@@ -19,7 +19,7 @@
             -->
       <input type="text" class="form-control" id="title" name="title" value="{{ $event->title }}" readonly>
 
-      <!-- タイトル必須バリデーション表示-->
+      <!-- バリデーションエラー表示-->
       @if($errors->has('title'))
       @foreach($errors->get('title') as $message)
       <ul>
@@ -34,7 +34,7 @@
       <label for="content">出来事 の 内容</label>
       <textarea class="form-control" id="content" name="content" cols="90" rows="5" readonly>{{ $event->content }}</textarea>
 
-      <!-- 内容必須バリデーション表示-->
+      <!-- バリデーションエラー表示-->
       @if($errors->has('content'))
       @foreach($errors->get('content') as $message)
       <ul>
@@ -49,7 +49,7 @@
       <label for="emotion_name">感情名</label>
       <input type="text" class="form-control" id="emotion_name" name="emotion_name">
 
-      <!-- 感情名必須バリデーション表示-->
+      <!-- バリデーションエラー表示-->
       @if($errors->has('emotion_name'))
       @foreach($errors->get('emotion_name') as $message)
       <ul>
@@ -63,7 +63,7 @@
       <label for="emotion_strength">強さ</label>
       <input type="number" class="form-control" id="emotion_strength" name="emotion_strength">
 
-      <!-- 感情名必須バリデーション表示-->
+      <!-- バリデーションエラー表示-->
       @if($errors->has('emotion_strength'))
       @foreach($errors->get('emotion_strength') as $message)
       <ul>
@@ -77,7 +77,7 @@
       <label for="thinking">その時考えたこと</label><br>
       <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="5"></textarea>
 
-      <!-- 感情名必須バリデーション表示-->
+      <!-- バリデーションエラー表示-->
       @if($errors->has('thinking'))
       @foreach($errors->get('thinking') as $message)
       <ul>
