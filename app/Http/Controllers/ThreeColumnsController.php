@@ -33,7 +33,8 @@ class ThreeColumnsController extends Controller
         //dd($e->event_id);
         $user = \Auth::user();
         $user_id = $user->id;
-        //dd($user_id);
+        
+        // 出来事id,userIdで検索
         $event = Event::where('id', $id)->where('user_id', $user_id)->first();
         $threecolumn = new ThreeColumn;
 
