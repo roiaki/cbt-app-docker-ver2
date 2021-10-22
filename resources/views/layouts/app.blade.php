@@ -16,10 +16,15 @@
   <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand fw-bold ml-5" href="/events">CBT APP</a>
+      
+      <!-- 横幅が狭い時に出るハンバーガーボタン -->
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
       <div class="collapse navbar-collapse" id="nav-bar">
-        <ul class="navbar-nav mr-auto"></ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
+
           @if(Auth::check())
 
           <?php $hour = date("H");
@@ -56,7 +61,7 @@
           <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
 
           @endif
-
+        </ul>
         </ul>
       </div>
     </nav>

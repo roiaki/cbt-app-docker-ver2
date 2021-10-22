@@ -35,45 +35,45 @@
 
 <table class="table table-bordered">
   <tr>
-    <th>タイトル</th>
+    <th>1-1 タイトル</th>
     <td>{{ $seven_column->title }}</td>
   </tr>
   <tr>
-    <th>内容</th>
+    <th>1-2 内容</th>
     <td>{{ $seven_column->content }}</td>
   </tr>
 </table>
 
 <table class="table table-bordered">
   <tr>
-    <th class="three">感情と強さ</th>
+    <th>2-1 感情と強さ</th>
     <td>{{ $seven_column->emotion_name }}</td>
     <td>{{ $seven_column->emotion_strength }}</td>
   </tr>
 
   <tr>
-    <th>その時考えた事</th>
+    <th>3 その時考えた事</th>
     <td>{{ $seven_column->thinking }}</td>
   </tr>
 
   <tr>
-    <th>根拠</th>
+    <th>4 その考えの根拠</th>
     <td>{{ $seven_column->basis_thinking }}</td>
   </tr>
 
   <tr>
-    <th>逆の事実</th>
+    <th>5 逆の事実</th>
     </th>
     <td>{{ $seven_column->opposite_fact }}</td>
   </tr>
 
   <tr>
-    <th>新しい考え</th>
+    <th>6 新しい考え</th>
     <td>{{ $seven_column->new_thinking }}</td>
   </tr>
 
   <tr>
-    <th>新しい感情</th>
+    <th>7 新しい感情</th>
     <td>{{ $seven_column->new_emotion }}</td>
   </tr>
 </table>
