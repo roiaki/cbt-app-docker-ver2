@@ -78,7 +78,8 @@
       </div>
 
       <div class="form-group">
-        <label for="thinking">③　その時考えたこと</label><br>
+        <label for="thinking">③　その時考えたこと</label>
+        <p>ポイント：言い訳せずに簡単な言葉で表現する</p>
         <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="5" readonly>{{ $threecolumn->thinking }}</textarea>
 
         <!-- 感情名必須バリデーション表示-->
@@ -92,7 +93,8 @@
       </div>
 
       <div class="form-group">
-        <label for="basis_thinking">④　自分の考えの根拠</label><br>
+        <label for="basis_thinking">④　自分の考えの根拠</label>
+        <p>ポイント：客観的であるとベスト。<br>人から尋ねられた時に「だって」と説明するように</p>
         <textarea class="form-control" id="basis_thinking" name="basis_thinking" cols="90" rows="5"></textarea>
 
         @if($errors->has('basis_thinking'))
@@ -105,7 +107,8 @@
       </div>
 
       <div class="form-group">
-        <label for="opposite_fact">⑤　逆の事実</label><br>
+        <label for="opposite_fact">⑤　逆の事実</label>
+        <p>ポイント：「でも」そう考えなくても良いのでは？</p>
         <textarea class="form-control" id="opposite_fact" name="opposite_fact" cols="90" rows="5"></textarea>
 
         @if($errors->has('opposite_fact'))
@@ -118,7 +121,8 @@
       </div>
 
       <div class="form-group">
-        <label for="new_thinking">⑥　新しい考え方</label><br>
+        <label for="new_thinking">⑥　新しい考え方</label>
+        <p>ポイント:④と考えられるけど、⑤とも考えられる</p>
         <textarea class="form-control" id="new_thinking" name="new_thinking" cols="90" rows="5"></textarea>
 
         @if($errors->has('new_thinking'))
@@ -131,7 +135,8 @@
       </div>
 
       <div class="form-group">
-        <label for="new_emotion">⑦　新しい感情</label><br>
+        <label for="new_emotion">⑦　新しい感情</label>
+        <p>ポイント：「⑥新しい考え」のように考えるとどんな感情と強さ？</p>
         <textarea class="form-control" id="new_emotion" name="new_emotion" cols="90" rows="5"></textarea>
 
         @if($errors->has('new_emotion'))
@@ -143,7 +148,7 @@
         @endif
       </div>
   
-      {!! Form::submit('3コラムから7コラムへ', ['class' => 'btn btn-primary']) !!}
+      {!! Form::submit('3コラムから7コラムへ', ['class' => 'btn btn-primary btn-lg']) !!}
 
     </form>
   </div>

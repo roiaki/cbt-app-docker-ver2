@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Event;
+use Exception;
 
 class EventsController extends Controller
 {
@@ -47,15 +48,22 @@ class EventsController extends Controller
             ]
         );
 
-        $event = new Event;
-        // 送られてきたフォームの内容は　$request　に入っている。
-        $event->title = $request->title;
-        $event->content = $request->content;
-
-        // ログインしているユーザーIDを渡す
-        $event->user_id = \Auth::id();
-
-        $event->save();
+        try {
+            $event = new Event;
+            // 送られてきたフォームの内容は　$request　に入っている。
+            $event->title = $request->title;
+            $event->content = $request->content;
+    
+            // ログインしているユーザーIDを渡す
+            $event->user_id = \Auth::id();
+    
+            $event->save();
+        } catch(Exception $e) {
+            // エラーが起きたらロールバック
+            DB::rollback();
+            report($e);
+        }
+        
 
         return view('events.show', ['event' => $event]);
         //return redirect('/events');
