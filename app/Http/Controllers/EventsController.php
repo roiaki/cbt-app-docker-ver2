@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Event;
-use Exception;
+use DB;
 
 class EventsController extends Controller
 {
@@ -50,6 +50,7 @@ class EventsController extends Controller
 
         // クロージャでトランザクション処理
         $event = DB::transaction(function () use($request) {
+            
             $event = new Event;
             // 送られてきたフォームの内容は　$request　に入っている。
             $event->title = $request->title;
