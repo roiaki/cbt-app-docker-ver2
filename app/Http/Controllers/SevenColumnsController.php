@@ -84,10 +84,12 @@ class SevenColumnsController extends Controller
 
             $seven_column->save();
             //dd($seven_column);
+
         } catch (Exception $e) {
             report($e);
             session()->flash('flash_message', '保存が失敗しました。');
         }
+        
         session()->flash('flash_message', '保存完了');
         return redirect('seven_columns');
     }

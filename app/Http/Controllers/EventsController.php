@@ -48,7 +48,8 @@ class EventsController extends Controller
             ]
         );
 
-        try {
+        // クロージャでトランザクション処理
+        $event = DB::transaction(function () use($request) {
             $event = new Event;
             // 送られてきたフォームの内容は　$request　に入っている。
             $event->title = $request->title;
@@ -58,15 +59,11 @@ class EventsController extends Controller
             $event->user_id = \Auth::id();
     
             $event->save();
-        } catch(Exception $e) {
-            // エラーが起きたらロールバック
-            DB::rollback();
-            report($e);
-        }
-        
 
+            return $event;
+        });
+       
         return view('events.show', ['event' => $event]);
-        //return redirect('/events');
     }
 
     
@@ -86,10 +83,9 @@ class EventsController extends Controller
         return view('events.edit', ['event' => $event]);
     }
 
-    // 更新
+    // 出来事更新処理
     public function update(Request $request, $id)
     {
-        // dd($request);   // 追加
 
         $this->validate($request, [
             'title' => 'required|max:30',
@@ -97,13 +93,16 @@ class EventsController extends Controller
         ]);
 
         $event = event::find($id);
-        $event->title = $request->title;
-        $event->content = $request->content;
+
+        // クロージャでトランザクション
+        DB::transaction(function () use($event, $request) {
+            $event->title = $request->title;
+            $event->content = $request->content;           
+            $event->updated_at = date("Y-m-d h:m:s");
+    
+            $event->save();
+        });
         
-        $event->updated_at = date("Y-m-d h:m:s");
-
-        $event->save();
-
         return redirect('/events');
     }
 
