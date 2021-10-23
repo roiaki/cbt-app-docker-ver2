@@ -179,7 +179,7 @@ class ThreeColumnsController extends Controller
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
-        if (!isset($habit_id)) {
+        if ( !isset($habit_id) ) {
             $habit_id = [];
         }
 
