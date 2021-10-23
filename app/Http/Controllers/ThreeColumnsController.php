@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\ThreeColumn;    // 追加
 use App\Models\Event;          // 追加
-use DB;
+use DB;                        // 追加
 
 
 class ThreeColumnsController extends Controller
