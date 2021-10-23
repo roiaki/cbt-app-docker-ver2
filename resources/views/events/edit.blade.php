@@ -30,7 +30,7 @@
     <div class="form-group">
       <!-- 内容 -->
       {!! Form::label('content', '内容') !!}
-      {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 5]) !!}
 
       <!-- バリデーションエラー表示-->
       @if($errors->has('content'))
@@ -42,7 +42,7 @@
       @endif
     </div>
 
-    {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('更新', ['class' => 'btn btn-primary btn-lg']) !!}
 
     {!! Form::close() !!}
   </div>

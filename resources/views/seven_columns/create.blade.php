@@ -5,7 +5,7 @@
 <h3>７コラム新規作成</h3>
 
 <div class="row">
-  <div class="col-7">
+  <div class="col-11">
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
     <form action="{{ route('seven_columns.store') }}" method="POST">
       @csrf

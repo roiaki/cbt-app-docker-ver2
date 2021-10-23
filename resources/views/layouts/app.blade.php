@@ -1,3 +1,15 @@
+<?php
+
+$hour = date("H");
+if (5 <= $hour && $hour <= 12) {
+  $msg = "おはようございます";
+} else if (17 < $hour) {
+  $msg = "こんばんは";
+} else {
+  $msg = "こんにちは";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -16,7 +28,7 @@
   <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand fw-bold ml-5" href="/events">CBT APP</a>
-      
+
       <!-- 横幅が狭い時に出るハンバーガーボタン -->
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
         <span class="navbar-toggler-icon"></span>
@@ -26,16 +38,6 @@
         <ul class="navbar-nav ml-auto">
 
           @if(Auth::check())
-
-          <?php $hour = date("H");
-          if (5 <= $hour && $hour <= 12) {
-            $msg = "おはようございます";
-          } else if (17 < $hour) {
-            $msg = "こんばんは";
-          } else {
-            $msg = "こんにちは";
-          }
-          ?>
 
           <div class="d-flex align-items-center">
             ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
