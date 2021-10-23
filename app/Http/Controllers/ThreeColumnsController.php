@@ -27,13 +27,13 @@ class ThreeColumnsController extends Controller
         return view('three_columns.index', $data);
     }
 
-    // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
+    // getでアクセスされた場合の「新規登録画面表示処理」
     public function create($id)
     {
         //dd($e->event_id);
         $user = \Auth::user();
         $user_id = $user->id;
-        
+
         // 出来事id,userIdで検索
         $event = Event::where('id', $id)->where('user_id', $user_id)->first();
         $threecolumn = new ThreeColumn;
@@ -64,68 +64,68 @@ class ThreeColumnsController extends Controller
 
         $three_column = new ThreeColumn;
 
-        // ログインしているユーザーIDを渡す
-        $three_column->user_id = \Auth::id();
-        
-        //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
-        $three_column->event_id = $request->eventid;
-        $three_column->title = $request->title;
-        $three_column->content = $request->content;
-        $three_column->emotion_name = $request->emotion_name;
-        $three_column->emotion_strength = $request->emotion_strength;
-        $three_column->thinking = $request->thinking;
+        // クロージャでトランザクション処理
+        DB::transaction(function () use ($three_column, $request) {
+            // ログインしているユーザーIDを渡す
+            $three_column->user_id = \Auth::id();
 
-        //dd($three_column);
-        // 中間テーブルの保存はthree_column保存の後でないとidがない
-        $three_column->save();
+            //eventsテーブルのidをthree_columnsテーブルのevent_idに格納
+            $three_column->event_id = $request->eventid;
+            $three_column->title = $request->title;
+            $three_column->content = $request->content;
+            $three_column->emotion_name = $request->emotion_name;
+            $three_column->emotion_strength = $request->emotion_strength;
+            $three_column->thinking = $request->thinking;
 
-        //$test = $request->habit[5];
-        //dd($request);
+            // 中間テーブルの保存はthree_column保存の後でないとidがない
+            $three_column->save();
 
-        // チェックリストhabitを中間テーブルに保存
-        if (isset($request->habit[0])) {
-            if ($request->habit[0] == "on") {
-                $three_column->habit()->attach(1);
+            // チェックリストhabitを中間テーブルに保存
+            if (isset($request->habit[0])) {
+                if ($request->habit[0] == "on") {
+                    $three_column->habit()->attach(1);
+                }
             }
-        }
-        
-        if (isset($request->habit[1])) {
-            if ($request->habit[1] == "on") {
-                $three_column->habit()->attach(2);
-            }
-        }
 
-        if (isset($request->habit[2])) {
-            if ($request->habit[2] == "on") {
-                $three_column->habit()->attach(3);
+            if (isset($request->habit[1])) {
+                if ($request->habit[1] == "on") {
+                    $three_column->habit()->attach(2);
+                }
             }
-        }
 
-        if (isset($request->habit[3])) {
-            if ($request->habit[3] == "on") {
-                $three_column->habit()->attach(4);
+            if (isset($request->habit[2])) {
+                if ($request->habit[2] == "on") {
+                    $three_column->habit()->attach(3);
+                }
             }
-        }
 
-        if (isset($request->habit[4])) {
-            if ($request->habit[4] == "on") {
-                $three_column->habit()->attach(5);
+            if (isset($request->habit[3])) {
+                if ($request->habit[3] == "on") {
+                    $three_column->habit()->attach(4);
+                }
             }
-        }
 
-        if (isset($request->habit[5])) {
-            if ($request->habit[5] == "on") {
-                $three_column->habit()->attach(6);
+            if (isset($request->habit[4])) {
+                if ($request->habit[4] == "on") {
+                    $three_column->habit()->attach(5);
+                }
             }
-        }
 
-        if (isset($request->habit[6])) {
-            if ($request->habit[6] == "on") {
-                $three_column->habit()->attach(7);
+            if (isset($request->habit[5])) {
+                if ($request->habit[5] == "on") {
+                    $three_column->habit()->attach(6);
+                }
             }
-        }
 
-        $three_column->save();
+            if (isset($request->habit[6])) {
+                if ($request->habit[6] == "on") {
+                    $three_column->habit()->attach(7);
+                }
+            }
+
+            $three_column->save();
+        });
+        // end transaction
 
         return redirect('/three_columns');
     }
@@ -133,14 +133,12 @@ class ThreeColumnsController extends Controller
     // 詳細ページ表示処理
     public function show($id)
     {
-        //$event = Event::find($id);
 
-        //dd($id);
         $three_column = ThreeColumn::find($id);
-        
+
         $event_id = $three_column->event_id;
         $event = Event::find($event_id);
-        
+
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
@@ -148,9 +146,9 @@ class ThreeColumnsController extends Controller
 
         //dd($habit_id);
         $user = \Auth::user();
-        
+
         // ない時はからを格納
-        if ( !isset($habit_id) ) {
+        if (!isset($habit_id)) {
             $habit_id = [];
         }
 
@@ -172,15 +170,15 @@ class ThreeColumnsController extends Controller
     {
         //dd($id);
         $three_column = ThreeColumn::find($id);
-        
+
         $event_id = $three_column->event_id;
         $event = Event::find($event_id);
-        
+
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
-        if ( !isset($habit_id) ) {
+        if (!isset($habit_id)) {
             $habit_id = [];
         }
 
@@ -211,73 +209,78 @@ class ThreeColumnsController extends Controller
             'thinking' => 'required'
         ]);
 
-        $three_column = ThreeColumn::find($id);
+        // クロージャでトランザクション処理開始
+        DB::transaction(function () use ($request, $id) {
 
-        $three_column->emotion_name = $request->emotion_name;
-        $three_column->emotion_strength = $request->emotion_strength;
-        $three_column->thinking = $request->thinking;
+            $three_column = ThreeColumn::find($id);
 
-        $three_column->updated_at = date("Y-m-d h:m:s");
+            $three_column->emotion_name = $request->emotion_name;
+            $three_column->emotion_strength = $request->emotion_strength;
+            $three_column->thinking = $request->thinking;
 
-        $three_column->save();
+            $three_column->updated_at = date("Y-m-d h:m:s");
 
-        // チェックリストhabitを中間テーブルを更新
-        if (isset($request->habit[0])) {
-            if ($request->habit[0] == "on") {
-                $three_column->habit()->syncWithoutDetaching(1);
+            $three_column->save();
+
+            // チェックリストhabitを中間テーブルを更新
+            if (isset($request->habit[0])) {
+                if ($request->habit[0] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(1);
+                }
+            } else {
+                $three_column->habit()->detach(1);
             }
-        } else {
-            $three_column->habit()->detach(1);
-        }
 
-        if (isset($request->habit[1])) {
-            if ($request->habit[1] == "on") {
-                $three_column->habit()->syncWithoutDetaching(2);
+            if (isset($request->habit[1])) {
+                if ($request->habit[1] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(2);
+                }
+            } else {
+                $three_column->habit()->detach(2);
             }
-        } else {
-            $three_column->habit()->detach(2);
-        }
 
-        if (isset($request->habit[2])) {
-            if ($request->habit[2] == "on") {
-                $three_column->habit()->syncWithoutDetaching(3);
+            if (isset($request->habit[2])) {
+                if ($request->habit[2] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(3);
+                }
+            } else {
+                $three_column->habit()->detach(3);
             }
-        } else {
-            $three_column->habit()->detach(3);
-        }
 
-        if (isset($request->habit[3])) {
-            if ($request->habit[3] == "on") {
-                $three_column->habit()->syncWithoutDetaching(4);
+            if (isset($request->habit[3])) {
+                if ($request->habit[3] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(4);
+                }
+            } else {
+                $three_column->habit()->detach(4);
             }
-        } else {
-            $three_column->habit()->detach(4);
-        }
 
-        if (isset($request->habit[4])) {
-            if ($request->habit[4] == "on") {
-                $three_column->habit()->syncWithoutDetaching(5);
+            if (isset($request->habit[4])) {
+                if ($request->habit[4] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(5);
+                }
+            } else {
+                $three_column->habit()->detach(5);
             }
-        } else {
-            $three_column->habit()->detach(5);
-        }
 
-        if (isset($request->habit[5])) {
-            if ($request->habit[5] == "on") {
-                $three_column->habit()->syncWithoutDetaching(6);
+            if (isset($request->habit[5])) {
+                if ($request->habit[5] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(6);
+                }
+            } else {
+                $three_column->habit()->detach(6);
             }
-        } else {
-            $three_column->habit()->detach(6);
-        }
 
-        if (isset($request->habit[6])) {
-            if ($request->habit[6] == "on") {
-                $three_column->habit()->syncWithoutDetaching(7);
+            if (isset($request->habit[6])) {
+                if ($request->habit[6] == "on") {
+                    $three_column->habit()->syncWithoutDetaching(7);
+                }
+            } else {
+                $three_column->habit()->detach(7);
             }
-        } else {
-            $three_column->habit()->detach(7);
-        }
-//dd($three_column->habit());
+            //dd($three_column->habit());
+        });
+        // end transaction
 
         return redirect('/three_columns');
     }
@@ -295,5 +298,4 @@ class ThreeColumnsController extends Controller
     {
         return view('/users/info');
     }
-
 }
