@@ -148,8 +148,8 @@ class ThreeColumnsController extends Controller
         //dd($habit_id);
         $user = \Auth::user();
 
-        // ない時はからを格納
-        if (!isset($habit_id)) {
+        // idがない時は「空」を格納
+        if ( !isset($habit_id) ) {
             $habit_id = [];
         }
 
@@ -295,6 +295,7 @@ class ThreeColumnsController extends Controller
         return redirect('/three_columns');
     }
 
+    // 説明ページ表示
     public function info()
     {
         return view('/users/info');

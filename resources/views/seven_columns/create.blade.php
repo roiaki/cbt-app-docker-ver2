@@ -136,7 +136,7 @@
 
       <div class="form-group">
         <label for="new_emotion">⑦　新しい感情</label>
-        <p>ポイント：「⑥新しい考え」のように考えるとどんな感情と強さ？</p>
+        <p>ポイント：「⑥新しい考え」のように考えると、どんな感情と強さに変わった？</p>
         <textarea class="form-control" id="new_emotion" name="new_emotion" cols="90" rows="5"></textarea>
 
         @if($errors->has('new_emotion'))

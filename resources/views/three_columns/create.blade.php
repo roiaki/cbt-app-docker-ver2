@@ -13,7 +13,7 @@
 
     <div class="form-group">
 
-      <label for="title">出来事 の タイトル</label>
+      <label for="title">1-1 出来事 の タイトル</label>
       <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
@@ -31,7 +31,7 @@
 
     <div class="form-group">
       <!-- 内容 -->
-      <label for="content">出来事 の 内容</label>
+      <label for="content">1-2 出来事 の 内容</label>
       <textarea class="form-control" id="content" name="content" cols="90" rows="5" readonly>{{ $event->content }}</textarea>
 
       <!-- バリデーションエラー表示-->
@@ -46,7 +46,7 @@
 
 
     <div class="form-group">
-      <label for="emotion_name">感情名</label>
+      <label for="emotion_name">2-1 感情名</label>
       <input type="text" class="form-control" id="emotion_name" name="emotion_name">
 
       <!-- バリデーションエラー表示-->
@@ -60,7 +60,7 @@
     </div>
 
     <div class="form-group">
-      <label for="emotion_strength">強さ</label>
+      <label for="emotion_strength">2-2 強さ</label>
       <input type="number" class="form-control" id="emotion_strength" name="emotion_strength">
 
       <!-- バリデーションエラー表示-->
@@ -74,7 +74,7 @@
     </div>
 
     <div class="form-group">
-      <label for="thinking">その時考えたこと</label><br>
+      <label for="thinking">3-1 その時考えたこと</label><br>
       <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="5"></textarea>
 
       <!-- バリデーションエラー表示-->
@@ -87,6 +87,7 @@
       @endif
     </div>
 
+    <label>3-2 考え方の癖</label>
     <div class="form-group">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="habit[0]" id="1">

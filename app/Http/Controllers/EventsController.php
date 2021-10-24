@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 use DB;
+use Exception;
 
 class EventsController extends Controller
 {
@@ -43,7 +44,7 @@ class EventsController extends Controller
         $this->validate(
             $request,
             [
-                'title' => 'required|max:30',
+                //'title' => 'required|max:30',
                 'content' => 'required|max:255',
             ]
         );
@@ -63,6 +64,7 @@ class EventsController extends Controller
 
             return $event;
         });
+        
        
         return view('events.show', ['event' => $event]);
     }
@@ -123,6 +125,15 @@ class EventsController extends Controller
     public function info()
     {
         return view('/users/info');
+    }
+
+    // ロールバック時のエラー制御メソッド
+    public function catchError($param) {
+        try {
+
+        } catch(Exception $e) {
+
+        }
     }
 
 }

@@ -2,8 +2,6 @@
 
 @section('content')
 
-<p>ユーザーID {{ $user->id }} 番　{{ $user->name }} さん</p>
-
 <h3>出来事一覧</h3>
 
 @if (count($events) > 0)

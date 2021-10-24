@@ -35,7 +35,7 @@
     <div class="form-group">
       <!-- 内容 -->
       {!! Form::label('content', '内容') !!}
-      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 3]) !!}
+      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 3] ) !!}
 
       <!-- 内容必須バリデーション表示-->
       @if($errors->has('content'))
