@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('top');
 
 // 出来事に関して
 Route::get('events', 'App\Http\controllers\EventsController@index')->name('events');
