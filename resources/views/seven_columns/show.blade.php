@@ -77,17 +77,21 @@
     <td>{{ $seven_column->new_emotion }}</td>
   </tr>
 </table>
+<div class="buttons-first">
+  <form action="{{ route('seven_columns.edit', ['param' => $seven_column->id] ) }}" , method="get">
+    @CSRF
+    <button type="submit" class="btn btn-secondary btn-lg">編集</button>
+  </form>
+</div>
 
-<form action="{{ route('seven_columns.edit', ['param' => $seven_column->id] ) }}", method="get">
-  @CSRF
-  <button type="submit" class="btn btn-secondary btn-lg">編集</button>
-</form>
+<div class="buttons">
+  <form action="{{ route('seven_columns.destroy', ['param' => $seven_column->id] ) }}" , method="post">
+    @CSRF
+    <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
+  </form>
+</div>
 
-<form action="{{ route('seven_columns.destroy', ['param' => $seven_column->id] ) }}", method="post">
-  @CSRF
-  <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
-</form>
-
-<button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
-
+<div class="buttons">
+  <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
+</div>
 @endsection

@@ -45,3 +45,13 @@ p {
 .under_line {
     text-decoration:underline;
 }
+
+.buttons-first {
+    display: inline-block;
+    margin:  20px 20px 20px 0px;
+}
+
+.buttons {
+    display: inline-block;
+    margin: 20px 20px;
+}
