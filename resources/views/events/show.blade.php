@@ -42,10 +42,13 @@
   <button type="submit" class="btn btn-secondary btn-lg">編集</button>
 </form>
 
+<div>
 <form action="{{ route('events.destroy', ['event' => $event->id] ) }}", method="post">
   @CSRF
-  <button type="submit" class="btn btn-danger btn-lg" onclick="confirmDelete();return false;">削除</button>
+  @method('DELETE')
+  <button type="submit" class="btn btn-danger btn-lg" onclick="confirmDelete();">削除</button>
 </form>
+</div>
 
 <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
 

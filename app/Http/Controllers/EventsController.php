@@ -30,11 +30,12 @@ class EventsController extends Controller
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        $event = new Event;
-
+        //$event = new Event;
+        //var_dump('test');
+        //exit;
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
         return view('events.create', [
-            'event' => $event
+            //'event' => $event
         ]);
     }
 
@@ -48,7 +49,8 @@ class EventsController extends Controller
                 'content' => 'required|max:255',
             ]
         );
-
+        //var_dump('test');
+        //exit;
         // クロージャでトランザクション処理
         $event = DB::transaction(function () use($request) {
             
@@ -64,8 +66,7 @@ class EventsController extends Controller
 
             return $event;
         });
-        
-       
+              
         return view('events.show', ['event' => $event]);
     }
 
@@ -112,14 +113,17 @@ class EventsController extends Controller
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
     public function destroy($id)
     {
+        //dd("tet");
+        //var_dump('test');
+        //exit;
         $event = event::find($id);
         if ( $event ) {
             $event->delete();
         }
         
-//dd($event);
+
         //return redirect()->route('/events');
-        return redirect('/events');
+        return redirect('events');
     }
 
     public function info()
