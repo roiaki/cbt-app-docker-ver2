@@ -145,7 +145,7 @@ class SevenColumnsController extends Controller
             $seven_column->opposite_fact = $request->opposite_fact;
             $seven_column->new_thinking = $request->new_thinking;
             $seven_column->new_emotion = $request->new_emotion;
-            $seven_column->updated_at = date('Y-m-d h:i:s');
+            $seven_column->updated_at = date('Y-m-d G:i:s');
             
             $seven_column->save();
         });

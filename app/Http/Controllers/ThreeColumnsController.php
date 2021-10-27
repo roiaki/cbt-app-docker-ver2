@@ -213,7 +213,7 @@ class ThreeColumnsController extends Controller
             $three_column->emotion_strength = $request->emotion_strength;
             $three_column->thinking = $request->thinking;
 
-            $three_column->updated_at = date("Y-m-d h:i:s");
+            $three_column->updated_at = date("Y-m-d G:i:s");
 
             $three_column->save();
 

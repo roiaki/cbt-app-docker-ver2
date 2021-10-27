@@ -91,11 +91,11 @@ class EventsController extends Controller
         DB::transaction(function () use($event, $request) {
             $event->title = $request->title;
             $event->content = $request->content;           
-            $event->updated_at = date("Y-m-d h:i:s");
+            $event->updated_at = date("Y-m-d G:i:s");
     
             $event->save();
         });
-        
+
         return redirect('/events');
     }
 
