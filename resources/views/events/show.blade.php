@@ -46,7 +46,7 @@
 <form action="{{ route('events.destroy', ['event' => $event->id] ) }}", method="post">
   @CSRF
   @method('DELETE')
-  <button type="submit" class="btn btn-danger btn-lg" onclick="confirmDelete();">削除</button>
+  <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
 </form>
 </div>
 
