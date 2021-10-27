@@ -17,7 +17,7 @@ class ThreeColumnsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $three_columns = $user->three_columns()->orderBy('updated_at', 'desc')->paginate(10);
+            $three_columns = $user->three_columns()->orderBy('updated_at', 'desc')->paginate(5);
 
             $data = [
                 'user' => $user,

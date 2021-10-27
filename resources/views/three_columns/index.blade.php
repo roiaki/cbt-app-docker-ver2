@@ -30,8 +30,10 @@
   </tbody>
 </table>
 
-
 @endif
 
+<div class="d-flex justify-content-center">
+  {{ $three_columns->links('pagination::bootstrap-4') }}
+</div>
 
 @endsection

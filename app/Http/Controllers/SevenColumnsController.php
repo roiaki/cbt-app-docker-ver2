@@ -16,7 +16,7 @@ class SevenColumnsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $sevencolumns = $user->seven_columns()->orderBy('updated_at', 'desc')->paginate(10);
+            $sevencolumns = $user->seven_columns()->orderBy('updated_at', 'desc')->paginate(5);
 
             $data = [
                 'user' => $user,

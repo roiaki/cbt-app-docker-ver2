@@ -2,14 +2,11 @@
 
 @section('content')
 
-
 <h3>7コラム一覧</h3>
-
 
 <table class="table table-striped table-bordered">
   <thead>
     <tr class="table-primary">
-
       <th>id</th>
       <th>タイトル</th>
       <th>内容</th>
