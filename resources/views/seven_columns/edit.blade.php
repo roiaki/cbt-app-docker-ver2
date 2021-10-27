@@ -2,8 +2,6 @@
 
 @section('content')
 
-<!-- ここにページ毎のコンテンツを書く -->
-
 <h3>id: {{ $seven_column->id }} の7コラム編集ページ</h3>
 
 <div class="row">
@@ -82,10 +80,13 @@
     <label for="new_emotion">新しい感情</label>
     <textarea class="form-control" id="new_emotion" name="new_emotion" cols="50" rows="3">{{ $seven_column->new_emotion }}</textarea>
 
-    <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
+    <div class="buttons-first">
+      {!! Form::submit('更新', ['class' => 'btn btn-primary btn-lg']) !!}
+    </div>
 
-    {!! Form::submit('更新', ['class' => 'btn btn-primary btn-lg']) !!}
-
+    <div class="buttons">
+      <button class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
+    </div>
     {!! Form::close() !!}
   </div>
 </div>

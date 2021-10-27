@@ -30,9 +30,6 @@
   </tbody>
 </table>
 
-
-
-
 <div class="d-flex justify-content-center">
   {{ $seven_columns->links('pagination::bootstrap-4') }}
 </div>

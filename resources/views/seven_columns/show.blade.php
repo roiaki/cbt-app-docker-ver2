@@ -77,6 +77,7 @@
     <td>{{ $seven_column->new_emotion }}</td>
   </tr>
 </table>
+
 <div class="buttons-first">
   <form action="{{ route('seven_columns.edit', ['param' => $seven_column->id] ) }}" , method="get">
     @CSRF

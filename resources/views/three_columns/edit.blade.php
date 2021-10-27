@@ -232,7 +232,11 @@
     </div>
 
 
-    {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('更新', ['class' => 'btn btn-primary btn-lg']) !!}
+
+    <div class="buttons">
+      <button class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
+    </div>
 
     {!! Form::close() !!}
   </div>
