@@ -20,12 +20,11 @@ class UserController extends Controller
     
             return redirect('/events');
         }
-
     }
 
     // 退会確認画面
     public function delete_confirm() {
-        //var_dump($user);
+        
         return view('users.delete_confirm');
     }
 }

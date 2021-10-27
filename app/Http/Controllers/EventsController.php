@@ -39,7 +39,7 @@ class EventsController extends Controller
         ]);
     }
 
-    // postで/eventsへアクセス　保存処理
+    // 保存処理
     public function store(Request $request)
     {
         $this->validate(
@@ -49,8 +49,7 @@ class EventsController extends Controller
                 'content' => 'required|max:255',
             ]
         );
-        //var_dump('test');
-        //exit;
+        
         // クロージャでトランザクション処理
         $event = DB::transaction(function () use($request) {
             
@@ -121,8 +120,6 @@ class EventsController extends Controller
             $event->delete();
         }
         
-
-        //return redirect()->route('/events');
         return redirect('events');
     }
 
