@@ -30,9 +30,6 @@ class EventsController extends Controller
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        //$event = new Event;
-        //var_dump('test');
-        //exit;
         // 第二引数：連想配列でテンプレートに渡すデータ　[キー　=> バリュー]
         return view('events.create', [
             //'event' => $event
@@ -45,7 +42,7 @@ class EventsController extends Controller
         $this->validate(
             $request,
             [
-                //'title' => 'required|max:30',
+                'title' => 'required|max:30',
                 'content' => 'required|max:255',
             ]
         );
