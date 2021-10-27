@@ -12,7 +12,7 @@
     <th>作成日時</th>
     <th>最終変更日時</th>
     <th>ユーザーID</th>
-    <th>イベントID</th>
+    <th>出来事ID</th>
     <th>3コラムID</th>
   </tr>
 
@@ -28,7 +28,7 @@
     <th>1-1 タイトル</th>
     <th>1-2 内容</th>
     <th>2-1 感情</th>
-    <th>2-2強さ</th>
+    <th>2-2 強さ</th>
     <th>3 その時考えた事</th>
   </tr>
 
@@ -50,11 +50,17 @@
     <td>
       <div class="form-group">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                  if (in_array(1, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="habit[0]"
+            id="1"
+              <?php
+                if (in_array(1, $habit_id)) {
+                  echo 'checked';
+                }
+              ?>
+          >
           <label class="form-check-label" for="1">
             一般化のし過ぎ
           </label>

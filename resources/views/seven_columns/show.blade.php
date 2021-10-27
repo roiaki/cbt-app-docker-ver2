@@ -52,10 +52,19 @@
   </tr>
 
   <tr>
-    <th>3 その時考えた事</th>
+    <th>3-1 その時考えた事</th>
     <td>{{ $seven_column->thinking }}</td>
   </tr>
 
+  <tr>
+    <th>3-2 考え方の癖</th>
+    <td><?php foreach($habit_names as $name) {
+                echo "・" . $name . "<br>";
+              } 
+        ?>
+    </td>
+
+  </tr>
   <tr>
     <th>4 その考えの根拠</th>
     <td>{{ $seven_column->basis_thinking }}</td>

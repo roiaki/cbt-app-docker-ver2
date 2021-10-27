@@ -90,8 +90,26 @@ class SevenColumnsController extends Controller
     public function show($id)
     {
         $seven_column = SevenColumn::find($id);
+        $threecol_id = $seven_column->threecol_id;
+        $three_column = ThreeColumn::find($threecol_id);
+        
 
-        return view('seven_columns.show', ['seven_column' => $seven_column]);
+        // 考え方の癖 取得
+        foreach ($three_column->habit as $habit) {
+            $habit_names[] = $habit->habit_name;
+        }
+        
+        // 癖id がない時は「空」を格納
+        if ( !isset($habit_names) ) {
+            $habit_names = [];
+        }
+
+        //dd($habit_names);
+
+        return view('seven_columns.show', [
+            'seven_column' => $seven_column,
+            'habit_names' => $habit_names
+        ]);
     }
 
     // 編集画面表示処理
