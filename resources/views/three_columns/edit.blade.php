@@ -231,7 +231,6 @@
       </div>
     </div>
 
-
     {!! Form::submit('更新', ['class' => 'btn btn-primary btn-lg']) !!}
 
     <div class="buttons">

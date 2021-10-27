@@ -18,7 +18,8 @@
     <div class="form-group">
       <!-- タイトル -->
       {!! Form::label('title', '①-1  タイトル') !!}
-      {!! Form::text('title', null, ['class' => 'form-control']) !!}
+      <!-- Form::text 第1引数：name属性、第２引数：value属性、第三引数：追加属性-->
+      {!! Form::text('title', null, ['class' => 'form-control', 'readonly']) !!}
 
       <!-- タイトル必須バリデーション表示 課題：まとめてかけないか-->
       @if($errors->has('title'))
@@ -33,7 +34,7 @@
     <div class="form-group">
       <!-- 内容 -->
       {!! Form::label('content', '①-2  内容') !!}
-      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 3] ) !!}
+      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 3, 'readonly'] ) !!}
 
       <!-- 内容必須バリデーション表示-->
       @if($errors->has('content'))
@@ -48,18 +49,32 @@
 
     <div class="form-group">
       <label for="emotion-name">②-1  感情名</label>
-      <input type="text" class="form-control" name="emotion_name" value="{{ $seven_column->emotion_name }}">
+      <input type="text" 
+             class="form-control" 
+             name="emotion_name" 
+             readonly 
+             value="{{ $seven_column->emotion_name }}">
     </div>
     
     <div class="form-group">
       <label for="emotion-strength">②-2  強さ</label>
-      <input type="number" class="form-control" name="emotion_strength" value="{{ $seven_column->emotion_strength }}">
+      <input type="number" 
+             class="form-control" 
+             name="emotion_strength" 
+             readonly 
+             value="{{ $seven_column->emotion_strength }}">
     </div>
 
 
     <div class="form-group">
       <label for="thinking">③ その時考えたこと</label><br>
-      <textarea class="form-control" id="thinking" name="thinking" cols="50" rows="3">{{ $seven_column->thinking }}</textarea>
+      <textarea class="form-control" 
+                id="thinking" 
+                name="thinking" 
+                cols="50" 
+                rows="3" 
+                readonly>{{ $seven_column->thinking }}</textarea>
+
       <!-- 内容必須バリデーション表示-->
       @if($errors->has('thinking'))
       @foreach($errors->get('thinking') as $message)
