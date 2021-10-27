@@ -61,7 +61,11 @@ class SevenColumnsController extends Controller
         DB::transaction(function () use ($request) {
 
             $seven_column = new SevenColumn();
-            // 送られてきたフォームの内容は　$request　に入っている。
+
+            $seven_column->user_id = \Auth::id();
+            $seven_column->threecol_id = $request->threecol_id;
+            $seven_column->event_id = $request->event_id;
+
             $seven_column->title = $request->title;
             $seven_column->content = $request->content;
 
@@ -72,13 +76,6 @@ class SevenColumnsController extends Controller
             $seven_column->opposite_fact = $request->opposite_fact;
             $seven_column->new_thinking = $request->new_thinking;
             $seven_column->new_emotion = $request->new_emotion;
-
-            // ログインしているユーザーIDを渡す
-            $seven_column->user_id = \Auth::id();
-
-            // どうするか
-            $seven_column->threecol_id = $request->threecol_id;
-            $seven_column->event_id = $request->event_id;
 
             $seven_column->save();
         });
@@ -94,16 +91,16 @@ class SevenColumnsController extends Controller
         $three_column = ThreeColumn::find($threecol_id);
         
 
+        $habit_names = [];
         // 考え方の癖 取得
         foreach ($three_column->habit as $habit) {
             $habit_names[] = $habit->habit_name;
         }
-        
-        // 癖id がない時は「空」を格納
+/*        
         if ( !isset($habit_names) ) {
             $habit_names = [];
         }
-
+*/
         //dd($habit_names);
 
         return view('seven_columns.show', [
