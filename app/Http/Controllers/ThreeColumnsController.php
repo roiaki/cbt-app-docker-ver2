@@ -22,7 +22,6 @@ class ThreeColumnsController extends Controller
                                   ->paginate(5);
 
             $data = [
-                'user' => $user,
                 'three_columns' => $three_columns,
             ];
         }

@@ -19,7 +19,6 @@ class EventsController extends Controller
             $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
 
             $data = [
-                'user' => $user,
                 'events' => $events,
             ];
         }
