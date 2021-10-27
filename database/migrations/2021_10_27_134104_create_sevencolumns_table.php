@@ -13,7 +13,7 @@ class CreateSevencolumnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('sevencolumns', function (Blueprint $table) {
             $table->increments('id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->integer('event_id')->unsigned()->index();

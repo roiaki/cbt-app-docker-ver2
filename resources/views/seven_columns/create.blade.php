@@ -150,6 +150,10 @@
   
       {!! Form::submit('3コラムから7コラムへ', ['class' => 'btn btn-primary btn-lg']) !!}
 
+      <div class="buttons">
+        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
+      </div>
+
     </form>
   </div>
 </div>
