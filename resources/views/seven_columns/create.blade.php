@@ -18,7 +18,13 @@
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
-        <input type="text" class="form-control" readonly id="title" name="title" value="{{ $threecolumn->title }}">
+        <input type="text" 
+               class="form-control" 
+               id="title" 
+               name="title" 
+               value="{{ $threecolumn->title }}"
+               readonly
+        >
 
         <!-- タイトル必須バリデーション表示-->
         @if($errors->has('title'))
@@ -32,7 +38,12 @@
 
       <div class="form-group">
         <label for="content">①-2　出来事 の 内容</label>
-        <textarea class="form-control" id="content" name="content" cols="90" readonly rows="5">{{ $threecolumn->content }}</textarea>
+        <textarea class="form-control" 
+                  id="content" 
+                  name="content" 
+                  cols="90" 
+                  rows="5"
+                  readonly>{{ $threecolumn->content }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('content'))
@@ -47,7 +58,13 @@
 
       <div class="form-group">
         <label for="emotion_name">②-1　感情名</label>
-        <input type="text" readonly class="form-control" id="emotion_name" name="emotion_name" value="{{ $threecolumn->emotion_name }}">
+        <input type="text"
+               class="form-control" 
+               id="emotion_name" 
+               name="emotion_name"
+               readonly  
+               value="{{ $threecolumn->emotion_name }}"
+        >
 
         <!-- 感情名必須バリデーション表示-->
         @if($errors->has('emotion_name'))
@@ -61,7 +78,13 @@
 
       <div class="form-group">
         <label for="emotion_strength">②-2　感情の強さ</label>
-        <input type="number" readonly class="form-control" id="emotion_strength" name="emotion_strength" value="{{ $threecolumn->emotion_strength }}">
+        <input type="number"
+               class="form-control"
+               id="emotion_strength"
+               name="emotion_strength"
+               readonly
+               value="{{ $threecolumn->emotion_strength }}"
+        >
 
         <!-- 感情名必須バリデーション表示-->
         @if($errors->has('emotion_strength'))
@@ -76,7 +99,11 @@
       <div class="form-group">
         <label for="thinking">③　その時考えたこと</label>
         <p>ポイント：言い訳せずに簡単な言葉で表現する</p>
-        <textarea class="form-control" id="thinking" name="thinking" cols="90" rows="5" readonly>{{ $threecolumn->thinking }}</textarea>
+        <textarea class="form-control" 
+                  id="thinking" 
+                  name="thinking" 
+                  cols="90" rows="5" 
+                  readonly>{{ $threecolumn->thinking }}</textarea>
 
         <!-- 感情名必須バリデーション表示-->
         @if($errors->has('thinking'))
@@ -91,7 +118,11 @@
       <div class="form-group">
         <label for="basis_thinking">④　自分の考えの根拠</label>
         <p>ポイント：客観的であるとベスト。<br>人から尋ねられた時に「だって」と説明するように</p>
-        <textarea class="form-control" id="basis_thinking" name="basis_thinking" cols="90" rows="5"></textarea>
+        <textarea class="form-control" 
+                  id="basis_thinking" 
+                  name="basis_thinking" 
+                  cols="90" 
+                  rows="5"></textarea>
 
         @if($errors->has('basis_thinking'))
         @foreach($errors->get('basis_thinking') as $message)
@@ -105,7 +136,11 @@
       <div class="form-group">
         <label for="opposite_fact">⑤　逆の事実</label>
         <p>ポイント：「でも」そう考えなくても良いのでは？</p>
-        <textarea class="form-control" id="opposite_fact" name="opposite_fact" cols="90" rows="5"></textarea>
+        <textarea class="form-control" 
+                  id="opposite_fact" 
+                  name="opposite_fact" 
+                  cols="90" 
+                  rows="5"></textarea>
 
         @if($errors->has('opposite_fact'))
         @foreach($errors->get('opposite_fact') as $message)
@@ -119,7 +154,11 @@
       <div class="form-group">
         <label for="new_thinking">⑥　新しい考え方</label>
         <p>ポイント:④と考えられるけど、⑤とも考えられる</p>
-        <textarea class="form-control" id="new_thinking" name="new_thinking" cols="90" rows="5"></textarea>
+        <textarea class="form-control" 
+                  id="new_thinking" 
+                  name="new_thinking" 
+                  cols="90" 
+                  rows="5"></textarea>
 
         @if($errors->has('new_thinking'))
         @foreach($errors->get('new_thinking') as $message)
@@ -133,7 +172,11 @@
       <div class="form-group">
         <label for="new_emotion">⑦　新しい感情</label>
         <p>ポイント：「⑥新しい考え」のように考えると、どんな感情と強さに変わった？</p>
-        <textarea class="form-control" id="new_emotion" name="new_emotion" cols="90" rows="5"></textarea>
+        <textarea class="form-control" 
+                  id="new_emotion" 
+                  name="new_emotion" 
+                  cols="90" 
+                  rows="5"></textarea>
 
         @if($errors->has('new_emotion'))
         @foreach($errors->get('new_emotion') as $message)
