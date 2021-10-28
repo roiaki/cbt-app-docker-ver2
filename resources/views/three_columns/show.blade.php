@@ -2,8 +2,6 @@
 
 @section('content')
 
-<!-- ここにページ毎のコンテンツを書く -->
-
 <h3>３コラム詳細ページ　id = {{ $three_column->id }}</h3>
 
 <table class="table table-bordered">
@@ -40,7 +38,6 @@
   </tr>
 
 </table>
-
 
 <table class="table table-bordered">
 

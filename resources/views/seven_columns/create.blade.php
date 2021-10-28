@@ -144,13 +144,14 @@
         @endif
       </div>
   
-      {!! Form::submit('3コラムから7コラムへ', ['class' => 'btn btn-primary btn-lg']) !!}
+      <input type="submit" class="btn btn-primary btn-lg" value="3コラムから7コラムへ">
 
       <div class="buttons">
         <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
       </div>
 
     </form>
+    
   </div>
 </div>
 @endsection
