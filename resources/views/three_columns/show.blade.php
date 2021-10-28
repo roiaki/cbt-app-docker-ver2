@@ -5,7 +5,6 @@
 <!-- ここにページ毎のコンテンツを書く -->
 
 <h3>３コラム詳細ページ　id = {{ $three_column->id }}</h3>
-<p>・ユーザーID:{{ $user->id }}　・イベントID：{{ $event->id }}　・3コラムID：{{ $three_column->id}}</p>
 
 <table class="table table-bordered">
   <tr>
@@ -139,14 +138,14 @@
 </div>
 
 <div class="buttons">
-  <form action="{{ route('three_columns.edit', ['param' => $three_column->id] ) }}" , method="get">
+  <form action="{{ route('three_columns.edit', ['param' => $three_column->id] ) }}" method="get">
     @CSRF
     <button type="submit" class="btn btn-secondary btn-lg">編集</button>
   </form>
 </div>
 
 <div class="buttons">
-  <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" , method="post">
+  <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" method="post">
     @CSRF
     <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
   </form>

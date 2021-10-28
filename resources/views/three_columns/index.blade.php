@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <h3>3コラム一覧</h3>
 @if (count($three_columns) > 0)
 <table class="table table-striped table-bordered">

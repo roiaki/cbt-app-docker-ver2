@@ -9,14 +9,11 @@
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
     <form action="{{ route('seven_columns.store') }}" method="POST">
       @csrf
-      <?php
-      //var_dump($threecolumn);
-      //exit;
-      ?>
+
       <input type="hidden" name="threecol_id" value="{{ $threecolumn->id }}">
       <input type="hidden" name="event_id" value="{{ $threecolumn->event_id }}">
+      
       <div class="form-group">
-        <!-- タイトル -->
         <label for="title">①-1　出来事 の タイトル</label>
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
@@ -34,7 +31,6 @@
       </div>
 
       <div class="form-group">
-        <!-- 内容 -->
         <label for="content">①-2　出来事 の 内容</label>
         <textarea class="form-control" id="content" name="content" cols="90" readonly rows="5">{{ $threecolumn->content }}</textarea>
 

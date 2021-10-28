@@ -39,7 +39,7 @@
 </div>
 
 <div class="buttons">
-  <form action="{{ route('events.edit', ['event' => $event->id] ) }}" , method="get">
+  <form action="{{ route('events.edit', ['event' => $event->id] ) }}" method="get">
     @CSRF
     <button type="submit" class="btn btn-secondary btn-lg">編集</button>
   </form>
