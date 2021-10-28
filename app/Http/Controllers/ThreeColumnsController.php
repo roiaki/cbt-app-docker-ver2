@@ -53,6 +53,7 @@ class ThreeColumnsController extends Controller
                 'emotion_name' => 'required',
                 'emotion_strength' => 'required',
                 'thinking' => 'required',
+                'habit' => 'required'
             ]
         );
 
@@ -132,6 +133,7 @@ class ThreeColumnsController extends Controller
         $event = Event::find($event_id);
 
         $habit_id = [];
+        
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
@@ -200,7 +202,8 @@ class ThreeColumnsController extends Controller
             'content' => 'required|max:255',
             'emotion_name' => 'required',
             'emotion_strength' => 'required',
-            'thinking' => 'required'
+            'thinking' => 'required',
+            'habit' => 'required'
         ]);
 
         // クロージャでトランザクション処理開始

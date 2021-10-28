@@ -136,6 +136,15 @@
           感情による決めつけ
         </label>
       </div>
+
+      <!-- バリデーションエラー表示-->
+      @if($errors->has('habit'))
+      @foreach($errors->get('habit') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
     </div>
 
 

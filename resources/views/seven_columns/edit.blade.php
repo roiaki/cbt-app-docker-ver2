@@ -54,6 +54,15 @@
              name="emotion_name" 
              readonly 
              value="{{ $seven_column->emotion_name }}">
+
+      <!-- 内容必須バリデーション表示-->
+      @if($errors->has('emotion_name'))
+      @foreach($errors->get('emotion_name') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
     </div>
     
     <div class="form-group">
@@ -63,8 +72,17 @@
              name="emotion_strength" 
              readonly 
              value="{{ $seven_column->emotion_strength }}">
-    </div>
 
+      <!-- 内容必須バリデーション表示-->
+      @if($errors->has('emotion_strength'))
+      @foreach($errors->get('emotion_strength') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
+    </div>
+     
 
     <div class="form-group">
       <label for="thinking">③ その時考えたこと</label><br>
@@ -87,21 +105,74 @@
 
     <div class="form-group">
       <label for="basis_thinking">④  考えの根拠</label>
-      <textarea class="form-control" id="basis_thinking" name="basis_thinking" cols="50" rows="3">{{ $seven_column->basis_thinking }}</textarea>
+      <textarea class="form-control" 
+                id="basis_thinking" 
+                name="basis_thinking" 
+                cols="50" 
+                rows="3">{{ $seven_column->basis_thinking }}</textarea>
+
+      <!-- 内容必須バリデーション表示-->
+      @if($errors->has('basis_thinking'))
+      @foreach($errors->get('basis_thinking') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
     </div>
 
     <div class="form-group">
       <label for="opposite_fact">⑤  逆の事実</label>
-      <textarea class="form-control" id="opposite_fact" name="opposite_fact" cols="50" rows="3">{{ $seven_column->opposite_fact }}</textarea>
+      <textarea class="form-control" 
+                id="opposite_fact" 
+                name="opposite_fact" 
+                cols="50" 
+                rows="3">{{ $seven_column->opposite_fact }}</textarea>
+
+      <!-- 内容必須バリデーション表示-->
+      @if($errors->has('opposite_fact'))
+      @foreach($errors->get('opposite_fact') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
     </div>
+
     <div class="form-group">
       <label for="new_thinking">⑥  新しい考え</label>
-      <textarea class="form-control" id="new_thinking" name="new_thinking" cols="50" rows="3">{{ $seven_column->new_thinking }}</textarea>
+      <textarea class="form-control" 
+                id="new_thinking" 
+                name="new_thinking" 
+                cols="50" 
+                rows="3">{{ $seven_column->new_thinking }}</textarea>
+
+      <!-- 内容必須バリデーション表示-->
+      @if($errors->has('new_thinking'))
+      @foreach($errors->get('new_thinking') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
     </div>
 
     <div class="form-group">
       <label for="new_emotion">⑦  新しい感情</label>
-      <textarea class="form-control" id="new_emotion" name="new_emotion" cols="50" rows="3">{{ $seven_column->new_emotion }}</textarea>
+      <textarea class="form-control" 
+                id="new_emotion" 
+                name="new_emotion" 
+                cols="50" 
+                rows="3">{{ $seven_column->new_emotion }}</textarea>
+
+      <!-- 内容必須バリデーション表示-->
+      @if($errors->has('new_emotion'))
+      @foreach($errors->get('new_emotion') as $message)
+      <ul>
+        <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+      </ul>
+      @endforeach
+      @endif
     </div>
 
     <div class="buttons-first">
@@ -112,6 +183,7 @@
       <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
     </div>
     {!! Form::close() !!}
+    
   </div>
 </div>
 

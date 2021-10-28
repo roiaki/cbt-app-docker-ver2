@@ -128,7 +128,11 @@ class SevenColumnsController extends Controller
                 'content' => 'required|max:255',
                 'emotion_name' => 'required',
                 'emotion_strength' => 'required',
-                'thinking' => 'required'
+                'thinking' => 'required',
+                'basis_thinking' => 'required',
+                'opposite_fact' => 'required',
+                'new_thinking' => 'required',
+                'new_emotion' => 'required'
             ]
         );
 
