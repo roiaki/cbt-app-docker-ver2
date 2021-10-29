@@ -114,6 +114,11 @@ class EventsController extends Controller
         return view('/users/info');
     }
 
+    public function testvue()
+    {
+        return view('events.testvue');
+    }
+
     // ロールバック時のエラー制御メソッド
     public function catchError($param) {
         try {

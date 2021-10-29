@@ -102,7 +102,8 @@
         <textarea class="form-control" 
                   id="thinking" 
                   name="thinking" 
-                  cols="90" rows="5" 
+                  cols="90" 
+                  rows="5" 
                   readonly>{{ $threecolumn->thinking }}</textarea>
 
         <!-- 感情名必須バリデーション表示-->

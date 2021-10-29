@@ -66,6 +66,9 @@ Route::get('users/delete_confirm', 'App\Http\Controllers\UserController@delete_c
 // ユーザー退会処理 問題あり
 Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')->name('user.delete');
 
+// vue test画面
+Route::get('events.testvue', 'App\Http\Controllers\EventsController@testvue')->name('events.testvue');
+
 
 // ログイン認証付きのルーティング
 Route::group(['middleware' => ['auth']], function () {
