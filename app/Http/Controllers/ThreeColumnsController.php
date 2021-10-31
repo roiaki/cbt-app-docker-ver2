@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\ThreeColumn;
 use Illuminate\Http\Request;
-
-use App\Models\ThreeColumn;    // 追加
-use App\Models\Event;          // 追加
-use DB;                        // 追加
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ThreeColumnsController extends Controller
@@ -15,8 +15,8 @@ class ThreeColumnsController extends Controller
     public function index()
     {
         $data = [];
-        if (\Auth::check()) {
-            $user = \Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
             $three_columns = $user->three_columns()
                                   ->orderBy('updated_at', 'desc')
                                   ->paginate(5);
@@ -32,7 +32,7 @@ class ThreeColumnsController extends Controller
     // getでアクセスされた場合の「新規登録画面表示処理」
     public function create($id)
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         $user_id = $user->id;
 
         $event = Event::where('id', $id)->where('user_id', $user_id)->first();
@@ -61,8 +61,8 @@ class ThreeColumnsController extends Controller
 
         // クロージャでトランザクション処理
         DB::transaction(function () use ($three_column, $request) {
-            
-            $three_column->user_id = \Auth::id();
+
+            $three_column->user_id = Auth::id();
             $three_column->event_id = $request->eventid;
 
             $three_column->title = $request->title;
@@ -133,13 +133,13 @@ class ThreeColumnsController extends Controller
         $event = Event::find($event_id);
 
         $habit_id = [];
-        
+
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
 
-        $user = \Auth::user();
+        $user = Auth::user();
 /*
         // idがない時は「空」を格納
         if ( !isset($habit_id) ) {

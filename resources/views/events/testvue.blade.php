@@ -6,7 +6,7 @@
 
 <form action="{{ route('events.create') }}" class="form-group" method="get">
   <div id="form_area" style="display:block">
-    
+   
         <input type="text" name="text_0" id="text_0" placeholder="text_0">
         <button id="0" onclick="deleteBtn(this)">削除</button>
     

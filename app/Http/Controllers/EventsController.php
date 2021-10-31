@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Event;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Exception;
 
 class EventsController extends Controller
@@ -14,7 +15,7 @@ class EventsController extends Controller
     public function index()
     {
         $data = [];
-        if (\Auth::check()) {
+        if (Auth::check()) {
             $user = \Auth::user();
             $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
 

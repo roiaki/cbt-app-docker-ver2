@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\ThreeColumn;    // 追加
 use App\Models\SevenColumn;
-use DB;                        // 追加
+use App\Models\ThreeColumn;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class SevenColumnsController extends Controller
@@ -14,8 +15,8 @@ class SevenColumnsController extends Controller
     public function index()
     {
         $data = [];
-        if (\Auth::check()) {
-            $user = \Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
             $sevencolumns = $user->seven_columns()->orderBy('updated_at', 'desc')->paginate(5);
 
             $data = [
@@ -62,7 +63,7 @@ class SevenColumnsController extends Controller
 
             $seven_column = new SevenColumn();
 
-            $seven_column->user_id = \Auth::id();
+            $seven_column->user_id = Auth::id();
             $seven_column->threecol_id = $request->threecol_id;
             $seven_column->event_id = $request->event_id;
 
@@ -89,14 +90,14 @@ class SevenColumnsController extends Controller
         $seven_column = SevenColumn::find($id);
         $threecol_id = $seven_column->threecol_id;
         $three_column = ThreeColumn::find($threecol_id);
-        
+
 
         $habit_names = [];
         // 考え方の癖 取得
         foreach ($three_column->habit as $habit) {
             $habit_names[] = $habit->habit_name;
         }
-/*        
+/*
         if ( !isset($habit_names) ) {
             $habit_names = [];
         }
@@ -150,14 +151,14 @@ class SevenColumnsController extends Controller
             $seven_column->new_thinking = $request->new_thinking;
             $seven_column->new_emotion = $request->new_emotion;
             $seven_column->updated_at = date('Y-m-d G:i:s');
-            
+
             $seven_column->save();
         });
         // end transaction
 
         // report($e);
         // session()->flash('flash_message', 'kousinn が失敗しました。');
-    
+
         return redirect('seven_columns');
     }
 
