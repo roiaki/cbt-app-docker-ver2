@@ -27,8 +27,9 @@ class EventsController extends Controller
     }
 
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create()
+    public function create(Request $request)
     {
+        //dd($request);
         return view('events.create');
     }
 
@@ -116,6 +117,13 @@ class EventsController extends Controller
 
     public function testvue()
     {
+        return view('events.testvue');
+    }
+
+    public function vuepost(Request $request)
+    {
+        dd($request);
+        var_dump("test");
         return view('events.testvue');
     }
 
