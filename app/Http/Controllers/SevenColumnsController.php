@@ -30,7 +30,7 @@ class SevenColumnsController extends Controller
     // 7コラム新規作成画面へ遷移
     public function create($id)
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         $user_id = $user->id;
 
         $threecolumn = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();

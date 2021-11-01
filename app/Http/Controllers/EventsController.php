@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class EventsController extends Controller
     {
         $data = [];
         if (Auth::check()) {
-            $user = \Auth::user();
+            $user = Auth::user();
             $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
 
             $data = [
@@ -44,24 +45,24 @@ class EventsController extends Controller
                 'content' => 'required|max:255',
             ]
         );
-        
+
         // クロージャでトランザクション処理
         $event = DB::transaction(function () use($request) {
-            
+
             $event = new Event;
             $event->title = $request->title;
             $event->content = $request->content;
-            $event->user_id = \Auth::id();
-    
+            $event->user_id = Auth::id();
+
             $event->save();
 
             return $event;
         });
-              
+
         return view('events.show', ['event' => $event]);
     }
 
-    
+
     // 詳細ページ表示処理
     public function show($id)
     {
@@ -91,9 +92,9 @@ class EventsController extends Controller
         // クロージャでトランザクション
         DB::transaction(function () use($event, $request) {
             $event->title = $request->title;
-            $event->content = $request->content;           
+            $event->content = $request->content;
             $event->updated_at = date("Y-m-d G:i:s");
-    
+
             $event->save();
         });
 
@@ -107,7 +108,7 @@ class EventsController extends Controller
         if ( $event ) {
             $event->delete();
         }
-        
+
         return redirect('events');
     }
 
