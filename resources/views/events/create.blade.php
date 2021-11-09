@@ -9,11 +9,8 @@
     <form action="{{ route('events.store') }}" method="post">
       @csrf
       <div class="form-group">
-        <!-- タイトル -->
+       
         <label for="title">出来事 の タイトル</label>
-        <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
-            name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
-        -->
         <input type="text" class="form-control" id="title" name="title">
 
         <!-- バリデーションエラー表示-->

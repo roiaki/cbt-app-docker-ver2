@@ -31,7 +31,7 @@ class EventsController extends Controller
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create(Request $request)
     {
-        //dd($request);
+        dd($request);
         return view('events.create');
     }
 

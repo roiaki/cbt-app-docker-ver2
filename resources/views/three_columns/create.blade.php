@@ -61,6 +61,7 @@
                id="emotion_name"
                name="emotion_name"
         >
+        <div class="col-xs-2" id="form_area01"></div>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('emotion_name'))
@@ -79,6 +80,7 @@
                id="emotion_strength"
                name="emotion_strength"
         >
+        <div id="form_area02"></div>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('emotion_strength'))
@@ -88,6 +90,14 @@
         </ul>
         @endforeach
         @endif
+      </div>
+
+      <div class="buttons-first">
+        <input type="button" class="btn btn-primary" value="感情追加" onclick="addForm()">
+      </div>
+
+      <div class="buttons-first">
+        <input type="button" class="btn btn-danger" value="感情削除" onclick="deleteForm()">
       </div>
 
       <div class="form-group">
@@ -178,4 +188,6 @@
     
   </div>
 </div>
+
+</script>
 @endsection

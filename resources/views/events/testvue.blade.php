@@ -3,60 +3,73 @@
 @section('content')
 
 <h3>VueTest</h3>
+<div class="row">
 
-<form action="{{ route('events.create') }}" class="form-group" method="get">
-  <div id="form_area" style="display:block">
-   
-        <input type="text" name="text_0" id="text_0" placeholder="text_0">
-        <button id="0" onclick="deleteBtn(this)">削除</button>
-    
-  </div>
-  <input type="button" value="フォーム追加" onclick="addForm()">
+  <form action="{{ route('events.create') }}" class="form-group" method="get">
+    <div id="form_area" class="col-xs-2" style="flex-direction: column;">
+      <div class="form-group" style="flex-direction: column;">
+        <input type="text" name="text_0" id="text_0" class="form-control" style="margin:5px" size="10" placeholder="感情名_0">
+        <input type="number" name="number_0" id="number_0" class="form-control" style="margin:5px" size="10" placeholder="感情の強さ_0">
+
+
+
+        <div class="col-xs-2" id="form_area01">
+        </div>
+
+        <div class="col-xs-2" id="form_area02">
+        </div>
+
+        <div class="col-xs-2" id="form_area03"></div>
+      </div>
+      <input type="button" value="フォーム追加" onclick="addForm()">
+      <input type="button" value="フォーム削除" onclick="deleteForm()">
+
+      <input type="submit" value="送信">
+    </div>
+</div>
 </form>
+</div>
 
 
 <script>
   var i = 1;
 
+  // フォーム追加
   function addForm() {
 
-    // input要素を作成
+    // input text要素を作成
     var input_data = document.createElement('input');
     input_data.type = 'text';
     input_data.name = 'text_' + i;
+    input_data.class = 'form-control';
+    input_data.size = '20';
+    input_data.style = "margin:5px";
     input_data.id = 'inputform_' + i;
-    input_data.placeholder = 'text_' + i;
-    var parent = document.getElementById('form_area');
-    parent.appendChild(input_data);
+    input_data.placeholder = '感情名_' + i;
+    var a = document.getElementById('form_area01');
+    a.appendChild(input_data);
 
-    var button_data = document.createElement('button');
-    button_data.id = i;
-    button_data.onclick = function() {
-      deleteBtn(this);
-    }
-    button_data.innerHTML = '削除';
-    var input_area = document.getElementById(input_data.id);
-    parent.appendChild(button_data);
-
-    // <li>要素を作成し<input>要素をアペンドする
-    //var newLi = document.createElement("li");
-    //newLi.appendChild(input_data);
-    //newLi.appendChild(button_data);
-
-    // <li>要素を<ul>要素にアペンドする
-    //var list = document.getElementById('list');
-    //list.appendChild(newLi);
+    // input number 要素を作成
+    var input_data = document.createElement('input');
+    input_data.type = 'number';
+    input_data.name = 'number_' + i;
+    input_data.class = 'form-control';
+    input_data.size = '20';
+    input_data.style = "margin:5px";
+    input_data.id = 'inputform_' + i;
+    input_data.placeholder = '強さ_' + i;
+    var b = document.getElementById('form_area02');
+    b.appendChild(input_data);
 
     i++;
   }
 
-  function deleteBtn(target) {
-    var target_id = target.id;
-    var parent = document.getElementById('form_area');
-    var ipt_id = document.getElementById('inputform_' + target_id);
-    var tgt_id = document.getElementById(target_id);
-    parent.removeChild(ipt_id);
-    parent.removeChild(tgt_id);
+  // フォーム削除
+  function deleteForm() {
+    const element01 = document.getElementById('form_area01');
+    const element02 = document.getElementById('form_area02');
+    element01.innerHTML = '';
+    element02.innerHTML = '';
   }
 </script>
 @endsection

@@ -21,7 +21,6 @@
     <td>{{ $event->content }}</td>
   </tr>
 
-
 </table>
 <!--
 <a href="{{ route('three_columns.create', $event->id) }}" 
