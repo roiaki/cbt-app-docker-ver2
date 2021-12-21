@@ -5,7 +5,7 @@
 <h3>７コラム新規作成</h3>
 
 <div class="row">
-  <div class="col-11">
+  <div class="col-6">
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
     <form action="{{ route('seven_columns.store') }}" method="POST">
       @csrf
@@ -37,7 +37,7 @@
       </div>
 
       <div class="form-group">
-        <label for="content">①-2　出来事 の 内容</label>
+        <label for="content">①-2  出来事 の 内容</label>
         <textarea class="form-control" 
                   id="content" 
                   name="content" 
@@ -171,7 +171,7 @@
       </div>
 
       <div class="form-group">
-        <label for="new_emotion">⑦　新しい感情</label>
+        <label for="new_emotion">⑦  新しい感情</label>
         <p>ポイント：「⑥新しい考え」のように考えると、どんな感情と強さに変わった？</p>
         <textarea class="form-control" 
                   id="new_emotion" 

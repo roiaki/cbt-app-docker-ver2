@@ -50,13 +50,14 @@ class ThreeColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
+              //  'emotion_name' => 'required',
+              //  'emotion_strength_0' => 'required',
                 'thinking' => 'required',
                 'habit' => 'required'
             ]
         );
 
+        //dd($request);
         $three_column = new ThreeColumn;
 
         // クロージャでトランザクション処理

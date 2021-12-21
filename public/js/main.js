@@ -7,40 +7,41 @@ function confirmDelete() {
   }
 }
 
-var i = 1;
+var count = 1;
 
 // フォーム追加
 function addForm() {
 
   // input text要素を作成
-  var input_data = document.createElement('input');
-  input_data.type = 'text';
-  input_data.name = 'text_' + i;
-  input_data.class = 'form-control';
-  input_data.size = '20';
-  input_data.style = "margin:5px";
-  input_data.id = 'inputform_' + i;
-  input_data.placeholder = '感情名_' + i;
+  var input_text = document.createElement('input');
+  input_text.type = 'text';
+  input_text.name = 'emotion_name_[]';
+  input_text.class = "form-control";
+  input_text.size = '20';
+  input_text.style = "margin:5px";
+  input_text.id = 'inputText_' + count;
+  input_text.placeholder = '感情名_' + count;
   var a = document.getElementById('form_area01');
-  a.appendChild(input_data);
+  a.appendChild(input_text);
 
   // input number 要素を作成
-  var input_data = document.createElement('input');
-  input_data.type = 'number';
-  input_data.name = 'number_' + i;
-  input_data.class = 'form-control';
-  input_data.size = '20';
-  input_data.style = "margin:5px";
-  input_data.id = 'inputform_' + i;
-  input_data.placeholder = '強さ_' + i;
+  var input_number = document.createElement('input');
+  input_number.type = 'number';
+  input_number.name = 'emotion_strength_[]';
+  input_number.class = "form-control";
+  input_number.size = '20';
+  input_number.style = "margin:5px";
+  input_number.id = 'inputNumber_' + count;
+  input_number.placeholder = '強さ_' + count;
   var b = document.getElementById('form_area02');
-  b.appendChild(input_data);
+  b.appendChild(input_number);
 
-  i++;
+  count++;
 }
 
 // フォーム削除
 function deleteForm() {
+  count = 1;
   const element01 = document.getElementById('form_area01');
   const element02 = document.getElementById('form_area02');
   element01.innerHTML = '';

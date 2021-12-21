@@ -44,7 +44,9 @@ if (5 <= $hour && $hour <= 12) {
           <div class="d-flex align-items-center">
             ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
           </div>
+<!--
           <li class="nav-item">{!! link_to_route('events.testvue', 'vue', [], ['class' => 'nav-link']) !!}</li>
+-->
           <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('events', '出来事一覧', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('three_columns', '3コラム一覧', [], ['class' => 'nav-link']) !!}</li>
