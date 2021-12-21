@@ -8,7 +8,8 @@ habit-thinking {
     user-select: none; /* テキストの選択を防ぐ */
 }
 th {
-    background-color: aqua;
+    background-color: rgba(199, 209, 202, 0.356);
+    width: 15%;
 }
 
 div.columns {
@@ -24,7 +25,37 @@ div.columns {
 }
 body {
     margin-bottom: 50px;
+    word-break: break-word;
 }
 .wrap_thinking {
     column-count: 3;
+}
+p {
+    line-height: 2.0;
+  }
+.button_wrapper{
+    text-align: right;
+}
+.button_wrappe_left {
+    text-align: left;
+}
+.page {
+    text-align: center;
+}
+.under_line {
+    text-decoration:underline;
+}
+
+.buttons-first {
+    display: inline-block;
+    margin:  20px 20px 20px 0px;
+}
+
+.buttons {
+    display: inline-block;
+    margin: 20px 20px;
+}
+
+.welcome {
+    margin-top: 70px; 
 }

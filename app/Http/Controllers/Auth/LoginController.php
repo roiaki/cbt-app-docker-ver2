@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,7 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/'; // 変更
+    // ログイン後のリダイレクト先
+    protected $redirectTo = '/events'; // 変更
 
     /**
      * Create a new controller instance.
@@ -35,6 +37,10 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // logoutアクション以外ではguestである必要がある
+        // guest とは、ログイン認証されていない閲覧者
         $this->middleware('guest')->except('logout');
     }
+
+ 
 }

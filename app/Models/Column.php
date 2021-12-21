@@ -7,5 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Column extends Model
 {
-    use HasFactory;
+    /*
+     * テーブルの主キー
+     * 
+     * @var string
+     */
+    //protected $primaryKey = 'column_id';
+
+    // ホワイトリスト　
+    protected $fillable = [
+        'title', 
+        'content', 
+        'emotion_name', 
+        'emotion_strength', 
+        'thoughts'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
