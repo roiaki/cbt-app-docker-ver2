@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>id: {{ $event->id }}　出来事　編集ページ</h3>
+<h3>id: {{ $event->id }}出来事編集ページ</h3>
 
 <div class="row">
   <div class="col-6">
