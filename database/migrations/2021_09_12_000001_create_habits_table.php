@@ -29,9 +29,8 @@ class CreateHabitsTable extends Migration
                 ['habit_name' => 'すべき思考 '],
                 ['habit_name' => '過大評価と過少評価'],
                 ['habit_name' => '感情による決めつけ'],
-            ]);
+        ]);
 
-       
     }
 
     /**
