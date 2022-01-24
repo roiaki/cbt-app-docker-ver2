@@ -87,11 +87,11 @@ Route::group(['middleware' => ['auth']], function () {
     // 3コラムに関して
     Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index')->name('three_columns');
     Route::get('three_columns/create/{id}', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
-    Route::post('three_columns', 'App\Http\controllers\ThreeColumnsController@store')->name('three_columns.store');
+    Route::post('three_columns', 'App\Http\Controllers\ThreeColumnsController@store')->name('three_columns.store');
     Route::get('three_columns/{param}', 'App\Http\Controllers\ThreeColumnsController@show')->name('three_columns.show');
-    Route::get('three_columns/{param}/edit', 'App\Http\controllers\ThreeColumnsController@edit')->name('three_columns.edit');
-    Route::post('three_columns/{param}','App\Http\controllers\ThreeColumnsController@destroy')->name('three_columns.destroy');
-    Route::put('three_columns/{param}', 'App\Http\controllers\ThreeColumnsController@update')->name('three_columns.update');
+    Route::get('three_columns/{param}/edit', 'App\Http\Controllers\ThreeColumnsController@edit')->name('three_columns.edit');
+    Route::post('three_columns/{param}','App\Http\Controllers\ThreeColumnsController@destroy')->name('three_columns.destroy');
+    Route::put('three_columns/{param}', 'App\Http\Controllers\ThreeColumnsController@update')->name('three_columns.update');
 
 
     // 7コラムに関して
@@ -101,7 +101,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('seven_columns/{param}', 'App\Http\Controllers\SevenColumnsController@show')->name('seven_columns.show');
     Route::get('seven_columns/{param}/edit', 'App\Http\Controllers\SevenColumnsController@edit')->name('seven_columns.edit');
     Route::post('seven_columns/{param}', 'App\Http\Controllers\SevenColumnsController@destroy')->name('seven_columns.destroy');
-    Route::put('seven_columns/{param}', 'App\Http\controllers\SevenColumnsController@update')->name('seven_columns.update');
+    Route::put('seven_columns/{param}', 'App\Http\Controllers\SevenColumnsController@update')->name('seven_columns.update');
 
     // 使い方説明
     Route::get('users/info', 'App\Http\Controllers\ThreeColumnsController@info')->name('users.info');
