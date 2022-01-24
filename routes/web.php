@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +18,14 @@ Route::get('/', function () {
 })->name('top');
 
 // 出来事に関して
-Route::get('events', 'App\Http\controllers\EventsController@index')->name('events');
-Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
-Route::post('events', 'App\Http\controllers\EventsController@store')->name('events.store');
-Route::get('events/{event}', 'App\Http\controllers\EventsController@show')->name('events.show');
-Route::get('events/{event}/edit', 'App\Http\controllers\EventsController@edit')->name('events.edit');
-Route::delete('events/{event}/delete}','App\Http\controllers\EventsController@destroy')->name('events.destroy');
-Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->name('events.update');
+
+Route::get('events', 'App\Http\Controllers\EventsController@index')->name('events');
+Route::get('events/create', 'App\Http\Controllers\EventsController@create')->name('events.create');
+Route::post('events', 'App\Http\Controllers\EventsController@store')->name('events.store');
+Route::get('events/{event}', 'App\Http\Controllers\EventsController@show')->name('events.show');
+Route::get('events/{event}/edit', 'App\Http\Controllers\EventsController@edit')->name('events.edit');
+Route::delete('events/{event}/delete}','App\Http\Controllers\EventsController@destroy')->name('events.destroy');
+Route::put('events/{event}', 'App\Http\Controllers\EventsController@update')->name('events.update');
 
 
 // 3コラムに関して
@@ -74,13 +75,13 @@ Route::post('events.testvue', 'App\Http\Controllers\EventsController@vuepost')->
 Route::group(['middleware' => ['auth']], function () {
     
     // 出来事に関して
-    Route::get('events', 'App\Http\controllers\EventsController@index')->name('events');
-    Route::get('events/create', 'App\Http\controllers\EventsController@create')->name('events.create');
-    Route::post('events', 'App\Http\controllers\EventsController@store')->name('events.store');
-    Route::get('events/{event}', 'App\Http\controllers\EventsController@show')->name('events.show');
-    Route::get('events/{event}/edit', 'App\Http\controllers\EventsController@edit')->name('events.edit');
-    Route::delete('events/{event}/delete}','App\Http\controllers\EventsController@destroy')->name('events.destroy');
-    Route::put('events/{event}', 'App\Http\controllers\EventsController@update')->name('events.update');
+    Route::get('events', 'App\Http\Controllers\EventsController@index')->name('events');
+    Route::get('events/create', 'App\Http\Controllers\EventsController@create')->name('events.create');
+    Route::post('events', 'App\Http\Controllers\EventsController@store')->name('events.store');
+    Route::get('events/{event}', 'App\Http\Controllers\EventsController@show')->name('events.show');
+    Route::get('events/{event}/edit', 'App\Http\Controllers\EventsController@edit')->name('events.edit');
+    Route::delete('events/{event}/delete}','App\Http\Controllers\EventsController@destroy')->name('events.destroy');
+    Route::put('events/{event}', 'App\Http\Controllers\EventsController@update')->name('events.update');
 
 
     // 3コラムに関して
