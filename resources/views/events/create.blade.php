@@ -5,7 +5,7 @@
 <h3>出来事　新規作成</h3>
 
 <div class="row">
-  <div class="col-5">
+  <div class="col-sm-7">
     <form action="{{ route('events.store') }}" method="post">
       @csrf
       <div class="form-group">

@@ -5,7 +5,7 @@
 <h3>id: {{ $event->id }}出来事編集ページ</h3>
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-sm-7">
 
     <form action="{{ route('events.update', ['event' => $event->id] ) }}" method="POST">
       @csrf
