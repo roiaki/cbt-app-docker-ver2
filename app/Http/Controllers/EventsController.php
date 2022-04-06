@@ -29,7 +29,7 @@ class EventsController extends Controller
     }
 
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
-    public function create(Request $request)
+    public function create()
     {
         return view('events.create');
     }
