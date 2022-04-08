@@ -11,7 +11,7 @@
       <div class="form-group">
        
         <label for="title">出来事 の タイトル</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}">
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('title'))
@@ -26,7 +26,7 @@
       <div class="form-group">
         <!-- 内容 -->
         <label for="content">出来事 の 内容</label>
-        <textarea class="form-control" id="content" name="content" cols="90" rows="7"></textarea>
+        <textarea class="form-control" id="content" name="content" cols="90" rows="7">{{ old('content') }}</textarea>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('content'))
