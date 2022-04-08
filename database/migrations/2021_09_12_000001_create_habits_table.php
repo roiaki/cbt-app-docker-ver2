@@ -31,7 +31,6 @@ class CreateHabitsTable extends Migration
                 ['habit_name' => '感情による決めつけ'],
         ]);
 
-       
     }
 
     /**
