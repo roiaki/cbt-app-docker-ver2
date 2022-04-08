@@ -2,111 +2,107 @@
 
 @section('content')
 
-<h3>３コラム新規作成</h3>
 
-<div class="row">
+
+<div class="row justify-content-center"> 
   <div class="col-sm-7">
-    <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-    <form action="{{ route('three_columns.store') }}" method="POST">
-      @csrf
-      <input type="hidden" name="eventid" value="{{ $event->id }}">
+    <h3 class="title_head">３コラム新規作成</h3>
+      <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
+      <form action="{{ route('three_columns.store') }}" method="POST">
+        @csrf
+        <input type="hidden" name="eventid" value="{{ $event->id }}">
 
-      <div class="form-group">
+        <div class="form-group">
 
-        <label for="title">1-1 出来事 の タイトル</label>
-        <input type="text"
-               class="form-control"
-               id="title"
-               name="title"
-               value="{{ $event->title }}"
-               readonly
-        >
+          <label for="title">1-1 出来事 の タイトル</label>
+          <input type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                value="{{ $event->title }}"
+                readonly
+          >
 
-        <!-- バリデーションエラー表示-->
-        @if($errors->has('title'))
-        @foreach($errors->get('title') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
+          <!-- バリデーションエラー表示-->
+          @if($errors->has('title'))
+          @foreach($errors->get('title') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
+          @endif
+        </div>
 
-      <div class="form-group">
-        <!-- 内容 -->
-        <label for="content">1-2 出来事 の 内容</label>
-        <textarea class="form-control" 
-                  id="content" 
-                  name="content" 
-                  cols="90" 
-                  rows="5" 
-                  readonly
-        >{{ $event->content }}</textarea>
+        <div class="form-group">
+          <!-- 内容 -->
+          <label for="content">1-2 出来事 の 内容</label>
+          <textarea class="form-control" 
+                    id="content" 
+                    name="content" 
+                    cols="90" 
+                    rows="5" 
+                    readonly
+          >{{ $event->content }}</textarea>
 
-        <!-- バリデーションエラー表示-->
-        @if($errors->has('content'))
-        @foreach($errors->get('content') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
+          <!-- バリデーションエラー表示-->
+          @if($errors->has('content'))
+          @foreach($errors->get('content') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
+          @endif
+        </div>
 
       <div class="row">
-      <div class="form-group col">
-        <label for="emotion_name">2-1 感情名</label>
-        <input type="text"
-               class="form-control"
-               id="emotion_name"
-               name="emotion_name"
-        >
-        <div id="form_area01"></div>
+        <div class="form-group col">
+          <label for="emotion_name">2-1 感情名</label>
+          <input type="text"
+                 class="form-control"
+                 id="emotion_name"
+                 name="emotion_name"
+                 value="{{ old('emotion_name') }}"
+          >
+          <div id="form_area01"></div>
 
-        <!-- バリデーションエラー表示-->
-        @if($errors->has('emotion_name_0'))
-        @foreach($errors->get('emotion_name') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
+          <!-- バリデーションエラー表示-->
+          @if($errors->has('emotion_name'))
+          @foreach($errors->get('emotion_name') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
+          @endif
+        </div>
+
+        <div class="form-group col">
+          <label for="emotion_strength">2-2 強さ</label>
+          <input type="number"
+                 class="form-control"
+                 id="emotion_strength"
+                 name="emotion_strength"
+                 value="{{ old('emotion_strength') }}"
+          >
+
+          <!-- バリデーションエラー表示-->
+          @if($errors->has('emotion_strength'))
+          @foreach($errors->get('emotion_strength') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
+          @endif
+        </div>
       </div>
 
-      <div class="form-group col">
-        <label for="emotion_strength">2-2 強さ</label>
-        <input type="number"
-               class="form-control"
-               id="emotion_strength"
-               name="emotion_strength"
-        <div id="form_area02"></div>
-        
-
-        <!-- バリデーションエラー表示-->
-        @if($errors->has('emotion_strength_0'))
-        @foreach($errors->get('emotion_strength') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
-<!--
-      <div class="buttons-first">
-        <input type="button" class="btn btn-primary" value="追加" onclick="addForm()">
-      </div>
-
-      <div class="buttons-first">
-        <input type="button" class="btn btn-danger" value="削除" onclick="deleteForm()">
-      </div>
--->
       <div class="form-group">
         <label for="thinking">3-1 その時考えたこと</label><br>
+        <p>・感情に一番影響を与えている考えを選ぶ</p>
         <textarea class="form-control" 
                   id="thinking" 
                   name="thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('thinking') }}</textarea>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('thinking'))
@@ -120,8 +116,9 @@
 
       <label>3-2 考え方の癖</label>
       <div class="form-group">
+      
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[0]" id="1">
+          <input class="form-check-input" type="checkbox" name="habit[0]" id="1" value="1">
           <label class="form-check-label" for="1">
             一般化のし過ぎ
           </label> 
@@ -193,9 +190,8 @@
       </div>
 
     </form>
-    
+  
   </div>
 </div>
 
-</script>
 @endsection
