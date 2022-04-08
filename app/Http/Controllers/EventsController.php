@@ -24,7 +24,6 @@ class EventsController extends Controller
                 'events' => $events,
             ];
         }
-
         return view('events.index', $data);
     }
 
@@ -47,7 +46,7 @@ class EventsController extends Controller
 
         // クロージャでトランザクション処理
         $event = DB::transaction(function () use($request) {
-
+            
             $event = new Event;
             $event->title = $request->title;
             $event->content = $request->content;
@@ -57,7 +56,6 @@ class EventsController extends Controller
 
             return $event;
         });
-
         return view('events.show', ['event' => $event]);
     }
 
@@ -66,7 +64,6 @@ class EventsController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
-
         return view('events.show', ['event' => $event]);
     }
 
@@ -74,7 +71,6 @@ class EventsController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-
         return view('events.edit', ['event' => $event]);
     }
 
@@ -93,7 +89,6 @@ class EventsController extends Controller
             $event->title = $request->title;
             $event->content = $request->content;
             $event->updated_at = date("Y-m-d G:i:s");
-
             $event->save();
         });
 
@@ -107,7 +102,6 @@ class EventsController extends Controller
         if ( $event ) {
             $event->delete();
         }
-
         return redirect('events');
     }
 
