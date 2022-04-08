@@ -20,24 +20,40 @@
     <td>{{ $event->id }}</td>
     <td>{{ $three_column->id }}</td>
   </tr>
+</table>
 
+<table class="table table-bordered">
   <tr>
     <th>1-1 タイトル</th>
     <th>1-2 内容</th>
-    <th>2-1 感情</th>
-    <th>2-2 強さ</th>
-    <th>3 その時考えた事</th>
   </tr>
 
   <tr>
     <td>{{ $three_column->title }}</td>
     <td>{{ $three_column->content }}</td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <th>2-1 感情</th>
+    <th>2-2 強さ</th></th>
+  </tr>
+  <tr>
     <td>{{ $three_column->emotion_name }}</td>
     <td>{{ $three_column->emotion_strength }}</td>
-    <td>{{ $three_column->thinking }}</td>
   </tr>
-
 </table>
+
+<table class="table table-bordered" class="table table-bordered">
+  <tr>
+   <th width="70%">3 その時考えた事</th>
+  </tr>
+  <tr>
+    <td width="70%">{{ $three_column->thinking }}</td>
+  </tr>
+</table>
+
 
 <table class="table table-bordered">
 
