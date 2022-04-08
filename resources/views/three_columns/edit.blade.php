@@ -119,80 +119,96 @@
 
       <div class="form-group">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                  if (in_array(1, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[0]" id="1" 
+          <?php
+            if (in_array(1, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="1">
             一般化のし過ぎ
           </label>
         </div>
+        <p>・1つの出来事や失敗だけを根拠に「いつも～だ」「すべて～ない」のように考える。</p>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[1]" id="2" <?php
-                                                                                  if (in_array(2, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[1]" id="2" 
+          <?php
+            if (in_array(2, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="2">
             自分への関連付け
           </label>
         </div>
+        <p>・何か良くないことが起こった時、自分に関係ないとこまで自分の責任だと判断する。</p>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[2]" id="3" <?php
-                                                                                  if (in_array(3, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[2]" id="3" 
+          <?php
+            if (in_array(3, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="3">
             根拠のない推論
           </label>
         </div>
+        <p>・はっきりした証拠がないまま結論を急ぎ、否定的にあれこれ考える。</p>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[3]" id="4" <?php
-                                                                                  if (in_array(4, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[3]" id="4" 
+          <?php
+            if (in_array(4, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="4">
             白か黒か思考
           </label>
         </div>
+        <p>・ものごとを白が黒で考える。</p>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[4]" id="5" <?php
-                                                                                  if (in_array(5, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[4]" id="5" 
+          <?php
+            if (in_array(5, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="5">
             すべき思考
           </label>
         </div>
+        <p>・「～すべきだ、～しなければならない」といった思考</p>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[5]" id="6" <?php
-                                                                                  if (in_array(6, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[5]" id="6" 
+          <?php
+            if (in_array(6, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="6">
             過大評価と過少評価
           </label>
         </div>
+        <p>・自分の欠点や失敗を実際より過大に考え、長所や成功を過少評価する。</p>
+
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[6]" id="7" <?php
-                                                                                  if (in_array(7, $habit_id)) {
-                                                                                    echo 'checked';
-                                                                                  }
-                                                                                  ?>>
+          <input class="form-check-input" type="checkbox" name="habit[6]" id="7" 
+          <?php
+            if (in_array(7, $habit_id)) {
+              echo 'checked';
+            }
+          ?>>
           <label class="form-check-label" for="7">
             感情による決めつけ
           </label>
         </div>
+        <p>・客観的事実ではなく自分がどのように感じているかという事を元に状況を判断する。</p>
+        
         <!-- 必須バリデーション表示-->
         @if($errors->has('habit'))
         @foreach($errors->get('habit') as $message)
