@@ -43,19 +43,14 @@ class EventsController extends Controller
                 'content' => 'required|max:255',
             ]
         );
+        
+        $event = new Event;
+        $event->title = $request->title;
+        $event->content = $request->content;
+        $event->user_id = Auth::id();
 
-        // クロージャでトランザクション処理
-        $event = DB::transaction(function () use($request) {
-            
-            $event = new Event;
-            $event->title = $request->title;
-            $event->content = $request->content;
-            $event->user_id = Auth::id();
+        $event->save();
 
-            $event->save();
-
-            return $event;
-        });
         return view('events.show', ['event' => $event]);
     }
 
