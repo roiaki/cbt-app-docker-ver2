@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -15,11 +16,19 @@
         </tr>
       </thead>
       <tbody>
+        
+      
         @foreach ($events as $event)
         <tr>
           <td>{{ $event->title }}</td>
-          <td>{{ $event->content }}</td>
-          <td>{{ $event->updated_at }}
+          <td>
+          @if (mb_strlen($event->content) > 25)
+            {{ $content = mb_substr($event->content, 0, 25 ) . "..."; }}
+          @else
+            {{ $event->content}}
+          @endif
+          </td>
+          <td>
             <p><a href="{{ route('events.show', $event->id) }}">詳細</a></p>
           </td>
         </tr>
