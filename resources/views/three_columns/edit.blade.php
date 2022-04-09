@@ -5,7 +5,7 @@
 <h3 class="title_head">3コラム編集 ( id={{ $three_column->id }} )</h3>
 
 <div class="row">
-  <div class="col-sm-7">
+  <div class="col-sm-8">
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
         配列の2つ目に $message->id を入れることで 
         update の URL である /messages/{message} の {message} に id が入ります

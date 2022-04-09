@@ -2,11 +2,9 @@
 
 @section('content')
 
-<h3 class="title_head">id: {{ $event->id }}出来事編集ページ</h3>
-
-<div class="row">
-  <div class="col-sm-7">
-
+<div class="row justify-content-center">
+  <div class="col-sm-8">
+  <h3 class="title_head">出来事編集ページ( id={{ $event->id }} )</h3>
     <form action="{{ route('events.update', ['event' => $event->id] ) }}" method="POST">
       @csrf
       @method('PUT')

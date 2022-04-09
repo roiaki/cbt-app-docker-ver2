@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -23,7 +22,7 @@
           <td>{{ $event->title }}</td>
           <td>
           @if (mb_strlen($event->content) > 25)
-            {{ $content = mb_substr($event->content, 0, 25 ) . "..."; }}
+            {{ $content = mb_substr($event->content, 0, 25 ) . "....."; }}
           @else
             {{ $event->content}}
           @endif
