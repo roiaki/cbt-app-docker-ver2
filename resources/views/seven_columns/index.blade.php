@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>7コラム一覧</h3>
+<h3 class="title_head">7コラム一覧</h3>
 
 @if (count($seven_columns) > 0)
 <table class="table table-striped table-bordered">

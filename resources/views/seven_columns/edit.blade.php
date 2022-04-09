@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>id: {{ $seven_column->id }} の7コラム編集ページ</h3>
+<h3 class="title_head">7コラム編集ページ ( id={{ $seven_column->id }} )</h3>
 
 <div class="row">
   <div class="col-sm-7">

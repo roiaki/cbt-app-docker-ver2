@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>出来事詳細ページ　id = {{ $event->id }} </h3>
+<h3 class="title_head">出来事詳細ページ　id = {{ $event->id }} </h3>
 
 <table class="table table-bordered">
   <tr>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>出来事一覧</h3>
+<h3 class="title_head">出来事一覧</h3>
 
 @if (count($events) > 0)
 <table class="table table-striped table-bordered">

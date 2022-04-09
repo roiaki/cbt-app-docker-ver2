@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>３コラム詳細ページ　id = {{ $three_column->id }}</h3>
+<h3 class="title_head">３コラム詳細ページ　( id={{ $three_column->id }} )</h3>
 
 <table class="table table-bordered">
   <tr>
@@ -59,6 +59,8 @@
 
   <tr>
     <th>考え方の癖</th>
+  </tr>
+  <tr>
     <td>
       <div class="form-group">
         <div class="form-check form-check-inline">

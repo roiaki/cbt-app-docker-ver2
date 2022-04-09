@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="row justify-content-center"> 
   <div class="col-sm-7">
     <h3 class="title_head">３コラム新規作成</h3>

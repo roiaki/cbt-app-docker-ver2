@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>７コラム新規作成</h3>
+<h3 class="title_head">７コラム新規作成</h3>
 
 <div class="row">
   <div class="col-sm-7">
