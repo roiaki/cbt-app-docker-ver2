@@ -28,7 +28,7 @@
               {{ $three_column->thinking }}
             @endif
           </td>
-          <td>{{ $three_column->updated_at }}
+          <td>{{ date( 'Y/m/d H:i', strtotime($three_column->updated_at) ) }}
             <p><a href="{{ route('three_columns.show', $three_column->id) }}">詳細</a></p>
           </td>
         </tr>

@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="row justify-content-center">
-  <div class="col-sm-10">
+  <div class="col-sm-8">
     <h3 class="title_head">出来事詳細ページ　id = {{ $event->id }} </h3>
 
     <table class="table table-bordered">
       <tr>
+        <th>出来事id</th>
         <th>作成日時</th>
         <th>最終変更日時</th>
-        <th>出来事id</th>
       </tr>
       <tr>
         <td>{{ $event->id }}</td>

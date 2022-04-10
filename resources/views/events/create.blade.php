@@ -3,10 +3,8 @@
 @section('content')
 
 <div class="row justify-content-center">
-  <div class="col-sm-8">
-    
+  <div class="col-sm-8">   
     <h3 class="title_head">出来事　新規作成</h3>
-
       <form action="{{ route('events.store') }}" method="post">
         @csrf
         <div class="form-group">
