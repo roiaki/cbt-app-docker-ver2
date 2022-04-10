@@ -155,7 +155,7 @@
 
       <div class="form-group">
         <label for="new_thinking">⑥　新しい考え方</label>
-        <p>ポイント:④と考えられるけど、⑤とも考えられる</p>
+        <p>ポイント：④と考えられるけど、⑤とも考えられる</p>
         <textarea class="form-control" 
                   id="new_thinking" 
                   name="new_thinking" 
