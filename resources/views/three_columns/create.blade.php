@@ -116,7 +116,7 @@
       <div class="form-group">
       
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="habit[0]" id="1" value="1">
+          <input class="form-check-input" type="checkbox" name="habit[0]" id="1">
           <label class="form-check-label" for="1">
             一般化のし過ぎ
           </label> 
