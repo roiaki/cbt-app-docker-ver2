@@ -14,9 +14,8 @@
           <th>更新日</th>
         </tr>
       </thead>
-      <tbody>
-        
       
+      <tbody>
         @foreach ($events as $event)
         <tr>
           <td>{{ $event->title }}</td>

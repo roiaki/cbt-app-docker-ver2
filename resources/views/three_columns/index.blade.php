@@ -21,7 +21,13 @@
             <a href="{{ route('three_columns.show', $three_column->id) }}">{{ $three_column->id }}</a>
           </td>
           <td>{{ $three_column->emotion_name }}</td>
-          <td>{{ $three_column->thinking }}</td>
+          <td>
+            @if (mb_strlen($three_column->thinking) > 25)
+              {{ $thinking = mb_substr($three_column->thinking, 0, 25 ) . "....."; }}
+            @else
+              {{ $three_column->thinking }}
+            @endif
+          </td>
           <td>{{ $three_column->updated_at }}
             <p><a href="{{ route('three_columns.show', $three_column->id) }}">詳細</a></p>
           </td>
