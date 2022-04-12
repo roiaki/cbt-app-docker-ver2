@@ -21,7 +21,15 @@
         <tr>
           <td>{{ $seven_column->id }}</td>
           <td>{{ $seven_column->title }}</td>
-          <td>{{ $seven_column->content }}</td>
+          
+          <td>  
+            @if (mb_strlen($seven_column->content) > 25)
+              {{ $short_content = mb_substr($seven_column->content, 0, 25 ) . "....."; }}
+            @else
+              {{ $seven_column->content }}
+            @endif
+          </td>
+
           <td>{{ date( 'Y/m/d H:i', strtotime($seven_column->updated_at) ) }}
             <p><a href="{{ route('seven_columns.show', $seven_column->id) }}">詳細</a></p>
           </td>
