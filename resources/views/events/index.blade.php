@@ -4,6 +4,20 @@
 <div class="row justify-content-center">
   <div class="col-sm-8">
     <h3 class="title_head">出来事一覧</h3>
+    
+    <!--↓↓ 検索フォーム ↓↓-->
+    <div class="row">
+      <div class="col-sm-3 serch">
+        <form class="form-inline" action="{{ route('events.serch') }}" method="post">
+        @csrf
+          <div class="form-group">
+            <input type="text" name="keyword" value="{{ $keyword }}" class="form-control" placeholder="検索キーワード">
+            <input type="submit" value="検索" class="btn btn-info">
+          </div>          
+        </form>
+      </div>
+    </div>
+    <!--↑↑ 検索フォーム ↑↑-->
 
     @if (count($events) > 0)
     <table class="table table-striped table-bordered">
@@ -14,17 +28,17 @@
           <th>更新日</th>
         </tr>
       </thead>
-      
+
       <tbody>
         @foreach ($events as $event)
         <tr>
           <td>{{ $event->title }}</td>
           <td>
-          @if (mb_strlen($event->content) > 25)
+            @if (mb_strlen($event->content) > 25)
             {{ $content = mb_substr($event->content, 0, 25 ) . "....."; }}
-          @else
+            @else
             {{ $event->content}}
-          @endif
+            @endif
           </td>
           <td>{{ date( 'Y/m/d H:i', strtotime($event->updated_at) ) }}
             <p><a href="{{ route('events.show', $event->id) }}">詳細</a></p>

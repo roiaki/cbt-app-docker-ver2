@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
+
 class EventsController extends Controller
 {
     // event一覧表示
     public function index()
     {
         $data = [];
-        if (Auth::check()) {
+        if ( Auth::check() ) {
             $user = Auth::user();
             $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
 
@@ -24,6 +25,24 @@ class EventsController extends Controller
                 'events' => $events,
             ];
         }
+        return view('events.index', $data);
+    }
+
+    // 検索表示
+    public function serchIndex(Request $request) 
+    {
+        $keyword = $request->keyword;
+        $id = Auth::user()->id;
+        $events = DB::table('events')->where('user_id', $id)
+            ->where('title', 'like', '%' . $keyword . '%')
+            ->orWhere('content', 'like', '%' . $keyword . '%')
+            ->orderBy('updated_at', 'desc')
+            ->paginate(5);
+//dd($keyword);
+        $data = [
+            'events' => $events,
+            'keyword' => $keyword
+        ];
         return view('events.index', $data);
     }
 
@@ -109,7 +128,7 @@ class EventsController extends Controller
     {
         return view('events.testvue');
     }
-
+/*
     public function vuepost(Request $request)
     {
         dd($request);
@@ -125,5 +144,5 @@ class EventsController extends Controller
 
         }
     }
-
+*/
 }

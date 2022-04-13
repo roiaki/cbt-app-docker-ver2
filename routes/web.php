@@ -27,6 +27,7 @@ Route::get('events/{event}/edit', 'App\Http\Controllers\EventsController@edit')-
 Route::delete('events/{event}/delete}','App\Http\Controllers\EventsController@destroy')->name('events.destroy');
 Route::put('events/{event}', 'App\Http\Controllers\EventsController@update')->name('events.update');
 
+Route::post('events/serch', 'App\Http\Controllers\EventsController@serchIndex')->name('events.serch');
 
 // 3コラムに関して
 Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index')->name('three_columns');

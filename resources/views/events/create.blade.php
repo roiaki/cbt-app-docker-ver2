@@ -14,11 +14,11 @@
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('title'))
-          @foreach($errors->get('title') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('title') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
 
@@ -29,11 +29,11 @@
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('content'))
-          @foreach($errors->get('content') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('content') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
 
