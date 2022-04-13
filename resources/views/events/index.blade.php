@@ -11,7 +11,11 @@
         <form class="form-inline" action="{{ route('events.serch') }}" method="post">
         @csrf
           <div class="form-group">
-            <input type="text" name="keyword" value="{{ $keyword }}" class="form-control" placeholder="検索キーワード">
+            <input type="text" 
+                   name="keyword" 
+                   value="@if ( !empty($keyword) ){{ $keyword }}@endif"
+                   class="form-control" placeholder="検索キーワード">
+                   
             <input type="submit" value="検索" class="btn btn-info">
           </div>          
         </form>
