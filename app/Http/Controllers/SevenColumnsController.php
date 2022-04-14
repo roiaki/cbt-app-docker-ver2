@@ -27,6 +27,26 @@ class SevenColumnsController extends Controller
         return view('seven_columns.index', $data);
     }
 
+    // 検索表示
+    public function serchIndex(Request $request)
+    {
+        if ( Auth::check() ) {
+            $keyword = $request->keyword;
+            $id = Auth::user()->id;
+            $seven_columns = DB::table('sevencolumns')->where('user_id', $id)
+                ->where('title', 'like', '%' . $keyword . '%')
+                ->orWhere('content', 'like', '%' . $keyword . '%')
+                ->orWhere('thinking', 'like', '%' . $keyword . '%')
+                ->orderBy('updated_at', 'desc')
+                ->paginate(5);
+            //dd($keyword);
+            $data = [
+                'seven_columns' => $seven_columns,
+                'keyword' => $keyword
+            ];
+        }
+        return view('seven_columns.index', $data);
+    }
     // 7コラム新規作成画面へ遷移
     public function create($id)
     {
@@ -97,7 +117,7 @@ class SevenColumnsController extends Controller
         foreach ($three_column->habit as $habit) {
             $habit_names[] = $habit->habit_name;
         }
-/*
+        /*
         if ( !isset($habit_names) ) {
             $habit_names = [];
         }
@@ -138,7 +158,7 @@ class SevenColumnsController extends Controller
         );
 
         // トランザクション処理
-        DB::transaction(function () use($id, $request) {
+        DB::transaction(function () use ($id, $request) {
             $seven_column = SevenColumn::find($id);
             $seven_column->title = $request->title;
             $seven_column->content = $request->content;

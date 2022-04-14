@@ -5,7 +5,25 @@
 <div class="row justify-content-center">
   <div class="col-sm-8">
     <h3 class="title_head">7コラム一覧</h3>
-
+    
+    <!--↓↓ 検索フォーム ↓↓-->
+    <div class="row">
+      <div class="col-sm-3 serch">
+        <form class="form-inline" action="{{ route('seven_columns.serch') }}" method="post">
+        @csrf
+          <div class="form-group">
+            <input type="text" 
+                   name="keyword" 
+                   value="@if ( !empty($keyword) ){{ $keyword }}@endif"
+                   class="form-control" placeholder="検索キーワード">
+                   
+            <input type="submit" value="検索" class="btn btn-info">
+          </div>          
+        </form>
+      </div>
+    </div>
+    <!--↑↑ 検索フォーム ↑↑-->
+    
     @if (count($seven_columns) > 0)
     <table class="table table-striped table-bordered">
       <thead>

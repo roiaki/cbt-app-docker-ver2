@@ -18,14 +18,36 @@ class ThreeColumnsController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $three_columns = $user->three_columns()
-                                  ->orderBy('updated_at', 'desc')
-                                  ->paginate(5);
+                ->orderBy('updated_at', 'desc')
+                ->paginate(5);
 
             $data = [
                 'three_columns' => $three_columns,
             ];
         }
 
+        return view('three_columns.index', $data);
+    }
+
+    // 検索表示
+    public function serchIndex(Request $request)
+    {
+        
+        //if ( Auth::check() ) {
+            $keyword = $request->keyword;
+            $id = Auth::user()->id;
+            $three_columns = DB::table('threecolumns')->where('user_id', $id)
+                ->where('title', 'like', '%' . $keyword . '%')
+                ->orWhere('content', 'like', '%' . $keyword . '%')
+                ->orWhere('thinking', 'like', '%' . $keyword . '%')
+                ->orderBy('updated_at', 'desc')
+                ->paginate(5);
+            //dd($keyword);
+            $data = [
+                'three_columns' => $three_columns,
+                'keyword' => $keyword
+            ];
+      //  }
         return view('three_columns.index', $data);
     }
 
@@ -141,7 +163,7 @@ class ThreeColumnsController extends Controller
         }
 
         $user = Auth::user();
-/*
+        /*
         // idがない時は「空」を格納
         if ( !isset($habit_id) ) {
             $habit_id = [];
@@ -174,7 +196,7 @@ class ThreeColumnsController extends Controller
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
-/*
+        /*
         if ( !isset($habit_id) ) {
             $habit_id = [];
         }
