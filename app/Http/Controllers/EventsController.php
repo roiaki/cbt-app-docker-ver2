@@ -29,7 +29,7 @@ class EventsController extends Controller
     }
 
     // 検索表示
-    public function serchIndex(Request $request) 
+    public function searchIndex(Request $request) 
     {
         $keyword = $request->keyword;
         $id = Auth::user()->id;

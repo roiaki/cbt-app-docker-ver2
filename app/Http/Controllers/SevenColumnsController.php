@@ -28,7 +28,7 @@ class SevenColumnsController extends Controller
     }
 
     // 検索表示
-    public function serchIndex(Request $request)
+    public function searchIndex(Request $request)
     {
         if ( Auth::check() ) {
             $keyword = $request->keyword;
