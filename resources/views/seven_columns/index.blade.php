@@ -9,7 +9,7 @@
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
       <div class="col-sm-3 serch">
-        <form class="form-inline" action="{{ route('seven_columns.serch') }}" method="post">
+        <form class="form-inline" action="{{ route('seven_columns.serch') }}" method="get">
         @csrf
           <div class="form-group">
             <input type="text" 
