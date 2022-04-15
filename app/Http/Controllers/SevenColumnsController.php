@@ -39,7 +39,7 @@ class SevenColumnsController extends Controller
                 ->orWhere('thinking', 'like', '%' . $keyword . '%')
                 ->orderBy('updated_at', 'desc')
                 ->paginate(5);
-            //dd($keyword);
+
             $data = [
                 'seven_columns' => $seven_columns,
                 'keyword' => $keyword
