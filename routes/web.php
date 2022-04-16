@@ -78,6 +78,9 @@ Route::delete('users/delete', 'App\Http\Controllers\UserController@userDelete')-
 Route::get('events.testvue', 'App\Http\Controllers\EventsController@testvue')->name('events.testvue');
 Route::post('events.testvue', 'App\Http\Controllers\EventsController@vuepost')->name('events.vuepost');
 
+// 言語切り替え
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+
 // ログイン認証付きのルーティング
 Route::group(['middleware' => ['auth']], function () {
     

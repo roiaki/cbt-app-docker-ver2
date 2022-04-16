@@ -9,7 +9,7 @@ use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
-
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class EventsController extends Controller
 {
@@ -17,7 +17,7 @@ class EventsController extends Controller
     public function index()
     {
         $data = [];
-        if ( Auth::check() ) {
+        if (Auth::check()) {
             $user = Auth::user();
             $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
 
@@ -29,20 +29,30 @@ class EventsController extends Controller
     }
 
     // 検索表示
-    public function searchIndex(Request $request) 
+    public function searchIndex(Request $request)
     {
         $keyword = $request->keyword;
         $id = Auth::user()->id;
-        $events = DB::table('events')->where('user_id', $id)
-            ->where('title', 'like', '%' . $keyword . '%')
-            ->orWhere('content', 'like', '%' . $keyword . '%')
-            ->orderBy('updated_at', 'desc')
-            ->paginate(5);
-//dd($keyword);
+        if ($keyword !== null) {
+            
+            $events = DB::table('events')
+                ->where('user_id', $id)
+                ->where(function($query) use($keyword) {
+                    $query->where('title', 'like', '%' . $keyword . '%')
+                          ->orWhere('content', 'like', '%' . $keyword . '%');
+                  })
+                  ->orderBy('updated_at', 'desc')
+                  ->paginate(5);
+                  //->toSql();
+            //var_dump($events);
+        } else {
+            return view('events.index');
+        }
         $data = [
             'events' => $events,
             'keyword' => $keyword
         ];
+
         return view('events.index', $data);
     }
 
@@ -62,7 +72,7 @@ class EventsController extends Controller
                 'content' => 'required|max:255',
             ]
         );
-        
+
         $event = new Event;
         $event->title = $request->title;
         $event->content = $request->content;
@@ -99,7 +109,7 @@ class EventsController extends Controller
         $event = event::find($id);
 
         // クロージャでトランザクション
-        DB::transaction(function () use($event, $request) {
+        DB::transaction(function () use ($event, $request) {
             $event->title = $request->title;
             $event->content = $request->content;
             $event->updated_at = date("Y-m-d G:i:s");
@@ -113,7 +123,7 @@ class EventsController extends Controller
     public function destroy($id)
     {
         $event = event::find($id);
-        if ( $event ) {
+        if ($event) {
             $event->delete();
         }
         return redirect('events');
@@ -128,7 +138,7 @@ class EventsController extends Controller
     {
         return view('events.testvue');
     }
-/*
+    /*
     public function vuepost(Request $request)
     {
         dd($request);
