@@ -85,6 +85,7 @@ Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@swit
 Route::group(['middleware' => ['auth']], function () {
     
     // 出来事に関して
+    Route::get('events/search', 'App\Http\Controllers\EventsController@searchIndex')->name('events.serch');
     Route::get('events', 'App\Http\Controllers\EventsController@index')->name('events');
     Route::get('events/create', 'App\Http\Controllers\EventsController@create')->name('events.create');
     Route::post('events', 'App\Http\Controllers\EventsController@store')->name('events.store');
@@ -95,6 +96,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     // 3コラムに関して
+    Route::get('three_columns/search', 'App\Http\Controllers\ThreeColumnsController@searchIndex')->name('three_columns.serch');
     Route::get('three_columns', 'App\Http\Controllers\ThreeColumnsController@index')->name('three_columns');
     Route::get('three_columns/create/{id}', 'App\Http\Controllers\ThreeColumnsController@create')->name('three_columns.create');
     Route::post('three_columns', 'App\Http\Controllers\ThreeColumnsController@store')->name('three_columns.store');
@@ -105,6 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     // 7コラムに関して
+    Route::get('seven_columns/search', 'App\Http\Controllers\SevenColumnsController@searchIndex')->name('seven_columns.serch');
     Route::get('seven_columns', 'App\Http\Controllers\SevenColumnsController@index')->name('seven_columns');
     Route::get('seven_columns/create/{id}', 'App\Http\Controllers\SevenColumnsController@create')->name('seven_columns.create');
     Route::post('seven_columns/store', 'App\Http\Controllers\SevenColumnsController@store')->name('seven_columns.store');
