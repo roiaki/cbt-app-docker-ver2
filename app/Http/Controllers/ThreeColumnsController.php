@@ -33,21 +33,27 @@ class ThreeColumnsController extends Controller
     public function searchIndex(Request $request)
     {
         
-        //if ( Auth::check() ) {
+        if (Auth::check()) {
             $keyword = $request->keyword;
             $id = Auth::user()->id;
-            $three_columns = DB::table('threecolumns')->where('user_id', $id)
-                ->where('title', 'like', '%' . $keyword . '%')
-                ->orWhere('content', 'like', '%' . $keyword . '%')
-                ->orWhere('thinking', 'like', '%' . $keyword . '%')
+            if ($keyword !== null) {
+                $three_columns = DB::table('threecolumns')
+                    ->where('user_id', $id)
+                    ->where(function($query) use($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%')
+                        ->orWhere('content', 'like', '%' . $keyword . '%')
+                        ->orWhere('thinking', 'like', '%' . $keyword . '%');
+                    })
                 ->orderBy('updated_at', 'desc')
                 ->paginate(5);
-            //dd($keyword);
+            } else {
+                return view('three_columns.index');
+            }
             $data = [
                 'three_columns' => $three_columns,
                 'keyword' => $keyword
             ];
-      //  }
+        }
         return view('three_columns.index', $data);
     }
 

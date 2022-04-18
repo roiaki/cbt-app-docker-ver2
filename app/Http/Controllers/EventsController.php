@@ -33,8 +33,7 @@ class EventsController extends Controller
     {
         $keyword = $request->keyword;
         $id = Auth::user()->id;
-        if ($keyword !== null) {
-            
+        if ($keyword !== null) {           
             $events = DB::table('events')
                 ->where('user_id', $id)
                 ->where(function($query) use($keyword) {
@@ -43,8 +42,7 @@ class EventsController extends Controller
                   })
                   ->orderBy('updated_at', 'desc')
                   ->paginate(5);
-                  //->toSql();
-            //var_dump($events);
+                  
         } else {
             return view('events.index');
         }
@@ -138,14 +136,7 @@ class EventsController extends Controller
     {
         return view('events.testvue');
     }
-    /*
-    public function vuepost(Request $request)
-    {
-        dd($request);
-        var_dump("test");
-        return view('events.testvue');
-    }
-
+   
     // ロールバック時のエラー制御メソッド
     public function catchError($param) {
         try {
@@ -154,5 +145,5 @@ class EventsController extends Controller
 
         }
     }
-*/
+
 }

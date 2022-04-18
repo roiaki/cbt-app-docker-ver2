@@ -4,20 +4,17 @@
 <div class="row justify-content-center">
   <div class="col-sm-8">
     <h3 class="title_head">出来事一覧</h3>
-    
+
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
       <div class="col-sm-3 serch">
         <form class="form-inline" action="{{ route('events.serch') }}" method="get">
-        @csrf
+          @csrf
           <div class="form-group">
-            <input type="text" 
-                   name="keyword" 
-                   value="@if ( !empty($keyword) ){{ $keyword }}@endif"
-                   class="form-control" placeholder="検索キーワード">
-                   
+            <input type="text" name="keyword" value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="検索キーワード">
+
             <input type="submit" value="検索" class="btn btn-info">
-          </div>          
+          </div>
         </form>
       </div>
     </div>
@@ -52,16 +49,18 @@
           @endforeach
         </tbody>
       </table>
+
+
+      {!! link_to_route('events.create', '新規作成', [], ['class' => 'btn btn-primary btn-lg']) !!}
+
+      <div class="d-flex justify-content-center">
+        @if ( isset($events) )
+        {{ $events->links('pagination::bootstrap-4') }}
+        @endif
+      </div>
+
       @endif
     @endif
-
-    {!! link_to_route('events.create', '新規作成', [], ['class' => 'btn btn-primary btn-lg']) !!}
-
-    <div class="d-flex justify-content-center">
-      @if ( isset($events) )
-        {{ $events->links('pagination::bootstrap-4') }}
-      @endif
-    </div>
   </div>
 </div>
 @endsection

@@ -30,21 +30,25 @@ class SevenColumnsController extends Controller
     // 検索表示
     public function searchIndex(Request $request)
     {
-        if ( Auth::check() ) {
-            $keyword = $request->keyword;
-            $id = Auth::user()->id;
-            $seven_columns = DB::table('sevencolumns')->where('user_id', $id)
-                ->where('title', 'like', '%' . $keyword . '%')
-                ->orWhere('content', 'like', '%' . $keyword . '%')
-                ->orWhere('thinking', 'like', '%' . $keyword . '%')
+        $keyword = $request->keyword;
+        $id = Auth::user()->id;
+        if ($keyword !== null) {
+            $seven_columns = DB::table('sevencolumns')
+                ->where('user_id', $id)
+                ->where(function ($query) use ($keyword) {
+                    $query->where('title', 'like', '%' . $keyword . '%')
+                        ->orWhere('content', 'like', '%' . $keyword . '%')
+                        ->orWhere('thinking', 'like', '%' . $keyword . '%');
+                })
                 ->orderBy('updated_at', 'desc')
                 ->paginate(5);
-
-            $data = [
-                'seven_columns' => $seven_columns,
-                'keyword' => $keyword
-            ];
+        } else {
+            return view('seven_columns.index');
         }
+        $data = [
+            'seven_columns' => $seven_columns,
+            'keyword' => $keyword
+        ];
         return view('seven_columns.index', $data);
     }
     // 7コラム新規作成画面へ遷移

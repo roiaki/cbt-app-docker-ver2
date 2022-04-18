@@ -11,9 +11,7 @@
         <form class="form-inline" action="{{ route('three_columns.serch') }}" method="get">
           @csrf
           <div class="form-group">
-            <input type="text" 
-                   name="keyword" 
-                   value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="検索キーワード">
+            <input type="text" name="keyword" value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="検索キーワード">
 
             <input type="submit" value="検索" class="btn btn-info">
           </div>
@@ -21,7 +19,8 @@
       </div>
     </div>
     <!--↑↑ 検索フォーム ↑↑-->
-
+    
+    @if ( isset($three_columns) )
     @if (count($three_columns) > 0)
     <table class="table table-striped table-bordered">
       <thead>
@@ -53,11 +52,13 @@
         @endforeach
       </tbody>
     </table>
-
+    @endif
     @endif
 
     <div class="d-flex justify-content-center">
+      @if ( isset($three_columns) )
       {{ $three_columns->links('pagination::bootstrap-4') }}
+      @endif
     </div>
 
   </div>
