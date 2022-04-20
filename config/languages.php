@@ -1,8 +1,9 @@
 <?php
 
 return [
-    'ja' => '“ú–{Œê',
-    'en' => 'English'
+    'ja' => 'æ—¥æœ¬èªž',
+    'en' => 'English',
+    
 ];
 
 ?>

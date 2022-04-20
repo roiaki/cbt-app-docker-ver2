@@ -79,7 +79,7 @@ Route::get('events.testvue', 'App\Http\Controllers\EventsController@testvue')->n
 Route::post('events.testvue', 'App\Http\Controllers\EventsController@vuepost')->name('events.vuepost');
 
 // 言語切り替え
-Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'App\Http\Controllers\LanguageController@switchLang']);
 
 // ログイン認証付きのルーティング
 Route::group(['middleware' => ['auth']], function () {
@@ -121,4 +121,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // ログアウト
     Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout.get');
+
+    // 言語切り替え
+    Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'App\Http\Controllers\LanguageController@switchLang']);
 });
