@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-center">
-  <div class="col-sm-8">
+  <div class="col-sm-7">
   <h3 class="title_head">出来事編集ページ( id={{ $event->id }} )</h3>
     <form action="{{ route('events.update', ['event' => $event->id] ) }}" method="POST">
       @csrf

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-  <div class="col-sm-8">
+  <div class="col-sm-7">
     <h3 class="title_head">出来事詳細ページ　id = {{ $event->id }} </h3>
 
     <table class="table table-bordered">

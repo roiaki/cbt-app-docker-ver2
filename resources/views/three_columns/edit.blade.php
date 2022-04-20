@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-center">
-  <div class="col-sm-8">
+  <div class="col-sm-7">
   <h3 class="title_head">3コラム編集 ( id={{ $three_column->id }} )</h3>
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
         配列の2つ目に $message->id を入れることで 

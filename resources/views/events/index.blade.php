@@ -2,12 +2,8 @@
 
 @section('content')
 <div class="row justify-content-center">
-  <div class="col-sm-8">
+  <div class="col-sm-7">
     <h3 class="title_head">出来事一覧</h3>
-
-    
-{{ __('messages.welcome') }}
-@lang('messages.welcome_user')
 
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
