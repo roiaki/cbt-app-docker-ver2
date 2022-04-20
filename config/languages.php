@@ -1,8 +1,10 @@
 <?php
 
 return [
-    'ja' => '日本語',
+    'ja' => 'Japanese',
     'en' => 'English',
+    
+    
     
 ];
 

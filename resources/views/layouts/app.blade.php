@@ -40,7 +40,7 @@ if (5 <= $hour && $hour <= 12) {
         <ul class="navbar-nav ml-auto">
 
           @if(Auth::check())
-
+          {{ __('auth.Login') }}
           <div class="d-flex align-items-center">
             ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
           </div>
@@ -57,6 +57,21 @@ if (5 <= $hour && $hour <= 12) {
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               {{ Config::get('languages')[App::getLocale()] }}
               <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              @foreach (Config::get('languages') as $lang => $language)
+              @if ($lang != App::getLocale())
+              <li>
+                <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+              </li>
+              @endif
+              @endforeach
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {{ Config::get('languages')[App::getLocale()] }}
+            </a>
             <ul class="dropdown-menu">
               @foreach (Config::get('languages') as $lang => $language)
               @if ($lang != App::getLocale())
