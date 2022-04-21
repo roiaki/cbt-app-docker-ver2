@@ -10,6 +10,11 @@ return [
     "updated_day" => "updated day",
     "detail" => "detail",
     "create_new" => "create new",
-];
 
-?>
+    // 新規作成ページ  
+    "create_headtitle" => "Event new creation",
+    "create_title" => "Title",
+    "create_contents" => "Contents",
+    "create_button" => "New Create",
+    "back" => "Back"
+];

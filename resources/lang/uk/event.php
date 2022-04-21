@@ -1,15 +1,22 @@
 <?php
 
 return [
-    "info" => "説明",
-    "event_title" => "出来事一覧",
-    "search_word" => "検索キーワード",
-    "search" => "検索",
-    "title" => "タイトル",
-    "contents" => "内容",
-    "updated_day" => "更新日",
-    "detail" => "詳細",
-    "create_new" => "新規作成",
+    "info" => "пояснення",
+    "event_title" => "Список подій",
+    "search_word" => "Пошук ключового слова",
+    "search" => "пошук",
+    "title" => "титул",
+    "contents" => "Зміст",
+    "updated_day" => "Дата оновлення",
+    "detail" => "деталь",
+    "create_new" => "Створити новий",
+
+    // 新規作成ページ
+    "create_headtitle" => "Нове створення події",
+    "create_title" => "титул",
+    "create_contents" => "Зміст",
+    "create_button" => "Створення події",
+    "back" => "повернутися"
 ];
 
 ?>
