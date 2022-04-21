@@ -12,25 +12,26 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'failed' => 'ログインできません。入力した情報に誤りがないかご確認ください。',
-    'password' => '提供されたパスワードが正しくありません。',
-    'throttle' => '何度もログインに失敗したため、=>seconds秒後に再度お試しください。',
-
-    "Login" => "Увійти！",
-    "E-Mail Address" => "メールアドレス",
-    "Register" => "新規登録",
-
-    "Register" => "新規登録",
-    "Forgot Your Password?" => "パスワードを忘れた場合",
-    "Reset Password" => "パスワード再設定",
-    "Send Password Reset Link" =>  "パスワード再設定URLを送信",
-
-    "Name" => "お名前",
-    "E-Mail Address" => "メールアドレス",
-    "Password" => "パスワード",
-    "Confirm Password" => "パスワード(確認用)",
-    "Remember Me" => "ログイン状態を保存",
+    
+     // ログインページ
+     "Login" => "Увійти",
+     "E-Mail Address" => "Поштова адреса",
+     "Password" => "пароль",
+     "Remember Me" =>"Зберегти статус входу",
+     // 登録ページ 
+     "Register" => "新規登録",
+     "Name" => "お名前",
+     "Confirm Password" => "パスワード(確認用)",
+     
+     "info" => "説明",
+     "event_title" => "出来事一覧",
+ 
+    
+    
+     "Forgot Your Password?" => "パスワードを忘れた場合",
+     "Reset Password" => "パスワード再設定",
+     "Send Password Reset Link" =>  "パスワード再設定URLを送信",
+ 
 
     "Hello!" => "ご利用ありがとうございます。",
     "Reset Password Notification" =>  "パスワード再設定のお知らせ",

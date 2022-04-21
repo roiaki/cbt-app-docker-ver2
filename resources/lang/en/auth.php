@@ -17,25 +17,24 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
-
-    'failed' => 'ログインできません。入力した情報に誤りがないかご確認ください。',
-    'password' => '提供されたパスワードが正しくありません。',
-    'throttle' => '何度もログインに失敗したため、=>seconds秒後に再度お試しください。',
-
-    "Login" => "login!",
-    "E-Mail Address" => "e-mail adress",
-    "Register" => "新規登録",
-
-    "Register" => "新規登録",
+     // ログインページ
+    "Login" => "Login",
+    "E-Mail Address" => "E-Mail Address",
+    "Password" => "Password",
+    "Remember Me" => "Remenber Me",
+    // 登録ページ
+    "Register" => "Register",
+    "Name" => "Name",
+    "Confirm Password" => "Confirm Password",
     "Forgot Your Password?" => "パスワードを忘れた場合",
     "Reset Password" => "パスワード再設定",
     "Send Password Reset Link" =>  "パスワード再設定URLを送信",
 
-    "Name" => "お名前",
-    "E-Mail Address" => "メールアドレス",
-    "Password" => "パスワード",
-    "Confirm Password" => "パスワード(確認用)",
-    "Remember Me" => "ログイン状態を保存",
+    
+    
+    
+   
+  
 
     "Hello!" => "ご利用ありがとうございます。",
     "Reset Password Notification" =>  "パスワード再設定のお知らせ",

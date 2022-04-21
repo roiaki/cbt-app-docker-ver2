@@ -3,8 +3,9 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">{{ __('messages.event_title') }}</h3>
-
+   
+    <h3 class="title_head">{{ __('event.event_title') }}</h3>
+    <h3 class="title_head">{{ __('auth.event_title') }}</h3>
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
       <div class="col-sm-3 serch">
