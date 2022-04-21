@@ -40,24 +40,26 @@ if (5 <= $hour && $hour <= 12) {
         <ul class="navbar-nav ml-auto">
 
           @if(Auth::check())
-          {{ __('auth.Login') }}
+          
           <div class="d-flex align-items-center">
-            ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、<?php echo $msg; ?>　
+
+            {{ __('auth.Login') }}
+            ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、{{ $msg; }}
           </div>
           <!--
           <li class="nav-item">{!! link_to_route('events.testvue', 'vue', [], ['class' => 'nav-link']) !!}</li>
 -->
-          <li class="nav-item">{!! link_to_route('users.info', '説明', [], ['class' => 'nav-link']) !!}</li>
+          <li class="nav-item">{!! link_to_route('users.info', __('messages.info'), [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('events', '出来事一覧', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('three_columns', '3コラム一覧', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('seven_columns', '7コラム一覧', [], ['class' => 'nav-link']) !!}</li>
 
           <!-- 言語切り替え -->
-          <li class="dropdown" id="nav-lang">
+          <li class="dropdown d-flex align-items-center" id="nav-lang">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               {{ Config::get('languages')[App::getLocale()] }}
               <span class="caret"></span></a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               @foreach (Config::get('languages') as $lang => $language)
               @if ($lang != App::getLocale())
               <li>
@@ -68,6 +70,20 @@ if (5 <= $hour && $hour <= 12) {
             </ul>
           </li>
 
+          <div class="dropdown d-flex align-items-center mr-3">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              アカウント
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
+              <li>{!! link_to_route('users.delete_confirm', '退会', [], ['class' => 'nav-link']) !!}</li>
+            </ul>
+          </div>
+
+          @else
+          <li class="nav-item">{!! link_to_route('top', 'TOP', [], ['class' => 'nav-link']) !!}</li>
+          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               {{ Config::get('languages')[App::getLocale()] }}
@@ -83,19 +99,6 @@ if (5 <= $hour && $hour <= 12) {
             </ul>
           </li>
 
-          <div class="dropdown mr-5">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              アカウント
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
-              <li>{!! link_to_route('users.delete_confirm', '退会', [], ['class' => 'nav-link']) !!}</li>
-            </ul>
-          </div>
-
-          @else
-          <li class="nav-item">{!! link_to_route('top', 'TOP', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
           <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
 

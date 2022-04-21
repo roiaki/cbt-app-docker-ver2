@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">出来事一覧</h3>
+    <h3 class="title_head">{{ __('messages.event_title') }}</h3>
 
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
