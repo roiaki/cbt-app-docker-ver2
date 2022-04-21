@@ -18,6 +18,7 @@ return [
      "E-Mail Address" => "Поштова адреса",
      "Password" => "пароль",
      "Remember Me" =>"Зберегти статус входу",
+     
      // 登録ページ 
      "Register" => "新規登録",
      "Name" => "お名前",

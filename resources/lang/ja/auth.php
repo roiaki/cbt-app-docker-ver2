@@ -18,7 +18,7 @@ return [
     'throttle' => '何度もログインに失敗したため、=>seconds秒後に再度お試しください。',
 
     // ログインページ
-    "Login" => "ログイン！aa",
+    "Login" => "ログイン",
     "E-Mail Address" => "メールアドレス",
     "Password" => "パスワード",
     "Remember Me" => "ログイン状態を保存",

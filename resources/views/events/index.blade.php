@@ -5,16 +5,15 @@
   <div class="col-sm-7">
    
     <h3 class="title_head">{{ __('event.event_title') }}</h3>
-    <h3 class="title_head">{{ __('auth.event_title') }}</h3>
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
       <div class="col-sm-3 serch">
         <form class="form-inline" action="{{ route('events.serch') }}" method="get">
           @csrf
           <div class="form-group">
-            <input type="text" name="keyword" value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="検索キーワード">
+            <input type="text" name="keyword" value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="{{ __('event.search_word') }}">
 
-            <input type="submit" value="検索" class="btn btn-info">
+            <input type="submit" value="{{ __('event.search') }}" class="btn btn-info">
           </div>
         </form>
       </div>
@@ -26,9 +25,9 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr class="table-primary">
-            <th>タイトル</th>
-            <th>内容</th>
-            <th>更新日</th>
+            <th>{{ __('event.title') }}</th>
+            <th>{{ __('event.contents') }}</th>
+            <th>{{ __('event.updated_day') }}</th>
           </tr>
         </thead>
 
@@ -44,7 +43,7 @@
               @endif
             </td>
             <td>{{ date( 'Y/m/d H:i', strtotime($event->updated_at) ) }}
-              <p><a href="{{ route('events.show', $event->id) }}">詳細</a></p>
+              <p><a href="{{ route('events.show', $event->id) }}">{{ __('event.detail') }}</a></p>
             </td>
           </tr>
           @endforeach
@@ -52,7 +51,7 @@
       </table>
 
 
-      {!! link_to_route('events.create', '新規作成', [], ['class' => 'btn btn-primary btn-lg']) !!}
+      {!! link_to_route('events.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}
 
       <div class="d-flex justify-content-center">
         @if ( isset($events) )
