@@ -22,38 +22,37 @@
     <table class="table table-bordered">
       <tr>
         <th>タイトル</th>
+      </tr>
+      <tr>
+        <td>{{ $event->title }}</td>      
+      </tr>
+      </table>
+      <table class="table table-bordered">
+      <tr>
         <th>内容</th>
       </tr>
       <tr>
-        <td>{{ $event->title }}</td>
         <td>{{ $event->content }}</td>
       </tr>
     </table>
-    <!--
-<a href="{{ route('three_columns.create', $event->id) }}" 
-      class="btn btn-success btn-lg" 
-      role="button"
-      onclick="confirmDelete();return false;" 
-      aria-pressed="true">この出来事を元に3コラムを作成
-</a>
--->
+
     <div class="buttons-first">
       <form action="{{ route('three_columns.create', ['id' => $event->id]) }}" method="get">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-success btn-lg">3コラム作成</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('events.edit', ['event' => $event->id] ) }}" method="get">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-secondary btn-lg">編集</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('events.destroy', ['event' => $event->id] ) }}" , method="post">
-        @CSRF
+        @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
       </form>
