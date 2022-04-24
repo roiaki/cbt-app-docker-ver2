@@ -21,7 +21,7 @@
                class="form-control" 
                id="title" 
                name="title" 
-               value="{{ $threecolumn->title }}"
+               value="{{ $event->title }}"
                readonly
         >
 
@@ -42,7 +42,7 @@
                   name="content" 
                   cols="90" 
                   rows="5"
-                  readonly>{{ $threecolumn->content }}</textarea>
+                  readonly>{{ $event->content }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('content'))

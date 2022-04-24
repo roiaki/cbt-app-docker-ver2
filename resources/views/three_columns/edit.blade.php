@@ -25,7 +25,7 @@
                class="form-control" 
                id="title" 
                name="title" 
-               value="{{ $event->title }}" 
+               value="{{ $event->title }}"
                readonly
         >
 

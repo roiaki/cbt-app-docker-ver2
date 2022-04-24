@@ -93,8 +93,6 @@ class ThreeColumnsController extends Controller
             $three_column->user_id = Auth::id();
             $three_column->event_id = $request->eventid;
 
-            $three_column->title = $request->title;
-            $three_column->content = $request->content;
             $three_column->emotion_name = $request->emotion_name;
             $three_column->emotion_strength = $request->emotion_strength;
             $three_column->thinking = $request->thinking;
@@ -154,12 +152,9 @@ class ThreeColumnsController extends Controller
     // 詳細ページ表示処理
     public function show($id)
     {
-
         $three_column = ThreeColumn::find($id);
-
         $event_id = $three_column->event_id;
         $event = Event::find($event_id);
-
         $habit_id = [];
 
         // 考え方の癖 id 取得
@@ -168,19 +163,13 @@ class ThreeColumnsController extends Controller
         }
 
         $user = Auth::user();
-        /*
-        // idがない時は「空」を格納
-        if ( !isset($habit_id) ) {
-            $habit_id = [];
-        }
-*/
+
         $data = [
             'user' => $user,
             'event' => $event,
             'habit_id' => $habit_id,
             'three_column' => $three_column
         ];
-        //dd($data);
 
         // $data 配列そのまま渡すか、連想配列として渡すかでbladeでのアクセス方法が変わる
         // return view('three_columns, ['data' => $data]);
@@ -226,8 +215,6 @@ class ThreeColumnsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|max:30',
-            'content' => 'required|max:255',
             'emotion_name' => 'required',
             'emotion_strength' => 'required',
             'thinking' => 'required',

@@ -67,7 +67,7 @@ class EventsController extends Controller
             $request,
             [
                 'title' => 'required|max:30',
-                'content' => 'required|max:255',
+                'content' => 'required|max:500',
             ]
         );
 

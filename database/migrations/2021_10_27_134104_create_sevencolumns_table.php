@@ -19,11 +19,6 @@ class CreateSevencolumnsTable extends Migration
             $table->integer('event_id')->unsigned()->index();
             $table->integer('threecol_id')->unsigned()->index();
 
-            $table->string('title');
-            $table->string('content');
-            $table->string('emotion_name');
-            $table->integer('emotion_strength');
-            $table->string('thinking');
             $table->string('basis_thinking');
             $table->string('opposite_fact');
             $table->string('new_thinking');

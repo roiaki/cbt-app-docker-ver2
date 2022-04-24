@@ -30,8 +30,8 @@
       </tr>
 
       <tr>
-        <td>{{ $three_column->title }}</td>
-        <td>{{ $three_column->content }}</td>
+        <td>{{ $event->title }}</td>
+        <td>{{ $event->content }}</td>
       </tr>
     </table>
 

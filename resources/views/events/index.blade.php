@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">
-   
+
     <h3 class="title_head">{{ __('event.event_title') }}</h3>
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
@@ -49,18 +49,16 @@
           @endforeach
         </tbody>
       </table>
-
-
-      {!! link_to_route('events.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}
-
-      <div class="d-flex justify-content-center">
-        @if ( isset($events) )
-        {{ $events->links('pagination::bootstrap-4') }}
-        @endif
-      </div>
-
       @endif
     @endif
+
+    {!! link_to_route('events.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}
+
+    <div class="d-flex justify-content-center">
+      @if ( isset($events) )
+      {{ $events->links('pagination::bootstrap-4') }}
+      @endif
+    </div>
   </div>
 </div>
 @endsection

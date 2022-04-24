@@ -35,8 +35,8 @@
       </tr>
 
       <tr>
-        <td>{{ $seven_column->title }}</td>
-        <td>{{ $seven_column->content }}</td>
+        <td>{{ $event->title }}</td>
+        <td>{{ $event->content }}</td>
       </tr>
     </table>
 
@@ -45,8 +45,8 @@
         <th>2-1 感情名</th>
         <th>2-2 その強さ</th>
       <tr>
-        <td>{{ $seven_column->emotion_name }}</td>
-        <td>{{ $seven_column->emotion_strength }}</td>
+        <td>{{ $three_column->emotion_name }}</td>
+        <td>{{ $three_column->emotion_strength }}</td>
       </tr>
 
       <table class="table table-bordered">
@@ -55,7 +55,7 @@
 
         </tr>
         <tr>
-          <td>{{ $seven_column->thinking }}</td>
+          <td>{{ $three_column->thinking }}</td>
         </tr>
       </table>
       <table class="table table-bordered">

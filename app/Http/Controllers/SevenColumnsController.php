@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\SevenColumn;
 use App\Models\ThreeColumn;
 use Illuminate\Http\Request;
@@ -18,11 +19,13 @@ class SevenColumnsController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $sevencolumns = $user->seven_columns()->orderBy('updated_at', 'desc')->paginate(5);
+            $event = $user->events()->first();
 
             $data = [
-                'user' => $user,
+                'event' => $event,
                 'seven_columns' => $sevencolumns
             ];
+            //dd($data);
         }
         return view('seven_columns.index', $data);
     }
@@ -59,8 +62,12 @@ class SevenColumnsController extends Controller
 
         $threecolumn = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();
 
+        $event_id = $threecolumn->event_id;
+        $event = Event::where('id', $event_id)->where('user_id', $user_id)->first();
+
         return view('seven_columns.create', [
-            'threecolumn' => $threecolumn
+            'threecolumn' => $threecolumn,
+            'event' => $event
         ]);
     }
 
@@ -71,8 +78,6 @@ class SevenColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'title' => 'required|max:30',
-                'content' => 'required|max:255',
                 'emotion_name' => 'required',
                 'emotion_strength' => 'required',
                 'thinking' => 'required',
@@ -91,12 +96,6 @@ class SevenColumnsController extends Controller
             $seven_column->threecol_id = $request->threecol_id;
             $seven_column->event_id = $request->event_id;
 
-            $seven_column->title = $request->title;
-            $seven_column->content = $request->content;
-
-            $seven_column->emotion_name = $request->emotion_name;
-            $seven_column->emotion_strength = $request->emotion_strength;
-            $seven_column->thinking = $request->thinking;
             $seven_column->basis_thinking = $request->basis_thinking;
             $seven_column->opposite_fact = $request->opposite_fact;
             $seven_column->new_thinking = $request->new_thinking;
@@ -112,23 +111,22 @@ class SevenColumnsController extends Controller
     public function show($id)
     {
         $seven_column = SevenColumn::find($id);
+        
         $threecol_id = $seven_column->threecol_id;
         $three_column = ThreeColumn::find($threecol_id);
 
+        $event_id = $seven_column->event_id;
+        $event = Event::find($event_id);
 
         $habit_names = [];
         // 考え方の癖 取得
         foreach ($three_column->habit as $habit) {
             $habit_names[] = $habit->habit_name;
         }
-        /*
-        if ( !isset($habit_names) ) {
-            $habit_names = [];
-        }
-*/
-        //dd($habit_names);
 
         return view('seven_columns.show', [
+            'event' => $event,
+            'three_column' => $three_column,
             'seven_column' => $seven_column,
             'habit_names' => $habit_names
         ]);
@@ -149,11 +147,6 @@ class SevenColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'title' => 'required|max:30',
-                'content' => 'required|max:255',
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
-                'thinking' => 'required',
                 'basis_thinking' => 'required',
                 'opposite_fact' => 'required',
                 'new_thinking' => 'required',
@@ -164,12 +157,7 @@ class SevenColumnsController extends Controller
         // トランザクション処理
         DB::transaction(function () use ($id, $request) {
             $seven_column = SevenColumn::find($id);
-            $seven_column->title = $request->title;
-            $seven_column->content = $request->content;
-
-            $seven_column->emotion_name = $request->emotion_name;
-            $seven_column->emotion_strength = $request->emotion_strength;
-            $seven_column->thinking = $request->thinking;
+            
             $seven_column->basis_thinking = $request->basis_thinking;
             $seven_column->opposite_fact = $request->opposite_fact;
             $seven_column->new_thinking = $request->new_thinking;
