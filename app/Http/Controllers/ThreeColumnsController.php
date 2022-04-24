@@ -37,8 +37,7 @@ class ThreeColumnsController extends Controller
             $keyword = $request->keyword;
             $id = Auth::user()->id;
             if ($keyword !== null) {
-                $three_columns = DB::table('threecolumns')
-                    ->where('user_id', $id)
+                $three_columns = ThreeColumn::where('user_id', $id)
                     ->where(function($query) use($keyword) {
                         $query->where('title', 'like', '%' . $keyword . '%')
                         ->orWhere('content', 'like', '%' . $keyword . '%')
@@ -62,9 +61,9 @@ class ThreeColumnsController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
-
+//dd($id);
         $event = Event::where('id', $id)->where('user_id', $user_id)->first();
-
+//dd($event);
         $data = [
             'event' => $event,
         ];

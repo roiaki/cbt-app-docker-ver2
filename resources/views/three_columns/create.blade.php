@@ -14,11 +14,11 @@
 
           <label for="title">1-1 出来事 の タイトル</label>
           <input type="text"
-                class="form-control"
-                id="title"
-                name="title"
-                value="{{ $event->title }}"
-                readonly
+                 class="form-control"
+                 id="title"
+                 name="title"
+                 value="{{ $event->title }}"
+                 readonly
           >
 
           <!-- バリデーションエラー表示-->
