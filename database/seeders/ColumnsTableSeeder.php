@@ -14,21 +14,6 @@ class ColumnsTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        DB::table('columns')->insert([
-            'title' => 'test title 1',
-            'content' => 'test content 1'
-        ]);
-        DB::table('columns')->insert([
-            'title' => 'test title 2',
-            'content' => 'test content 2'
-        ]);
-        DB::table('columns')->insert([
-            'title' => 'test title 3',
-            'content' => 'test content 3'
-        ]);
-    */
-
         for ($i = 1; $i <= 10; $i++) {
             DB::table('columns')->insert([
                 'title' => 'test title ' . $i,

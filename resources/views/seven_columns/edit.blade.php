@@ -25,7 +25,7 @@
                 id="title"
                 name="title"
                 readonly
-                value="{{ $seven_column->title }}">
+                value="{{ $event->title }}">
         
           <!-- タイトル必須バリデーション表示 課題：まとめてかけないか-->
           @if($errors->has('title'))
@@ -45,7 +45,7 @@
                   name="content" 
                   cols="50" 
                   rows="3"
-                  readonly>{{ $seven_column->content }}</textarea>
+                  readonly>{{ $event->content }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('content'))
@@ -63,7 +63,7 @@
               class="form-control" 
               name="emotion_name" 
               readonly 
-              value="{{ $seven_column->emotion_name }}">
+              value="{{ $three_column->emotion_name }}">
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('emotion_name'))
@@ -81,7 +81,7 @@
               class="form-control" 
               name="emotion_strength" 
               readonly 
-              value="{{ $seven_column->emotion_strength }}">
+              value="{{ $three_column->emotion_strength }}">
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('emotion_strength'))
@@ -100,7 +100,7 @@
                   name="thinking" 
                   cols="50" 
                   rows="3" 
-                  readonly>{{ $seven_column->thinking }}</textarea>
+                  readonly>{{ $three_column->thinking }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('thinking'))

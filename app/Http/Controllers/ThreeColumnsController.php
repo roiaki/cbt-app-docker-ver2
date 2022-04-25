@@ -32,7 +32,6 @@ class ThreeColumnsController extends Controller
     // 検索表示
     public function searchIndex(Request $request)
     {
-        
         if (Auth::check()) {
             $keyword = $request->keyword;
             $id = Auth::user()->id;
@@ -186,15 +185,12 @@ class ThreeColumnsController extends Controller
         $event = Event::find($event_id);
 
         $habit_id = [];
+        
         // 考え方の癖 id 取得
         foreach ($three_column->habit as $habit) {
             $habit_id[] = $habit->id;
         }
-        /*
-        if ( !isset($habit_id) ) {
-            $habit_id = [];
-        }
-*/
+
         $data = [
             'three_column' => $three_column,
             'habit_id' => $habit_id,

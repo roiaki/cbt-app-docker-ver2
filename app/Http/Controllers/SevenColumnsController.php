@@ -19,8 +19,8 @@ class SevenColumnsController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $sevencolumns = $user->seven_columns()->orderBy('updated_at', 'desc')->paginate(5);
-            $event = $user->events()->first();
-
+            $event = $user->events()->get();
+//dd($event);
             $data = [
                 'event' => $event,
                 'seven_columns' => $sevencolumns
@@ -78,9 +78,6 @@ class SevenColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
-                'thinking' => 'required',
                 'basis_thinking' => 'required',
                 'opposite_fact' => 'required',
                 'new_thinking' => 'required',
@@ -136,7 +133,16 @@ class SevenColumnsController extends Controller
     public function edit($id)
     {
         $seven_column = SevenColumn::find($id);
+
+        $threecol_id = $seven_column->threecol_id;
+        $event_id = $seven_column->event_id;
+
+        $three_column = ThreeColumn::find($threecol_id);
+        $event = Event::find($event_id);
+        
         return view('seven_columns.edit', [
+            'event' => $event,
+            'three_column' => $three_column,
             'seven_column' => $seven_column
         ]);
     }
