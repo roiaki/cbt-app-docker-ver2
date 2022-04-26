@@ -57,7 +57,7 @@
 
     <div class="d-flex justify-content-center">
       @if ( isset($three_columns) )
-      {{ $three_columns->links('pagination::bootstrap-4') }}
+      {{ $three_columns->appends(request()->input())->links('pagination::bootstrap-4') }}
       @endif
     </div>
 

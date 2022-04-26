@@ -58,7 +58,7 @@
       </table>
 
       <div class="d-flex justify-content-center">
-        {{ $seven_columns->links('pagination::bootstrap-4') }}
+        {{ $seven_columns->appends(request()->input())->links('pagination::bootstrap-4') }}
       </div>
       @endif
     @endif

@@ -56,7 +56,7 @@
 
     <div class="d-flex justify-content-center pages">
       @if ( isset($events) )
-      {{ $events->links('pagination::bootstrap-4') }}
+      {{ $events->appends(request()->input())->links('pagination::bootstrap-4') }}
       @endif
     </div>
   </div>
