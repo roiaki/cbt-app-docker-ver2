@@ -39,13 +39,13 @@
           @foreach ($seven_columns as $seven_column)
           <tr>
             <td>{{ $seven_column->id }}</td>
-            <td>{{ $seven_column->title }}</td>
+            <td>{{ $seven_column->basis_thinking }}</td>
             
             <td>  
-              @if (mb_strlen($seven_column->content) > 25)
-                {{ $short_content = mb_substr($seven_column->content, 0, 25 ) . "....."; }}
+              @if (mb_strlen($seven_column->opposite_fact) > 25)
+                {{ $short_content = mb_substr($seven_column->opposite_fact, 0, 25 ) . "....."; }}
               @else
-                {{ $seven_column->content }}
+                {{ $seven_column->opposite_fact }}
               @endif
             </td>
 

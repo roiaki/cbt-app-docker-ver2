@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([HabitsTableSeeder::class]);
         $this->call([UsersTableSeeder::class]);
-
+        $this->call([ColumnsTableSeeder::class]);
     }
 }

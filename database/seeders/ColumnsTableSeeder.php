@@ -14,15 +14,18 @@ class ColumnsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 10; $i++) {
-            DB::table('columns')->insert([
-                'title' => 'test title ' . $i,
-                'content' => 'test content ' . $i,
-                'emotion_name' => 'test' . $i,
-                'emotion_strength' => '3',
-                'thoughts' => 'test',
-                'user_id' => 1
-            ]);
+        for ($i = 1; $i <= 100; $i++) {
+            for ($j = 1; $j <= 100; $j++) {
+                DB::table('events')->insert([
+                    'user_id' => $i,
+                    'title' => 'userid' . ' = ' . $i . ' test title ' . $j,
+                    'content' => 'userid' . ' = ' . $i . ' test content ' . $j,
+                    'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s"),
+                ]);
+
+                
+            }
         }
     }
 }

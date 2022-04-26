@@ -41,7 +41,7 @@ class EventsController extends Controller
                           ->orWhere('content', 'like', '%' . $keyword . '%');
                   })
                   ->orderBy('updated_at', 'desc')
-                  ->paginate(5);
+                  ->paginate(10);
                   
         } else {
             return view('events.index');

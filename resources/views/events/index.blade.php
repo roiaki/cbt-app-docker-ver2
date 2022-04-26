@@ -54,7 +54,7 @@
 
     {!! link_to_route('events.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center pages">
       @if ( isset($events) )
       {{ $events->links('pagination::bootstrap-4') }}
       @endif
