@@ -160,8 +160,6 @@ class SevenColumnsController extends Controller
             ]
         );
 
-        // トランザクション処理
-        DB::transaction(function () use ($id, $request) {
             $seven_column = SevenColumn::find($id);
             
             $seven_column->basis_thinking = $request->basis_thinking;
@@ -171,10 +169,7 @@ class SevenColumnsController extends Controller
             $seven_column->updated_at = date('Y-m-d G:i:s');
 
             $seven_column->save();
-        });
-        // end transaction
 
-        // report($e);
         // session()->flash('flash_message', 'kousinn が失敗しました。');
 
         return redirect('seven_columns');
