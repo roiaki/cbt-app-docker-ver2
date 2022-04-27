@@ -39,9 +39,9 @@ class SevenColumnsController extends Controller
             $seven_columns = DB::table('sevencolumns')
                 ->where('user_id', $id)
                 ->where(function ($query) use ($keyword) {
-                    $query->where('title', 'like', '%' . $keyword . '%')
-                        ->orWhere('content', 'like', '%' . $keyword . '%')
-                        ->orWhere('thinking', 'like', '%' . $keyword . '%');
+                    $query->where('basis_thinking', 'like', '%' . $keyword . '%')
+                        ->orWhere('oppsite_fact', 'like', '%' . $keyword . '%')
+                        ->orWhere('new_thinking', 'like', '%' . $keyword . '%');
                 })
                 ->orderBy('updated_at', 'desc')
                 ->paginate(5);
@@ -64,7 +64,7 @@ class SevenColumnsController extends Controller
 
         $event_id = $threecolumn->event_id;
         $event = Event::where('id', $event_id)->where('user_id', $user_id)->first();
-dd($event);
+//dd($event);
         return view('seven_columns.create', [
             'threecolumn' => $threecolumn,
             'event' => $event
