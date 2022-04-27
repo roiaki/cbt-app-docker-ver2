@@ -38,9 +38,9 @@ class ThreeColumnsController extends Controller
             if ($keyword !== null) {
                 $three_columns = ThreeColumn::where('user_id', $id)
                     ->where(function($query) use($keyword) {
-                        $query->where('title', 'like', '%' . $keyword . '%')
-                        ->orWhere('content', 'like', '%' . $keyword . '%')
-                        ->orWhere('thinking', 'like', '%' . $keyword . '%');
+                        $query->orwhere('emotion_name', 'like', '%' . $keyword . '%')
+                              ->orWhere('thinking', 'like', '%' . $keyword . '%');
+                       
                     })
                 ->orderBy('updated_at', 'desc')
                 ->paginate(5);

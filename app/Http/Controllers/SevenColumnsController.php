@@ -64,7 +64,7 @@ class SevenColumnsController extends Controller
 
         $event_id = $threecolumn->event_id;
         $event = Event::where('id', $event_id)->where('user_id', $user_id)->first();
-
+dd($event);
         return view('seven_columns.create', [
             'threecolumn' => $threecolumn,
             'event' => $event
