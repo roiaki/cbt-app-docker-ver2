@@ -3,13 +3,13 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">出来事詳細ページ　id = {{ $event->id }} </h3>
+    <h3 class="title_head">{{ __('event.event_detail_head') }} (id = {{ $event->id }} ) </h3>
 
     <table class="table table-bordered">
       <tr>
-        <th>出来事id</th>
-        <th>作成日時</th>
-        <th>最終変更日時</th>
+        <th>{{ __('event.event_id') }}</th>
+        <th>{{ __('event.created_day') }}</th>
+        <th>{{ __('event.updated_day') }}</th>
       </tr>
       <tr>
         <td>{{ $event->id }}</td>
@@ -21,7 +21,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>タイトル</th>
+        <th>{{ __('event.title') }}</th>
       </tr>
       <tr>
         <td>{{ $event->title }}</td>      
@@ -29,7 +29,7 @@
       </table>
       <table class="table table-bordered">
       <tr>
-        <th>内容</th>
+        <th>{{ __('event.content') }}</th>
       </tr>
       <tr>
         <td>{{ $event->content }}</td>
@@ -39,14 +39,14 @@
     <div class="buttons-first">
       <form action="{{ route('three_columns.create', ['id' => $event->id]) }}" method="get">
         @csrf
-        <button type="submit" class="btn btn-success btn-lg">3コラム作成</button>
+        <button type="submit" class="btn btn-success btn-lg">{{ __('event.create_threecolumn_button') }}</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('events.edit', ['event' => $event->id] ) }}" method="get">
         @csrf
-        <button type="submit" class="btn btn-secondary btn-lg">編集</button>
+        <button type="submit" class="btn btn-secondary btn-lg">{{ __('event.edit') }}</button>
       </form>
     </div>
 
@@ -54,12 +54,12 @@
       <form action="{{ route('events.destroy', ['event' => $event->id] ) }}" , method="post">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
+        <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('event.delete') }}</button>
       </form>
     </div>
 
     <div class="buttons">
-      <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
+      <button class="btn btn-primary btn-lg" onclick="history.back(-1)">{{ __('event.back') }}</button>
     </div>
   </div>
 </div>

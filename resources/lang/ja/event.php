@@ -16,7 +16,20 @@ return [
     "create_title" => "タイトル",
     "create_contents" => "内容",
     "create_button" => "出来事作成",
-    "back" => "戻る"
+    "back" => "戻る",
+
+    // 詳細ページ
+    "event_detail_head" => "出来事 詳細ページ  ",
+    "event_id" => "出来事ID",
+    "created_day" => "作成日",
+    "updated_day" => "更新日",
+    "title" => "タイトル",
+    "content" => "内容",
+
+    "create_threecolumn_button" => "３コラム作成",
+    "edit" => "編集",
+    "delete" => "削除",
+    
 ];
 
 ?>

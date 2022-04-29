@@ -134,6 +134,7 @@ class EventsController extends Controller
         return view('events.testvue');
     }
    
+    # TODO: 
     // ロールバック時のエラー制御メソッド
     public function catchError($param) {
         try {
