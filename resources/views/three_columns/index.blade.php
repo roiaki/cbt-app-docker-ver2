@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">3コラム一覧</h3>
+    <h3 class="title_head">{{ __('threecolumn.three_title') }}</h3>
 
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
@@ -11,9 +11,9 @@
         <form class="form-inline" action="{{ route('three_columns.serch') }}" method="get">
           @csrf
           <div class="form-group">
-            <input type="text" name="keyword" value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="検索キーワード">
+            <input type="text" name="keyword" value="@if ( !empty($keyword) ){{ $keyword }}@endif" class="form-control" placeholder="{{ __('threecolumn.search_word') }}">
 
-            <input type="submit" value="検索" class="btn btn-info">
+            <input type="submit" value="{{ __('threecolumn.search') }}" class="btn btn-info">
           </div>
         </form>
       </div>
@@ -25,10 +25,10 @@
     <table class="table table-striped table-bordered">
       <thead>
         <tr class="table-primary">
-          <th>3コラムid</th>
-          <th>感情名</th>
-          <th>考えたこと</th>
-          <th>更新日</th>
+          <th>{{ __('threecolumn.threecolId') }}</th>
+          <th>{{ __('threecolumn.emotion_name') }}</th>
+          <th>{{ __('threecolumn.thinking') }}</th>
+          <th>{{ __('threecolumn.updated_day') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -46,7 +46,7 @@
             @endif
           </td>
           <td>{{ date( 'Y/m/d H:i', strtotime($three_column->updated_at) ) }}
-            <p><a href="{{ route('three_columns.show', $three_column->id) }}">詳細</a></p>
+            <p><a href="{{ route('three_columns.show', $three_column->id) }}">{{ __('threecolumn.detail') }}</a></p>
           </td>
         </tr>
         @endforeach

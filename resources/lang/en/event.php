@@ -2,7 +2,7 @@
 
 return [
     "info" => "info",
-    "event_title" => "Title of the event",
+    "event_title" => "List of the event",
     "search_word" => "search word",
     "search" => "Serach",
     "title" => "Title",

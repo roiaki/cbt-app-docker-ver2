@@ -28,12 +28,13 @@ class EventsController extends Controller
         return view('events.index', $data);
     }
 
-    // 検索表示
+    // 検索機能
     public function searchIndex(Request $request)
     {
         $keyword = $request->keyword;
         $id = Auth::user()->id;
-        if ($keyword !== null) {           
+        
+        if (isset($keyword)) {           
             $events = DB::table('events')
                 ->where('user_id', $id)
                 ->where(function($query) use($keyword) {
