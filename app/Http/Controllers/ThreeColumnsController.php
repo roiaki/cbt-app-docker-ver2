@@ -35,7 +35,8 @@ class ThreeColumnsController extends Controller
         if (Auth::check()) {
             $keyword = $request->keyword;
             $id = Auth::user()->id;
-            if ($keyword !== null) {
+            
+            if (isset($keyword)) {
                 $three_columns = ThreeColumn::where('user_id', $id)
                     ->where(function($query) use($keyword) {
                         $query->orwhere('emotion_name', 'like', '%' . $keyword . '%')
@@ -47,6 +48,7 @@ class ThreeColumnsController extends Controller
             } else {
                 return view('three_columns.index');
             }
+            
             $data = [
                 'three_columns' => $three_columns,
                 'keyword' => $keyword

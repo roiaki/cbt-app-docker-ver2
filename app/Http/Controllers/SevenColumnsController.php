@@ -35,12 +35,13 @@ class SevenColumnsController extends Controller
     {
         $keyword = $request->keyword;
         $id = Auth::user()->id;
-        if ($keyword !== null) {
+
+        if (isset($keyword)) {
             $seven_columns = DB::table('sevencolumns')
                 ->where('user_id', $id)
                 ->where(function ($query) use ($keyword) {
                     $query->where('basis_thinking', 'like', '%' . $keyword . '%')
-                        ->orWhere('oppsite_fact', 'like', '%' . $keyword . '%')
+                        ->orWhere('opposite_fact', 'like', '%' . $keyword . '%')
                         ->orWhere('new_thinking', 'like', '%' . $keyword . '%');
                 })
                 ->orderBy('updated_at', 'desc')
@@ -48,6 +49,7 @@ class SevenColumnsController extends Controller
         } else {
             return view('seven_columns.index');
         }
+
         $data = [
             'seven_columns' => $seven_columns,
             'keyword' => $keyword
