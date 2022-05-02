@@ -29,4 +29,11 @@ return [
     "create_threecolumn_button" => "NEW 3COLUMN",
     "edit" => "EDIT",
     "delete" => "DELETE",
+
+    // 編集ページ
+    "event_edit_head" => "Event Edit Page",
+    "event_edit_title" => "Title",
+    "event_edit_content" => "Contnt",
+    "update_button" => "UPDATE",
+    ""
 ];

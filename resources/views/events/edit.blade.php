@@ -4,13 +4,13 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">
-  <h3 class="title_head">出来事編集ページ( id={{ $event->id }} )</h3>
+  <h3 class="title_head">{{ __("event.event_edit_head") }}( id={{ $event->id }} )</h3>
     <form action="{{ route('events.update', ['event' => $event->id] ) }}" method="POST">
       @csrf
       @method('PUT')
       <div class="form-group">
         <!-- タイトル -->
-        <label for="title">出来事 の タイトル</label>
+        <label for="title">{{ __('event.event_edit_title') }}</label>
         <input type="text" 
                class="form-control" 
                id="title" 
@@ -30,7 +30,7 @@
 
       <div class="form-group">
         <!-- 内容 -->
-        <label for="content">出来事 の 内容</label>
+        <label for="content">{{ __('event.event_edit_content') }}</label>
         <textarea class="form-control" 
                   id="content" 
                   name="content" 
@@ -46,11 +46,11 @@
         @endforeach
         @endif
       </div>
-      <input type="submit" class="btn btn-primary btn-lg" value="更新">
+      <input type="submit" class="btn btn-primary btn-lg" value="{{ __('event.update_button') }}">
 
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
+        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('event.back') }}</button>
       </div>
     </form>
 

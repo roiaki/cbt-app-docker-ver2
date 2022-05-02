@@ -29,6 +29,13 @@ return [
     "create_threecolumn_button" => "３コラム作成",
     "edit" => "編集",
     "delete" => "削除",
+
+    // 編集ページ
+    "event_edit_head" => "出来事編集ページ",
+    "event_edit_title" => "タイトル",
+    "event_edit_content" => "内容",
+    "update_button" => "更新",
+    ""
     
 ];
 
