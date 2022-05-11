@@ -21,9 +21,12 @@ if (5 <= $hour && $hour <= 12) {
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
   <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+  
   <!-- Vue.js を読み込む -->
-  <script src="https://unpkg.com/vue"></script>
-
+  <script src="https://unpkg.com/vue@next"></script>
+  
+  <!-- bootstrap読み込み　-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -114,14 +117,17 @@ if (5 <= $hour && $hour <= 12) {
     <div class="container">
       @yield('content')
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
+    
+    <!-- jQuery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
+    <!-- Propper.js読み込み -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+    
 </body>
 
 </html>
