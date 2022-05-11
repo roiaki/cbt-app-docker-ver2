@@ -78,8 +78,8 @@ class ThreeColumnsController extends Controller
         $this->validate(
             $request,
             [
-                //'emotion_name' => 'required',
-                //'emotion_strength' => 'required',
+                'emotion_name' => 'required',
+                'emotion_strength' => 'required',
                 'thinking' => 'required',
                 'habit' => 'required'
             ]
@@ -241,6 +241,9 @@ class ThreeColumnsController extends Controller
     {
         $this->validate($request, [
             'emotion_name' => 'required',
+            'emotion_name00' => 'required',
+            'emotion_name01' => 'required',
+            'emotion_name02' => 'required',
             'emotion_strength' => 'required',
             'thinking' => 'required',
             'habit' => 'required'
@@ -253,6 +256,32 @@ class ThreeColumnsController extends Controller
 
             $three_column->emotion_name = $request->emotion_name;
             $three_column->emotion_strength = $request->emotion_strength;
+
+            if(isset($request->emotion_name00)) {
+                $three_column->emotion_name00 = $request->emotion_name00;
+            }
+            
+            if(isset($request->emotion_name01)) {
+                $three_column->emotion_name01 = $request->emotion_name01;
+            }
+            
+            if(isset($request->emotion_name02)) {
+                $three_column->emotion_name02 = $request->emotion_name02;
+            }
+
+            if(isset($request->emotion_strength00)) {
+                $three_column->emotion_strength00 = $request->emotion_strength00;
+            }
+
+            if(isset($request->emotion_strength01)) {
+                $three_column->emotion_strength01 = $request->emotion_strength01;
+            }
+
+            if(isset($request->emotion_strength02)) {
+                $three_column->emotion_strength02 = $request->emotion_strength02;
+            }
+
+            
             $three_column->thinking = $request->thinking;
 
             $three_column->updated_at = date("Y-m-d G:i:s");

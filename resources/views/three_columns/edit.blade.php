@@ -59,43 +59,133 @@
         @endif
       </div>
 
+      <div class="row">
+        <div class="form-group col">
+          <label for="emotion_name">感情名</label>
+          <input type="text" 
+                class="form-control" 
+                id="emotion_name" 
+                name="emotion_name" 
+                value="{{$three_column->emotion_name }}"
+          >
+          
+          <!-- 感情名必須バリデーション表示-->
+          @if($errors->has('emotion_name'))
+            @foreach($errors->get('emotion_name') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
 
-      <div class="form-group">
-        <label for="emotion_name">感情名</label>
-        <input type="text" 
-               class="form-control" 
-               id="emotion_name" 
-               name="emotion_name" 
-               value="{{$three_column->emotion_name }}"
-        >
 
-        <!-- 感情名必須バリデーション表示-->
-        @if($errors->has('emotion_name'))
-        @foreach($errors->get('emotion_name') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
+          @if(isset($three_column->emotion_name00))
+          <input type="text" 
+                class="form-control mt-2" 
+                id="emotion_name_def" 
+                name="emotion_name00" 
+                value="{{$three_column->emotion_name00 }}"
+          >
+          @endif
 
-      <div class="form-group">
-        <label for="emotion_strength">強さ</label>
-        <input type="number" 
-               class="form-control" 
-               id="emotion_strength" 
-               name="emotion_strength" 
-               value="{{ $three_column->emotion_strength }}"
-        >
+          <!-- 感情名必須バリデーション表示-->
+          @if($errors->has('emotion_name00'))
+            @foreach($errors->get('emotion_name00') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
 
-        <!-- 感情名必須バリデーション表示-->
-        @if($errors->has('emotion_strength'))
-        @foreach($errors->get('emotion_strength') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
+          
+          @if(isset($three_column->emotion_name01))
+          <input type="text" 
+                class="form-control mt-2" 
+                id="emotion_name_def" 
+                name="emotion_name01" 
+                value="{{$three_column->emotion_name01 }}"
+          >
+          @endif
+
+          <!-- 感情名必須バリデーション表示-->
+          @if($errors->has('emotion_name01'))
+            @foreach($errors->get('emotion_name01') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
+
+          
+          @if(isset($three_column->emotion_name02))
+          <input type="text" 
+                class="form-control mt-2" 
+                id="emotion_name_def" 
+                name="emotion_name02" 
+                value="{{$three_column->emotion_name02 }}"
+          >
+          @endif
+
+          <!-- 感情名必須バリデーション表示-->
+          @if($errors->has('emotion_name02'))
+            @foreach($errors->get('emotion_name02') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
+
+
+          
+        </div>
+
+        <div class="form-group col">
+          <label for="emotion_strength">感情の強さ</label>
+          <input type="number" 
+                class="form-control" 
+                id="emotion_strength" 
+                name="emotion_strength" 
+                value="{{ $three_column->emotion_strength }}"
+          >
+
+          <!-- 感情名必須バリデーション表示-->
+          @if($errors->has('emotion_strength'))
+            @foreach($errors->get('emotion_strength') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
+
+          @if(isset($three_column->emotion_strength00))
+          <input type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength_def" 
+                name="emotion_strength00" 
+                value="{{ $three_column->emotion_strength00 }}"
+          >
+          @endif
+
+          @if(isset($three_column->emotion_strength01))
+          <input type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength_def" 
+                name="emotion_strength01" 
+                value="{{ $three_column->emotion_strength01 }}"
+          >
+          @endif
+
+          @if(isset($three_column->emotion_strength02))
+          <input type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength_def" 
+                name="emotion_strength02" 
+                value="{{ $three_column->emotion_strength02 }}"
+          >
+          @endif
+
+          
+        </div>
       </div>
 
       <div class="form-group">
