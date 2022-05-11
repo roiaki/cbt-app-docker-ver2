@@ -43,9 +43,31 @@
       </tr>
       <tr>
         <td>{{ $three_column->emotion_name }}</td>
-        <td>{{ $three_column->emotion_strength }}</td>
+        <td>{{ $three_column->emotion_strength }}</td> 
       </tr>
-    </table>
+
+      @if($three_column->emotion_name00)
+        <tr>
+          <td>{{ $three_column->emotion_name00 }}</td>
+          <td>{{ $three_column->emotion_strength00 }}</td>
+        </tr>
+      @endif
+
+      @if($three_column->emotion_name01)
+        <tr>
+          <td>{{ $three_column->emotion_name01 }}</td>
+          <td>{{ $three_column->emotion_strength01 }}</td>
+        </tr>
+      @endif
+
+      @if($three_column->emotion_name02)
+        <tr>
+          <td>{{ $three_column->emotion_name02 }}</td>
+          <td>{{ $three_column->emotion_strength02 }}</td>
+        </tr>
+      @endif
+      
+      </table>
 
     <table class="table table-bordered" class="table table-bordered">
       <tr>
