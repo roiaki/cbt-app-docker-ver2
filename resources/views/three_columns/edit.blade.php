@@ -120,7 +120,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[0]" id="1" 
           <?php
-            if (in_array(1, $habit_id)) {
+            if (in_array(1, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
@@ -133,7 +133,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[1]" id="2" 
           <?php
-            if (in_array(2, $habit_id)) {
+            if (in_array(2, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
@@ -146,7 +146,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[2]" id="3" 
           <?php
-            if (in_array(3, $habit_id)) {
+            if (in_array(3, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
@@ -159,7 +159,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[3]" id="4" 
           <?php
-            if (in_array(4, $habit_id)) {
+            if (in_array(4, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
@@ -172,7 +172,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[4]" id="5" 
           <?php
-            if (in_array(5, $habit_id)) {
+            if (in_array(5, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
@@ -185,7 +185,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[5]" id="6" 
           <?php
-            if (in_array(6, $habit_id)) {
+            if (in_array(6, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
@@ -198,7 +198,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[6]" id="7" 
           <?php
-            if (in_array(7, $habit_id)) {
+            if (in_array(7, $habit_id, true)) {
               echo 'checked';
             }
           ?>>
