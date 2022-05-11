@@ -100,20 +100,20 @@
             <div class="row mt-3">
               <div class="form-group col">
                 <input ref="texts"
-                      name="emotion_name[]"
-                      class="form-control"
-                      type="text"
-                      v-model="texts[index]"
-                      @keypress.shift.enter="addInput">
+                       name="emotion_name[]"
+                       class="form-control"
+                       type="text"
+                       v-model="texts[index]"
+                       @keypress.shift.enter="addInput">
               </div>
                     <!-- 各入力ボックス -->
               <div class="form-group col">
                 <input ref="strenght"
-                      name="emotion_strength[]"
-                      class="form-control"
-                      type="number"
-                      v-model="strength[index]"
-                      @keypress.shift.enter="addInput">
+                       name="emotion_strength[]"
+                       class="form-control"
+                       type="number"
+                       v-model="strength[index]"
+                       @keypress.shift.enter="addInput">
               </div>
             
               <!-- 入力ボックスの削除ボタン -->
