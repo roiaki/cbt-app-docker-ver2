@@ -78,8 +78,8 @@ class ThreeColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'emotion_name' => 'required',
-                'emotion_strength' => 'required',
+                //'emotion_name' => 'required',
+                //'emotion_strength' => 'required',
                 'thinking' => 'required',
                 'habit' => 'required'
             ]
@@ -94,8 +94,35 @@ class ThreeColumnsController extends Controller
             $three_column->user_id = Auth::id();
             $three_column->event_id = $request->eventid;
 
-            $three_column->emotion_name = $request->emotion_name;
-            $three_column->emotion_strength = $request->emotion_strength;
+            $three_column->emotion_name = $request->emotion_name_def;
+            $three_column->emotion_strength = $request->emotion_strength_def;
+
+            //dd($three_column->emotion_strength[0]);
+            if(isset($request->emotion_name[0])) {
+                $three_column->emotion_name00 = $request->emotion_name[0];   
+            }
+           
+            if(isset($request->emotion_name[1])) {
+                $three_column->emotion_name01 = $request->emotion_name[1];
+            }
+
+            if(isset($request->emotion_name[2])) {
+                $three_column->emotion_name02 = $request->emotion_name[2];
+            }
+
+            if( isset($request->emotion_strength[0])) {
+                $three_column->emotion_strength00 = $request->emotion_strength[0];
+            }
+
+            if(isset($request->emotion_strength[1])) {
+                $three_column->emotion_strength01 = $request->emotion_strength[1];
+            }
+
+            if(isset($request->emotion_strength[2])) {
+                $three_column->emotion_strength02 = $request->emotion_strength[2];
+            }
+           
+
             $three_column->thinking = $request->thinking;
 
             // 中間テーブルの保存はthree_column保存の後でないとidがない

@@ -20,6 +20,14 @@ class CreateThreeColumnsTable extends Migration
            
             $table->string('emotion_name');
             $table->integer('emotion_strength');
+
+            $table->string('emotion_name00')->nullable();
+            $table->integer('emotion_strength00')->nullable();
+            $table->string('emotion_name01')->nullable();
+            $table->integer('emotion_strength01')->nullable();
+            $table->string('emotion_name02')->nullable();
+            $table->integer('emotion_strength02')->nullable();
+
             $table->string('thinking', 1000);
 
             $table->timestamps();

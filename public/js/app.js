@@ -1900,8 +1900,46 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app'
+new Vue({
+  el: '#app',
+  data: {
+    texts: [],
+    // 複数入力のデータ（配列）,
+    strength: [],
+    maxTextCount: 3
+  },
+  methods: {
+    // ボタンをクリックしたときのイベント ①〜③
+    addInput: function addInput() {
+      var _this = this;
+
+      if (this.isTextMax) {
+        return;
+      }
+
+      this.texts.push(''); // 配列に１つ空データを追加する
+
+      Vue.nextTick(function () {
+        var maxIndex = _this.texts.length - 1;
+        console.log(maxIndex);
+
+        _this.$refs['texts'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+
+      });
+    },
+    removeInput: function removeInput(index) {
+      this.texts.splice(index, 1);
+      this.strength.splice(index, 1);
+    }
+  },
+  computed: {
+    isTextMax: function isTextMax() {
+      return this.texts.length >= this.maxTextCount;
+    },
+    remainingTextCount: function remainingTextCount() {
+      return this.maxTextCount - this.texts.length; // 追加できる残り件数
+    }
+  }
 });
 
 /***/ }),

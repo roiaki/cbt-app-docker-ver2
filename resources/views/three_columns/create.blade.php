@@ -53,15 +53,17 @@
         </div>
 
       <div class="row">
+      
         <div class="form-group col">
           <label for="emotion_name">2-1 感情名</label>
           <input type="text"
                  class="form-control"
-                 id="emotion_name"
-                 name="emotion_name"
-                 value="{{ old('emotion_name') }}"
+                 id="emotion_name_def"
+                 name="emotion_name_def"
+                 value="{{ old('emotion_name_def') }}"
           >
-          <div id="form_area01"></div>
+
+
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_name'))
@@ -77,9 +79,9 @@
           <label for="emotion_strength">2-2 強さ</label>
           <input type="number"
                  class="form-control"
-                 id="emotion_strength"
-                 name="emotion_strength"
-                 value="{{ old('emotion_strength') }}"
+                 id="emotion_strength_def"
+                 name="emotion_strength_def"
+                 value="{{ old('emotion_strength_def') }}"
           >
 
           <!-- バリデーションエラー表示-->
@@ -92,6 +94,67 @@
           @endif
         </div>
       </div>
+     
+
+      <div id="app">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="emotion_strength">2-1 感情名</label>
+        </div>
+        <div class="form-group col-6">
+          <label for="emotion_strength">2-2 強さ</label>
+        </div>
+      </div>
+        <!-- 入力ボックスを表示する場所 ① -->
+        <div v-for="(text,index) in texts">
+            <!-- 各入力ボックス -->
+            <div class="row mt-3">
+              <div class="form-group col">
+                <input ref="texts"
+                       name="emotion_name[]"
+                       class="form-control"
+                       type="text"
+                       v-model="texts[index]"
+                       @keypress.shift.enter="addInput">
+              </div>
+                    <!-- 各入力ボックス -->
+              <div class="form-group col">
+                <input ref="strenght"
+                       name="emotion_strength[]"
+                       class="form-control"
+                       type="number"
+                       v-model="strength[index]"
+                       @keypress.shift.enter="addInput">
+              </div>
+              
+              <!-- 入力ボックスの削除ボタン -->
+              <button type="button" 
+                      class="btn btn-outline-danger btn-sm" 
+                      @click="removeInput(index)">削除</button>
+        
+            </div>
+            
+        </div>
+
+        <!-- 入力ボックスを追加するボタン ② -->
+        <button type="button" @click="addInput" v-if="!isTextMax">
+            追加する
+            （残り<span v-text="remainingTextCount"></span>件）
+        </button>
+        <br><br>
+        Ctrl + Enterキーで入力項目を追加できます（ショートカット）
+
+        <!-- 入力されたデータを送信するボタン ③ -->
+        <br><br>
+        
+        <!-- 確認用 -->
+        <hr>
+        <label>textsの中身</label>
+        <div v-text="texts"></div>
+        <div v-text="strength"></div>
+      </div>
+        
+              
 
       <div class="form-group">
         <label for="thinking">3-1 その時考えたこと</label><br>
