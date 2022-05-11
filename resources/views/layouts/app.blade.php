@@ -68,7 +68,12 @@ if (5 <= $hour && $hour <= 12) {
             <!-- 言語切り替え -->
             
             <div class="dropdown d-flex align-items-center mr-3">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-default dropdown-toggle" 
+                      type="button" 
+                      id="dropdownMenu1" 
+                      data-toggle="dropdown" 
+                      aria-haspopup="true" 
+                      aria-expanded="false">
                 アカウント
                 <span class="caret"></span>
               </button>
