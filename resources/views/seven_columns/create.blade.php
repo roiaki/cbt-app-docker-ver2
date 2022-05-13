@@ -9,8 +9,8 @@
     <form action="{{ route('seven_columns.store') }}" method="POST">
       @csrf
 
-      <input type="hidden" name="threecol_id" value="{{ $threecolumn->id }}">
-      <input type="hidden" name="event_id" value="{{ $threecolumn->event_id }}">
+      <input type="hidden" name="threecol_id" value="{{ $three_column->id }}">
+      <input type="hidden" name="event_id" value="{{ $three_column->event_id }}">
       
       <div class="form-group">
         <label for="title">①-1　出来事 の タイトル</label>
@@ -62,7 +62,7 @@
                id="emotion_name" 
                name="emotion_name"
                readonly  
-               value="{{ $threecolumn->emotion_name }}"
+               value="{{ $three_column->emotion_name }}"
         >
 
         <!-- 感情名必須バリデーション表示-->
@@ -82,7 +82,7 @@
                id="emotion_strength"
                name="emotion_strength"
                readonly
-               value="{{ $threecolumn->emotion_strength }}"
+               value="{{ $three_column->emotion_strength }}"
         >
 
         <!-- 感情名必須バリデーション表示-->
@@ -103,7 +103,7 @@
                   name="thinking" 
                   cols="90" 
                   rows="5" 
-                  readonly>{{ $threecolumn->thinking }}</textarea>
+                  readonly>{{ $three_column->thinking }}</textarea>
 
         <!-- 感情名必須バリデーション表示-->
         @if($errors->has('thinking'))
@@ -116,8 +116,8 @@
       </div>
 
       <div class="form-group">
-        <label for="basis_thinking">④　自分の考えの根拠</label>
-        <p>ポイント：客観的であるとベスト。<br>人から尋ねられた時に「だって」と説明するように</p>
+        <label for="basis_thinking"><h5>④　自分の考えの根拠</h5></label>
+        <p class="alert alert-success" role="alert">ポイント：客観的であるとベスト。<br>人から尋ねられた時に「だって」と説明するように</p>
         <textarea class="form-control" 
                   id="basis_thinking" 
                   name="basis_thinking" 
@@ -134,8 +134,8 @@
       </div>
 
       <div class="form-group">
-        <label for="opposite_fact">⑤　逆の事実</label>
-        <p>ポイント：「でも」そう考えなくても良いのでは？</p>
+        <label for="opposite_fact"><h5>⑤　逆の事実</h5></label>
+        <p class="alert alert-success" role="alert">ポイント：「でも」そう考えなくても良いのでは？</p>
         <textarea class="form-control" 
                   id="opposite_fact" 
                   name="opposite_fact" 
@@ -152,8 +152,8 @@
       </div>
 
       <div class="form-group">
-        <label for="new_thinking">⑥　新しい考え方</label>
-        <p>ポイント：④と考えられるけど、⑤とも考えられる</p>
+        <label for="new_thinking"><h5>⑥　新しい考え方</h5></label>
+        <p class="alert alert-success" role="alert">ポイント：④と考えられるけど、⑤とも考えられる</p>
         <textarea class="form-control" 
                   id="new_thinking" 
                   name="new_thinking" 
@@ -170,13 +170,88 @@
       </div>
 
       <div class="form-group">
-        <label for="new_emotion">⑦  新しい感情</label>
-        <p>ポイント：「⑥新しい考え」のように考えると、どんな感情と強さに変わった？</p>
-        <textarea class="form-control" 
-                  id="new_emotion" 
-                  name="new_emotion" 
-                  cols="90" 
-                  rows="5"></textarea>
+        <label for="new_emotion"><h5>⑦  新しい感情</h5></label>
+        <p class="alert alert-success" role="alert">ポイント：「⑥新しい考え」のように考えると、どんな感情と強さに変わった？</p>
+
+        <!-- ここから　-->
+        <div class="row mt-3">
+        <div class="form-group col-3">
+          <label for="emotion_name">感情名</label>
+          <ul class="list-group">
+            <li class="list-group-item">{{$three_column->emotion_name }}</li>
+            
+            @if(isset($three_column->emotion_name00))
+              <li class="list-group-item">{{$three_column->emotion_name00 }}</li>
+            @endif
+
+            @if(isset($three_column->emotion_name01))
+              <li class="list-group-item">{{$three_column->emotion_name01 }}</li>
+            @endif
+
+            @if(isset($three_column->emotion_name02))
+              <li class="list-group-item">{{$three_column->emotion_name02 }}</li>
+            @endif
+          </ul>
+
+        </div>
+
+        <div class="form-group col-3">
+          <label for="emotion_strength">以前の感情の強さ</label>
+          <ul class="list-group">
+            <li class="list-group-item">{{$three_column->emotion_strength }}</li>
+            
+            @if(isset($three_column->emotion_strength00))
+              <li class="list-group-item">{{$three_column->emotion_strength00 }}</li>
+            @endif
+            
+            @if(isset($three_column->emotion_strength01))
+              <li class="list-group-item">{{$three_column->emotion_strength01 }}</li>
+            @endif
+            
+            @if(isset($three_column->emotion_strength02))
+              <li class="list-group-item">{{$three_column->emotion_strength02 }}</li>
+            @endif
+          </ul>
+        </div>
+
+        <div class="form-group col-3">
+          <label for="emotion_strength">新しい感情の強さ</label>
+          <input type="number" 
+                class="form-control mt-1" 
+                id="emotion_strength" 
+                name="emotion_strength" 
+                value="{{ $three_column->emotion_strength }}"
+          >
+
+          @if(isset($three_column->emotion_strength00))
+          <input type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength_def" 
+                name="emotion_strength00" 
+                value="{{ $three_column->emotion_strength00 }}"
+          >
+          @endif
+
+          @if(isset($three_column->emotion_strength01))
+          <input type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength_def" 
+                name="emotion_strength01" 
+                value="{{ $three_column->emotion_strength01 }}"
+          >
+          @endif
+
+          @if(isset($three_column->emotion_strength02))
+          <input type="number" 
+                class="form-control mt-3" 
+                id="emotion_strength_def" 
+                name="emotion_strength02" 
+                value="{{ $three_column->emotion_strength02 }}"
+          >
+          @endif
+        </div>
+
+      </div>
 
         @if($errors->has('new_emotion'))
         @foreach($errors->get('new_emotion') as $message)

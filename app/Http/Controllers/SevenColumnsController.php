@@ -62,13 +62,13 @@ class SevenColumnsController extends Controller
         $user = Auth::user();
         $user_id = $user->id;
 
-        $threecolumn = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();
+        $three_column = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();
 
-        $event_id = $threecolumn->event_id;
+        $event_id = $three_column->event_id;
         $event = Event::where('id', $event_id)->where('user_id', $user_id)->first();
 //dd($event);
         return view('seven_columns.create', [
-            'threecolumn' => $threecolumn,
+            'three_column' => $three_column,
             'event' => $event
         ]);
     }

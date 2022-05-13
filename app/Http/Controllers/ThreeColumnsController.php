@@ -241,9 +241,6 @@ class ThreeColumnsController extends Controller
     {
         $this->validate($request, [
             'emotion_name' => 'required',
-            'emotion_name00' => 'required',
-            'emotion_name01' => 'required',
-            'emotion_name02' => 'required',
             'emotion_strength' => 'required',
             'thinking' => 'required',
             'habit' => 'required'
