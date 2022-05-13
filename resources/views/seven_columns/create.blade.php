@@ -53,48 +53,7 @@
         @endforeach
         @endif
       </div>
-
-
-      <div class="form-group">
-        <label for="emotion_name">②-1　感情名</label>
-        <input type="text"
-               class="form-control" 
-               id="emotion_name" 
-               name="emotion_name"
-               readonly  
-               value="{{ $three_column->emotion_name }}"
-        >
-
-        <!-- 感情名必須バリデーション表示-->
-        @if($errors->has('emotion_name'))
-        @foreach($errors->get('emotion_name') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
-
-      <div class="form-group">
-        <label for="emotion_strength">②-2　感情の強さ</label>
-        <input type="number"
-               class="form-control"
-               id="emotion_strength"
-               name="emotion_strength"
-               readonly
-               value="{{ $three_column->emotion_strength }}"
-        >
-
-        <!-- 感情名必須バリデーション表示-->
-        @if($errors->has('emotion_strength'))
-        @foreach($errors->get('emotion_strength') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
-
+      
       <div class="form-group">
         <label for="thinking">③　その時考えたこと</label>
         <p>ポイント：言い訳せずに簡単な言葉で表現する</p>
@@ -178,18 +137,35 @@
         <div class="form-group col-3">
           <label for="emotion_name">感情名</label>
           <ul class="list-group">
-            <li class="list-group-item">{{$three_column->emotion_name }}</li>
             
+            <li class="list-group-item">{{$three_column->emotion_name }}</li>
+            <input type="hidden"
+                   name="new_emotion_name"
+                   value="{{$three_column->emotion_name }}"
+            >
+
             @if(isset($three_column->emotion_name00))
               <li class="list-group-item">{{$three_column->emotion_name00 }}</li>
+              <input type="hidden"
+                     name="new_emotion_name00"
+                     value="{{$three_column->emotion_name00 }}"
+              >
             @endif
 
             @if(isset($three_column->emotion_name01))
               <li class="list-group-item">{{$three_column->emotion_name01 }}</li>
+              <input type="hidden"
+                     name="new_emotion_name01"
+                     value="{{$three_column->emotion_name01 }}"
+              >
             @endif
 
             @if(isset($three_column->emotion_name02))
               <li class="list-group-item">{{$three_column->emotion_name02 }}</li>
+              <input type="hidden"
+                     name="new_emotion_name02"
+                     value="{{$three_column->emotion_name02 }}"
+              >
             @endif
           </ul>
 
@@ -218,39 +194,34 @@
           <label for="emotion_strength">新しい感情の強さ</label>
           <input type="number" 
                 class="form-control mt-1" 
-                id="emotion_strength" 
-                name="emotion_strength" 
-                value="{{ $three_column->emotion_strength }}"
+                id="new_emotion_strength" 
+                name="new_emotion_strength" 
           >
 
           @if(isset($three_column->emotion_strength00))
           <input type="number" 
                 class="form-control mt-2" 
-                id="emotion_strength_def" 
-                name="emotion_strength00" 
-                value="{{ $three_column->emotion_strength00 }}"
+                id="new_emotion_strength00" 
+                name="new_emotion_strength00"
           >
           @endif
 
           @if(isset($three_column->emotion_strength01))
           <input type="number" 
                 class="form-control mt-2" 
-                id="emotion_strength_def" 
-                name="emotion_strength01" 
-                value="{{ $three_column->emotion_strength01 }}"
+                id="new_emotion_strength01" 
+                name="new_emotion_strength01"
           >
           @endif
 
           @if(isset($three_column->emotion_strength02))
           <input type="number" 
                 class="form-control mt-3" 
-                id="emotion_strength_def" 
-                name="emotion_strength02" 
-                value="{{ $three_column->emotion_strength02 }}"
+                id="new_emotion_strength02" 
+                name="new_emotion_strength02"    
           >
           @endif
         </div>
-
       </div>
 
         @if($errors->has('new_emotion'))

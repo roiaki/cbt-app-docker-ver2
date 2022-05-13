@@ -22,7 +22,16 @@ class CreateSevencolumnsTable extends Migration
             $table->string('basis_thinking');
             $table->string('opposite_fact');
             $table->string('new_thinking');
-            $table->string('new_emotion');
+
+            $table->string('new_emotion_name');
+            $table->string('new_emotion_name00')->nullable();;
+            $table->string('new_emotion_name01')->nullable();;
+            $table->string('new_emotion_name02')->nullable();;
+
+            $table->integer('new_emotion_strength');
+            $table->integer('new_emotion_strength00')->nullable();;
+            $table->integer('new_emotion_strength01')->nullable();;
+            $table->integer('new_emotion_strength02')->nullable();;
 
             $table->timestamps();
 

@@ -168,13 +168,103 @@
 
       <div class="form-group">
         <label for="new_emotion">⑦  新しい感情</label>
-        <textarea class="form-control" 
-                  id="new_emotion" 
-                  name="new_emotion" 
-                  cols="50" 
-                  rows="3">{{ $seven_column->new_emotion }}</textarea>
+        
+        <!-- ここから　-->
+        <div class="row mt-3">
+        <div class="form-group col-3">
+          <label for="emotion_name">感情名</label>
+          
+          <ul class="list-group">
+            <li class="list-group-item">{{$three_column->emotion_name }}</li>
+            <input type="hidden"
+                   name="new_emotion_name"
+                   value="{{$three_column->emotion_name }}"
+            >
 
-        <!-- 内容必須バリデーション表示-->
+            @if(isset($three_column->emotion_name00))
+              <li class="list-group-item">{{$three_column->emotion_name00 }}</li>
+              <input type="hidden"
+                     name="new_emotion_name00"
+                     value="{{$three_column->emotion_name00 }}"
+              >
+            @endif
+
+            @if(isset($three_column->emotion_name01))
+              <li class="list-group-item">{{$three_column->emotion_name01 }}</li>
+              <input type="hidden"
+                     name="new_emotion_name01"
+                     value="{{$three_column->emotion_name01 }}"
+              >
+            @endif
+
+            @if(isset($three_column->emotion_name02))
+              <li class="list-group-item">{{$three_column->emotion_name02 }}</li>
+              <input type="hidden"
+                     name="new_emotion_name02"
+                     value="{{ $three_column->emotion_name02 }}"
+              >
+            @endif
+          </ul>
+
+        </div>
+
+        <div class="form-group col-3">
+          <label for="emotion_strength">以前の感情の強さ</label>
+          <ul class="list-group">
+            <li class="list-group-item">{{$three_column->emotion_strength }}</li>
+            
+            @if(isset($three_column->emotion_strength00))
+              <li class="list-group-item">{{$three_column->emotion_strength00 }}</li>
+            @endif
+            
+            @if(isset($three_column->emotion_strength01))
+              <li class="list-group-item">{{$three_column->emotion_strength01 }}</li>
+            @endif
+            
+            @if(isset($three_column->emotion_strength02))
+              <li class="list-group-item">{{$three_column->emotion_strength02 }}</li>
+            @endif
+          </ul>
+        </div>
+
+        <div class="form-group col-3">
+          <label for="emotion_strength">新しい感情の強さ</label>
+          <input type="number" 
+                 class="form-control mt-1" 
+                 id="new_emotion_strength" 
+                 name="new_emotion_strength"
+                 value="{{ $seven_column->new_emotion_strength }}"
+          >
+
+          @if(isset($three_column->emotion_strength00))
+          <input type="number" 
+                 class="form-control mt-3" 
+                 id="new_emotion_strength00" 
+                 name="new_emotion_strength00"
+                 value="{{ $seven_column->new_emotion_strength00 }}"
+          >
+          @endif
+
+          @if(isset($three_column->emotion_strength01))
+          <input type="number" 
+                 class="form-control mt-3" 
+                 id="new_emotion_strength01" 
+                 name="new_emotion_strength01"
+                 value="{{ $seven_column->new_emotion_strength01 }}"
+          >
+          @endif
+
+          @if(isset($three_column->emotion_strength02))
+          <input type="number" 
+                 class="form-control mt-3" 
+                 id="new_emotion_strength02" 
+                 name="new_emotion_strength02"    
+                 value="{{ $seven_column->new_emotion_strength02 }}"
+          >
+          @endif
+        </div>
+      </div>
+
         @if($errors->has('new_emotion'))
         @foreach($errors->get('new_emotion') as $message)
         <ul>
@@ -182,6 +272,7 @@
         </ul>
         @endforeach
         @endif
+      
       </div>
 
       <div class="buttons-first">

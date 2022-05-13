@@ -64,8 +64,8 @@
           >
 
           <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_name'))
-          @foreach($errors->get('emotion_name') as $message)
+          @if($errors->has('emotion_name_def'))
+          @foreach($errors->get('emotion_name_def') as $message)
           <ul>
             <li class="ml-2 my-1 text-danger">{{ $message }}</li>
           </ul>
@@ -83,8 +83,8 @@
           >
 
           <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_strength'))
-          @foreach($errors->get('emotion_strength') as $message)
+          @if($errors->has('emotion_strength_def'))
+          @foreach($errors->get('emotion_strength_def') as $message)
           <ul>
             <li class="ml-2 my-1 text-danger">{{ $message }}</li>
           </ul>
@@ -108,7 +108,7 @@
               </div>
                     <!-- 各入力ボックス -->
               <div class="form-group col">
-                <input ref="strenght"
+                <input ref="strength"
                        name="emotion_strength[]"
                        class="form-control"
                        type="number"
@@ -131,10 +131,6 @@
             （残り<span v-text="remainingTextCount"></span>件）
         </button>
         
-        
-
-        <!-- 入力されたデータを送信するボタン ③ -->
-        <br><br>
         
         <!-- 確認用 -->
         <hr>

@@ -56,6 +56,7 @@ class SevenColumnsController extends Controller
         ];
         return view('seven_columns.index', $data);
     }
+    
     // 7コラム新規作成画面へ遷移
     public function create($id)
     {
@@ -66,7 +67,7 @@ class SevenColumnsController extends Controller
 
         $event_id = $three_column->event_id;
         $event = Event::where('id', $event_id)->where('user_id', $user_id)->first();
-//dd($event);
+
         return view('seven_columns.create', [
             'three_column' => $three_column,
             'event' => $event
@@ -76,14 +77,13 @@ class SevenColumnsController extends Controller
     // 保存処理
     public function store(Request $request)
     {
-
         $this->validate(
             $request,
             [
                 'basis_thinking' => 'required',
                 'opposite_fact' => 'required',
                 'new_thinking' => 'required',
-                'new_emotion' => 'required',
+                
             ]
         );
 
@@ -98,7 +98,34 @@ class SevenColumnsController extends Controller
             $seven_column->basis_thinking = $request->basis_thinking;
             $seven_column->opposite_fact = $request->opposite_fact;
             $seven_column->new_thinking = $request->new_thinking;
-            $seven_column->new_emotion = $request->new_emotion;
+            
+            $seven_column->new_emotion_name = $request->new_emotion_name;
+           
+            if(isset($request->new_emotion_name00)) {
+                $seven_column->new_emotion_name00 = $request->new_emotion_name00;
+            }
+
+            if(isset($request->new_emotion_name01)) {
+                $seven_column->new_emotion_name01 = $request->new_emotion_name01;
+            }
+
+            if(isset($request->new_emotion_name02)) {
+                $seven_column->new_emotion_name02 = $request->new_emotion_name02;
+            }
+
+            $seven_column->new_emotion_strength = $request->new_emotion_strength;
+
+            if(isset($request->new_emotion_strength00)) {
+                $seven_column->new_emotion_strength00 = $request->new_emotion_strength00;
+            }
+
+            if(isset($request->new_emotion_strength01)) {
+                $seven_column->new_emotion_strength01 = $request->new_emotion_strength01;
+            }
+
+            if(isset($request->new_emotion_strength02)) {
+                $seven_column->new_emotion_strength02 = $request->new_emotion_strength02;
+            }
 
             $seven_column->save();
         });
@@ -158,7 +185,7 @@ class SevenColumnsController extends Controller
                 'basis_thinking' => 'required',
                 'opposite_fact' => 'required',
                 'new_thinking' => 'required',
-                'new_emotion' => 'required'
+                'new_emotion_strength' => 'required'
             ]
         );
 
@@ -167,7 +194,21 @@ class SevenColumnsController extends Controller
             $seven_column->basis_thinking = $request->basis_thinking;
             $seven_column->opposite_fact = $request->opposite_fact;
             $seven_column->new_thinking = $request->new_thinking;
-            $seven_column->new_emotion = $request->new_emotion;
+
+            $seven_column->new_emotion_strength = $request->new_emotion_strength;
+
+            if(isset($request->new_emotion_strength00)) {
+                $seven_column->new_emotion_strength00 = $request->new_emotion_strength00;
+            }
+
+            if(isset($request->new_emotion_strength01)) {
+                $seven_column->new_emotion_strength01 = $request->new_emotion_strength01;
+            }
+
+            if(isset($request->new_emotion_strength02)) {
+                $seven_column->new_emotion_strength02 = $request->new_emotion_strength02;
+            }
+
             $seven_column->updated_at = date('Y-m-d G:i:s');
 
             $seven_column->save();
