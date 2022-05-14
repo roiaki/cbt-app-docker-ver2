@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use Session;
 
 class EventsController extends Controller
 {
@@ -61,6 +62,7 @@ class EventsController extends Controller
         return view('events.create');
     }
 
+
     // 保存処理
     public function store(Request $request)
     {
@@ -79,6 +81,7 @@ class EventsController extends Controller
 
         $event->save();
 
+        Session::flash('flash_message', '出来事作成しました。');
         return view('events.show', ['event' => $event]);
     }
 

@@ -20,12 +20,11 @@ class SevenColumnsController extends Controller
             $user = Auth::user();
             $sevencolumns = $user->seven_columns()->orderBy('updated_at', 'desc')->paginate(5);
             $event = $user->events()->get();
-//dd($event);
+
             $data = [
                 'event' => $event,
                 'seven_columns' => $sevencolumns
             ];
-            //dd($data);
         }
         return view('seven_columns.index', $data);
     }
@@ -66,7 +65,10 @@ class SevenColumnsController extends Controller
         $three_column = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();
 
         $event_id = $three_column->event_id;
-        $event = Event::where('id', $event_id)->where('user_id', $user_id)->first();
+
+        $event = Event::where('id', $event_id)
+                      ->where('user_id', $user_id)
+                      ->first();
 
         return view('seven_columns.create', [
             'three_column' => $three_column,
@@ -83,7 +85,7 @@ class SevenColumnsController extends Controller
                 'basis_thinking' => 'required',
                 'opposite_fact' => 'required',
                 'new_thinking' => 'required',
-                
+                'new_emotion_strength' => 'required'
             ]
         );
 
@@ -154,7 +156,7 @@ class SevenColumnsController extends Controller
             'event' => $event,
             'three_column' => $three_column,
             'seven_column' => $seven_column,
-            'habit_names' => $habit_names
+            'habit_names'  => $habit_names
         ]);
     }
 
@@ -189,29 +191,29 @@ class SevenColumnsController extends Controller
             ]
         );
 
-            $seven_column = SevenColumn::find($id);
-            
-            $seven_column->basis_thinking = $request->basis_thinking;
-            $seven_column->opposite_fact = $request->opposite_fact;
-            $seven_column->new_thinking = $request->new_thinking;
+        $seven_column = SevenColumn::find($id);
+        
+        $seven_column->basis_thinking = $request->basis_thinking;
+        $seven_column->opposite_fact = $request->opposite_fact;
+        $seven_column->new_thinking = $request->new_thinking;
 
-            $seven_column->new_emotion_strength = $request->new_emotion_strength;
+        $seven_column->new_emotion_strength = $request->new_emotion_strength;
 
-            if(isset($request->new_emotion_strength00)) {
-                $seven_column->new_emotion_strength00 = $request->new_emotion_strength00;
-            }
+        if(isset($request->new_emotion_strength00)) {
+            $seven_column->new_emotion_strength00 = $request->new_emotion_strength00;
+        }
 
-            if(isset($request->new_emotion_strength01)) {
-                $seven_column->new_emotion_strength01 = $request->new_emotion_strength01;
-            }
+        if(isset($request->new_emotion_strength01)) {
+            $seven_column->new_emotion_strength01 = $request->new_emotion_strength01;
+        }
 
-            if(isset($request->new_emotion_strength02)) {
-                $seven_column->new_emotion_strength02 = $request->new_emotion_strength02;
-            }
+        if(isset($request->new_emotion_strength02)) {
+            $seven_column->new_emotion_strength02 = $request->new_emotion_strength02;
+        }
 
-            $seven_column->updated_at = date('Y-m-d G:i:s');
+        $seven_column->updated_at = date('Y-m-d G:i:s');
 
-            $seven_column->save();
+        $seven_column->save();
 
         // session()->flash('flash_message', 'kousinn が失敗しました。');
 

@@ -27,6 +27,12 @@ if (5 <= $hour && $hour <= 12) {
   
   <!-- bootstrap読み込み　-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  
 </head>
 
 <body>
@@ -113,6 +119,14 @@ if (5 <= $hour && $hour <= 12) {
         </ul>
       </div>
     </nav>
+      <!-- フラッシュメッセージ -->
+      @if(session('flash_message'))
+        <div class="d-block mx-auto img-fluid w-50 alert alert-success justify-content-center col-5" id="flash">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{session('flash_message')}}
+        </div>
+      @endif
+         
 
     <div class="container">
       @yield('content')
@@ -127,6 +141,8 @@ if (5 <= $hour && $hour <= 12) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+
+    
     
 </body>
 
