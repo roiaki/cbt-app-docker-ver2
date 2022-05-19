@@ -3,11 +3,12 @@
 $hour = date("H");
 if (5 <= $hour && $hour <= 12) {
   $msg = "おはようございます";
-} else if (17 < $hour) {
+} else if (17 < $hour || $hour < 5) {
   $msg = "こんばんは";
 } else {
   $msg = "こんにちは";
 }
+
 ?>
 
 <!DOCTYPE html>
