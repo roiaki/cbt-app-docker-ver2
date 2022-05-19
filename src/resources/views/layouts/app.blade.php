@@ -20,7 +20,7 @@ if (5 <= $hour && $hour <= 12) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
-  <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   
   <!-- Vue.js を読み込む -->
   <script src="https://unpkg.com/vue@next"></script>
