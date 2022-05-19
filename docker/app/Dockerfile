@@ -3,6 +3,7 @@
 # ①
 FROM php:7.3-apache
 
+
 # 設定ファイルをdockerコンテナ内のPHP、Apacheに読み込ませる
 # ADD：ローカルのファイルをDockerコンテナ内にコピーする
 ADD php.ini /usr/local/etc/php/
