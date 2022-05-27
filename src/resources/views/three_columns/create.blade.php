@@ -133,10 +133,12 @@
         
         
         <!-- 確認用 -->
+<!--
         <hr>
         <label>textsの中身</label>
         <div v-text="texts"></div>
         <div v-text="strength"></div>
+-->
       </div>
          
 

@@ -130,7 +130,7 @@
 
       <div class="form-group">
         <label for="new_emotion"><h5>⑦  新しい感情</h5></label>
-        <p class="alert alert-success" role="alert">ポイント：「⑥新しい考え」のように考えると、どんな感情と強さに変わった？</p>
+        <p class="alert alert-success" role="alert">ポイント：「⑥新しい考え」のように考えると、抱いていた感情の強さはどう変わった？</p>
 
         <!-- ここから　-->
         <div class="row mt-3">

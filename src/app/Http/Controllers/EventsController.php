@@ -81,7 +81,7 @@ class EventsController extends Controller
 
         $event->save();
 
-        Session::flash('flash_message', '出来事作成しました。');
+        // Session::flash('flash_message', '出来事作成しました。');
         return view('events.show', ['event' => $event]);
     }
 
