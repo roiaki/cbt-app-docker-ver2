@@ -16,8 +16,7 @@ yarn-error.log
 /.vscode
 vendor/
 db/
-<<<<<<< HEAD
-# スラッシュで終わる場合はそのフォルダの中身全部
-src/
+
 # スラッシュで始まる場足はルートディレクトリから
 /src
+
